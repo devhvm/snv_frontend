@@ -1,16 +1,17 @@
 #!/usr/bin/env groovy
 
-node {
-    stage('checkout') {
-        checkout scm
+pipeline {
+    agent {
+        docker {
+            image 'node:6-alpine'
+            args '-p 3000:3000'
+        }
     }
-
-    gitlabCommitStatus('build') {
-        docker.image('jhipster/jhipster:v5.8.2').inside('-u jhipster') {
-            stage('check java') {
-                sh "java -version"
+    stages {
+        stage('Build') {
+            steps {
+                sh 'npm install'
             }
-
         }
     }
 }
