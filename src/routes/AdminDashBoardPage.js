@@ -7,9 +7,6 @@ import Footer from '../components/Footer'
 import styled from 'styled-components'
 import HomePage from '../pages/HomePage'
 import LoginPage from '../pages/LoginPage'
-import BoChuTriPage from '../pages/BoChuTriPage'
-import AddBoChuTriPage from '../pages/BoChuTriPage/add'
-import DanhMucPhanLoaiGoc from '../pages/DanhMucPhanLoaiGoc'
 import MauBaoCao from '../pages/MauBaoCao'
 import MauPhatHanhList from '../pages/MauPhatHanh'
 import MauPhatHanhEdit from '../pages/MauPhatHanh/edit'
@@ -32,7 +29,7 @@ const ContentWrapper = styled.div`
   }
 `
 
-function DashboardPage () {
+function AdminDashBoardPage () {
   const [login, setLogin] = useState(true)
   const [collapsed, setCollapsed] = useState(false)
 
@@ -65,17 +62,6 @@ function DashboardPage () {
               <ContentWrapper>
                 <Switch>
                   <Route exact path='/home' component={HomePage} />
-                  <Route exact path='/bochutri' component={BoChuTriPage} />
-                  <Route
-                    exact
-                    path='/bochutri/add'
-                    component={AddBoChuTriPage}
-                  />
-                  <Route
-                    exact
-                    path='/danhmucphanloaigoc'
-                    component={DanhMucPhanLoaiGoc}
-                  />
                   <Route
                     exact
                     path='/mauphathanh'
@@ -106,4 +92,4 @@ function DashboardPage () {
   )
 }
 
-export default DashboardPage
+export default AdminDashBoardPage

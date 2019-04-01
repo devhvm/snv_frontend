@@ -46,7 +46,7 @@ function LoginPage (props) {
 
   return (
     <Wrapper>
-      <Title>So Noi Vu</Title>
+      <Title>Sở Nội Vụ</Title>
       <LoginForm>
         <LoginInput
           placeholder='User Name'
