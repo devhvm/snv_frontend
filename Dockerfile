@@ -1,13 +1,21 @@
 # base image
 FROM node:10.15.3-alpine
 
-RUN mkdir /home/app
-WORKDIR /home/app
+# Setting working directory. All the path will be relative to WORKDIR
+WORKDIR /usr/src/app
 
-COPY package.json /home/app
-COPY . /home/app/
-
+# Installing dependencies
+COPY package*.json ./
 RUN npm install
 
-CMD [ "npm", "start" ]
+# Copying source files
+COPY . .
 
+# Building app
+RUN npm run build
+
+# Make port 3000 available to the world outside this container
+EXPOSE 3000
+
+# Running the app
+CMD [ "npm", "start" ]
