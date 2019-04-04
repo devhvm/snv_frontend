@@ -42,7 +42,7 @@ pipeline {
             steps {
                 echo 'Starting to build docker image'
 
-                script {
+             QQ   script {
                     sh "cp -R src/main/docker target/"
                     sh "cp target/*.war target/docker/"
                     def dockerImage = docker.build('snv/service-common', 'target/docker')

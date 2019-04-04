@@ -1,16 +1,18 @@
 import React, { useState } from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
 import { Layout } from 'antd'
-import Header from '../components/Header'
-import Sidebar from '../components/SideBar'
+import UserHeader from '../components/UserHeader'
 import Footer from '../components/Footer'
 import styled from 'styled-components'
 import HomePage from '../pages/HomePage'
 import LoginPage from '../pages/LoginPage'
 import MauBaoCao from '../pages/MauBaoCao'
-import MauPhatHanhList from '../pages/MauPhatHanh'
+// import MauPhatHanhList from '../pages/MauPhatHanh'
 import MauPhatHanhEdit from '../pages/MauPhatHanh/edit'
 import MauPhatHanhAdd from '../pages/MauPhatHanh/add'
+import MauPhatHanhProcessing from '../pages/PhatHanhMau/processing'
+import MauPhatHanhEditing from '../pages/PhatHanhMau/editing'
+import MauPhatHanhWaitForApproval from '../pages/PhatHanhMau/waitForApproval'
 
 const RootLayout = styled(Layout)`
   && {
@@ -31,7 +33,6 @@ const ContentWrapper = styled.div`
 
 function DashboardPage () {
   const [login, setLogin] = useState(true)
-  const [collapsed, setCollapsed] = useState(false)
 
   const loginReq = () => {
     setLogin(true)
@@ -43,29 +44,32 @@ function DashboardPage () {
 
   const ExContext = React.createContext(login)
 
-  const toggleSideBar = () => {
-    setCollapsed(!collapsed)
-  }
-
   return (
     <div className='App'>
       {login ? (
         <RootLayout>
-          <Sidebar collapsed={collapsed} />
           <Layout>
-            <Header
-              toggleSideBar={toggleSideBar}
-              collapsed={collapsed}
+            <UserHeader
               logoutReq={logoutReq}
             />
             <LayoutContent>
-              <ContentWrapper>
+              <ContentWrapper style={{ marginTop: '60px' }}>
                 <Switch>
                   <Route exact path='/home' component={HomePage} />
                   <Route
                     exact
-                    path='/mauphathanh'
-                    component={MauPhatHanhList}
+                    path='/phathanhmau/danhsachdangxuli'
+                    component={MauPhatHanhProcessing}
+                  />
+                  <Route
+                    exact
+                    path='/phathanhmau/danhsachyeucaudieuchinh'
+                    component={MauPhatHanhEditing}
+                  />
+                  <Route
+                    exact
+                    path='/phathanhmau/danhsachchokyduyet'
+                    component={MauPhatHanhWaitForApproval}
                   />
                   <Route
                     exact

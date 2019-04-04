@@ -9,7 +9,7 @@ const LayoutFooter = styled(Layout.Footer)`
 export default function Footer () {
   return (
     <LayoutFooter>
-      Copyright © 2019 ASOVIEW Inc. All rights reserved.
+      Copyright © 2019 Inc. All rights reserved.
     </LayoutFooter>
   )
 }
