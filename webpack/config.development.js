@@ -22,8 +22,8 @@ const devConf = {
     openPage: '',
     contentBase: ['build'],
     headers: {
-      "Access-Control-Allow-Origin": "*",
-    },
+      'Access-Control-Allow-Origin': '*'
+    }
     // proxy: {
     //   'url': 'http://210.2.91.13:9999'
     // }

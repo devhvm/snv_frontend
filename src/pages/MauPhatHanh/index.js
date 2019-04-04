@@ -159,7 +159,7 @@ function MauPhatHanhListPage ({ data, getDataEditMauPhatHanh }) {
           />
         </Form.Item>
         <Form.Item label='Ngày phát hành:'>
-          <DatePickerSearchMauPhatHanh defaultValue={moment(ngayPhatHanh,dateFormat)} placeholder='Nhập ngày phát hành' />
+          <DatePickerSearchMauPhatHanh defaultValue={moment(ngayPhatHanh, dateFormat)} placeholder='Nhập ngày phát hành' />
         </Form.Item>
         <Form.Item label='Chỉ tiêu:'>
           <SelectSearchMauPhatHanh defaultValue='Chỉ tiêu'>
