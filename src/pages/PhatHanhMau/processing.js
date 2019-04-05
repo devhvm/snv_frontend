@@ -469,6 +469,8 @@ function MauBaoCao () {
         </Layout.Content>
         <Layout.Sider width={300} style={{ background: '#fff', borderLeft: '1px solid #ccc' }}>
           <Layout.Content>
+            <Input placeholder='Tìm Kiếm' />
+            <Button type='primary' style={{ marginLeft: '20px', marginTop: '10px' }}>Tạo Mới</Button>
             <ListTable style={{ marginLeft: '20px' }} columns={columnsSmall} dataSource={dataSmall} size='small' />
           </Layout.Content>
         </Layout.Sider>

@@ -13,6 +13,11 @@ import MauPhatHanhAdd from '../pages/MauPhatHanh/add'
 import MauPhatHanhProcessing from '../pages/PhatHanhMau/processing'
 import MauPhatHanhEditing from '../pages/PhatHanhMau/editing'
 import MauPhatHanhWaitForApproval from '../pages/PhatHanhMau/waitForApproval'
+import MauPhatHanhSearch from '../pages/PhatHanhMau/search'
+import MauBaoCaoProcessing from '../pages/MauBaoCao/processing'
+import MauBaoCaoEditing from '../pages/MauBaoCao/editing'
+import MauBaoCaoWaitForApproval from '../pages/MauBaoCao/waitForApproval'
+import MauBaoCaoSearch from '../pages/MauBaoCao/search'
 
 const RootLayout = styled(Layout)`
   && {
@@ -70,6 +75,31 @@ function DashboardPage () {
                     exact
                     path='/phathanhmau/danhsachchokyduyet'
                     component={MauPhatHanhWaitForApproval}
+                  />
+                  <Route
+                    exact
+                    path='/phathanhmau/search'
+                    component={MauPhatHanhSearch}
+                  />
+                  <Route
+                    exact
+                    path='/phathanhmau/danhsachdangxuli'
+                    component={MauBaoCaoProcessing}
+                  />
+                  <Route
+                    exact
+                    path='/phathanhmau/danhsachyeucaudieuchinh'
+                    component={MauBaoCaoEditing}
+                  />
+                  <Route
+                    exact
+                    path='/phathanhmau/danhsachchokyduyet'
+                    component={MauBaoCaoWaitForApproval}
+                  />
+                  <Route
+                    exact
+                    path='/phathanhmau/search'
+                    component={MauBaoCaoSearch}
                   />
                   <Route
                     exact

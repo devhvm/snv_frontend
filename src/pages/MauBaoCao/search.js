@@ -410,7 +410,7 @@ function MauBaoCao () {
 
   return (
     <React.Fragment>
-      <h3>Danh sách Phát Hành Mẫu Đang Xử Lí</h3>
+      <h3>Danh sách Mẫu Báo Cáo Đang Xử Lí</h3>
       <Tabs defaultActiveKey='1'>
         <TabPane tab='Tab 1' key='1'>
           <FormSearchMauPhatHanh>
