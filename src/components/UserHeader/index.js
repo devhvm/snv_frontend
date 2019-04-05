@@ -83,10 +83,14 @@ export default function UserHeader () {
             </Menu.Item>
             <Menu.Item>
               <Link to='/phathanhmau/danhsachchokyduyet'>
-              DANH SÁCH CHỜ KÝ DUYỆT
+                DANH SÁCH CHỜ KÝ DUYỆT
               </Link>
             </Menu.Item>
-            <Menu.Item>TRUY LỤC</Menu.Item>
+            <Menu.Item>
+              <Link to='/phathanhmau/search'>
+                TRUY LỤC
+              </Link>
+            </Menu.Item>
           </Menu.SubMenu>
           <Menu.SubMenu key='2' title='MẪU BÁO CÁO'>
             <Menu.Item>DANH SÁCH YÊU CẦU ĐIỀU CHỈNH</Menu.Item>
