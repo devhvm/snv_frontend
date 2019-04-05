@@ -13,12 +13,12 @@ const devConf = {
     new webpack.HotModuleReplacementPlugin()
   ],
   devServer: {
-    hot: true,
+    hot: false,
     inline: true,
     historyApiFallback: true,
     host: '0.0.0.0',
     port: 3000,
-    open: true,
+    open: false,
     openPage: '',
     contentBase: ['build'],
     headers: {
