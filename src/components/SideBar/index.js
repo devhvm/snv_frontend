@@ -82,6 +82,12 @@ export default function Sidebar (props) {
             <span>Danh sách tiêu chí</span>
           </Link>
         </Menu.Item>
+        <Menu.Item key='9'>
+          <Link to='/maubaocao/editAbleCell'>
+            <Icon type='user' />
+            <span>EDIT CELL</span>
+          </Link>
+        </Menu.Item>
       </Menu>
     </Layout.Sider>
   )

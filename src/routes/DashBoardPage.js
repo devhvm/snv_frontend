@@ -11,6 +11,7 @@ import MauBaoCao from '../pages/MauBaoCao'
 import MauPhatHanhList from '../pages/MauPhatHanh'
 import MauPhatHanhEdit from '../pages/MauPhatHanh/edit'
 import MauPhatHanhAdd from '../pages/MauPhatHanh/add'
+import EditAbleCell from '../pages/MauBaoCao/textEditAbleCell'
 
 const RootLayout = styled(Layout)`
   && {
@@ -29,7 +30,7 @@ const ContentWrapper = styled.div`
   }
 `
 
-function AdminDashBoardPage () {
+function DashBoardPage () {
   const [login, setLogin] = useState(true)
   const [collapsed, setCollapsed] = useState(false)
 
@@ -78,6 +79,11 @@ function AdminDashBoardPage () {
                     render={props => <MauPhatHanhAdd {...props} />}
                   />
                   <Route exact path='/maubaocao' component={MauBaoCao} />
+                  <Route
+                    exact
+                    path='/maubaocao/editAbleCell'
+                    component={EditAbleCell}
+                  />
                   <Redirect exact from='/' to='/home' component={HomePage} />
                 </Switch>
               </ContentWrapper>
@@ -92,4 +98,4 @@ function AdminDashBoardPage () {
   )
 }
 
-export default AdminDashBoardPage
+export default DashBoardPage
