@@ -1,10 +1,17 @@
-FROM centos:latest
+FROM node:10.15.3-alpine
 
-RUN yum -y install httpd
-WORKDIR /var/www/html
+RUN mkdir -p /home/node/app/node_modules && chown -R node:node /home/node/app
 
-COPY build ./
+WORKDIR /home/node/app
 
-CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]
+COPY package*.json ./
+
+USER node
+
+RUN npm install
+
+COPY --chown=node:node . .
 
 EXPOSE 80
+
+CMD [ "npm", "start" ]
