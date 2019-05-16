@@ -52,9 +52,9 @@ const HeaderSubMenu = styled(Menu.SubMenu)`
 `
 
 const IconCollapsed = styled(Icon)`
-  {
-    margin-left: 15px
-    font-size: 20px
+   {
+    margin-left: 15px;
+    font-size: 20px;
   }
 `
 export default function Header (
