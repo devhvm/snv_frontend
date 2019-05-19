@@ -33,37 +33,37 @@ export default function Sidebar (props) {
       </App>
       <Menu mode='inline' theme='dark'>
         <Menu.Item key='0'>
-          <Link to='/maubaocao'>
+          <Link to='/quanlydonvi'>
             <Icon type='line-chart' />
             <span>Quản Lí Đơn Vị</span>
           </Link>
         </Menu.Item>
         <Menu.Item key='1'>
-          <Link to='/mauphathanh'>
+          <Link to='/thietdatquitrinh'>
             <Icon type='line-chart' />
             <span>Thiết Đặt Qui Trình</span>
           </Link>
         </Menu.Item>
         <Menu.Item key='2'>
-          <Link to='/nhaplieu'>
+          <Link to='/quanlymucbaocao'>
             <Icon type='user' />
             <span>Quản Lí Mục Báo Cáo</span>
           </Link>
         </Menu.Item>
         <Menu.Item key='3'>
-          <Link to='/tongket'>
+          <Link to='/thietdattieuchi'>
             <Icon type='user' />
             <span>Thiết Đặt Tiêu Chí</span>
           </Link>
         </Menu.Item>
         <Menu.Item key='4'>
-          <Link to='/danhsachtieuchi'>
+          <Link to='/quanlycoquanchutri'>
             <Icon type='user' />
             <span>Quản Lí Cơ Quan Chủ Trì</span>
           </Link>
         </Menu.Item>
         <Menu.Item key='5'>
-          <Link to='/maubaocao/editAbleCell'>
+          <Link to='/thietdatuser'>
             <Icon type='user' />
             <span>Thiết Đặt User</span>
           </Link>
