@@ -1,8 +1,8 @@
 import React, { useEffect, Fragment } from 'react'
-import { PageHeader, Table, Tag, Divider } from 'antd'
+import { PageHeader, Table, Divider, Row, Col, Button } from 'antd'
 
 export default function ThietDatQuiTrinh () {
-  const { Column, ColumnGroup } = Table
+  const { Column } = Table
   useEffect(() => {}, [])
 
   const data = [
@@ -35,40 +35,30 @@ export default function ThietDatQuiTrinh () {
   return (
     <Fragment>
       <PageHeader title='DANH SÁCH QUI TRÌNH' />
+      <Row>
+        <Col col={4} offset={21}>
+          <Button style={{ marginBottom: '20px' }} type='primary' icon='plus'>
+            Tạo mới
+          </Button>
+        </Col>
+      </Row>
       <Table dataSource={data}>
-        <ColumnGroup title='Name'>
-          <Column title='First Name' dataIndex='firstName' key='firstName' />
-          <Column title='Last Name' dataIndex='lastName' key='lastName' />
-        </ColumnGroup>
-        <Column title='Age' dataIndex='age' key='age' />
-        <Column title='Address' dataIndex='address' key='address' />
+        <Column title='STT' dataIndex='firstName' key='firstName' />
+        <Column title='MÃ NỘI DUNG' dataIndex='lastName' key='lastName' />
+        <Column title='MÃ TIÊU CHÍ' dataIndex='age' key='age' />
+        <Column title='TÊN NỘI DUNG' dataIndex='address' key='address' />
         <Column
-          title='Tags'
-          dataIndex='tags'
-          key='tags'
-          render={tags => (
-            <span>
-              {tags.map(tag => (
-                <Tag color='blue' key={tag}>
-                  {tag}
-                </Tag>
-              ))}
-            </span>
-          )}
-        />
-        <Column
-          title='Action'
+          title=''
           key='action'
           render={(text, record) => (
             <span>
-              <a href='javascript:;'>Invite {record.lastName}</a>
+              <a href='javascript:;'>Chi tiết</a>
               <Divider type='vertical' />
-              <a href='javascript:;'>Delete</a>
+              <a href='javascript:;'>Xoá</a>
             </span>
           )}
         />
       </Table>
-      ,
     </Fragment>
   )
 }

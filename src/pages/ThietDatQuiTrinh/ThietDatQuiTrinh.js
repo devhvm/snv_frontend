@@ -36,8 +36,10 @@ export default function ThietDatQuiTrinh () {
     <Fragment>
       <PageHeader title='DANH SÁCH QUI TRÌNH' />
       <Row>
-        <Col col={4} offset={20}>
-          <Button />
+        <Col col={4} offset={21}>
+          <Button style={{ marginBottom: '20px' }} type='primary' icon='plus'>
+            Tạo mới
+          </Button>
         </Col>
       </Row>
       <Table dataSource={data}>
@@ -57,7 +59,6 @@ export default function ThietDatQuiTrinh () {
           )}
         />
       </Table>
-      ,
     </Fragment>
   )
 }
