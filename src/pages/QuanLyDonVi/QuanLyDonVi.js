@@ -1,7 +1,7 @@
 import React, { useEffect, Fragment } from 'react'
 import { Col, Form, Input, PageHeader, Row, Select } from 'antd'
 
-export default function DangXuLyPage () {
+export default function QuanLyDonVi () {
   useEffect(() => {}, [])
 
   return (
