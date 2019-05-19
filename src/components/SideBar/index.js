@@ -32,60 +32,40 @@ export default function Sidebar (props) {
         <AppName>SNV</AppName>
       </App>
       <Menu mode='inline' theme='dark'>
-        <Menu.SubMenu
-          key='danhmucgoc'
-          title={
-            <span>
-              <Icon type='dollar' />
-              <span>Thiết lập danh mục gốc</span>
-            </span>
-          }
-        >
-          <Menu.Item key='0'>
-            <Link to='/maubaocao'>
-              <Icon type='line-chart' />
-              <span>Mẫu Báo Cáo</span>
-            </Link>
-          </Menu.Item>
-          <Menu.Item key='16'>
-            <Link to='/mauphathanh'>
-              <Icon type='line-chart' />
-              <span>Mẫu Phát Hành</span>
-            </Link>
-          </Menu.Item>
-          <Menu.SubMenu
-            key='loaibaocao'
-            title={
-              <span>
-                <Icon type='dollar' />
-                Tạo loại báo cáo
-              </span>
-            }
-          >
-            <Menu.Item key='7'>
-              <Link to='/nhaplieu'>
-                <Icon type='user' />
-                <span>Nhập liệu</span>
-              </Link>
-            </Menu.Item>
-            <Menu.Item key='8'>
-              <Link to='/tongket'>
-                <Icon type='user' />
-                <span>Tổng kết</span>
-              </Link>
-            </Menu.Item>
-          </Menu.SubMenu>
-        </Menu.SubMenu>
-        <Menu.Item key='9'>
-          <Link to='/danhsachtieuchi'>
-            <Icon type='user' />
-            <span>Danh sách tiêu chí</span>
+        <Menu.Item key='0'>
+          <Link to='/maubaocao'>
+            <Icon type='line-chart' />
+            <span>Quản Lí Đơn Vị</span>
           </Link>
         </Menu.Item>
-        <Menu.Item key='9'>
+        <Menu.Item key='1'>
+          <Link to='/mauphathanh'>
+            <Icon type='line-chart' />
+            <span>Thiết Đặt Qui Trình</span>
+          </Link>
+        </Menu.Item>
+        <Menu.Item key='2'>
+          <Link to='/nhaplieu'>
+            <Icon type='user' />
+            <span>Quản Lí Mục Báo Cáo</span>
+          </Link>
+        </Menu.Item>
+        <Menu.Item key='3'>
+          <Link to='/tongket'>
+            <Icon type='user' />
+            <span>Thiết Đặt Tiêu Chí</span>
+          </Link>
+        </Menu.Item>
+        <Menu.Item key='4'>
+          <Link to='/danhsachtieuchi'>
+            <Icon type='user' />
+            <span>Quản Lí Cơ Quan Chủ Trì</span>
+          </Link>
+        </Menu.Item>
+        <Menu.Item key='5'>
           <Link to='/maubaocao/editAbleCell'>
             <Icon type='user' />
-            <span>EDIT CELL</span>
+            <span>Thiết Đặt User</span>
           </Link>
         </Menu.Item>
       </Menu>

@@ -7,11 +7,13 @@ import Footer from '../components/Footer'
 import styled from 'styled-components'
 import HomePage from '../pages/HomePage'
 import LoginPage from '../pages/LoginPage'
-import MauBaoCao from '../pages/MauBaoCao'
-import MauPhatHanhList from '../pages/MauPhatHanh'
-import MauPhatHanhEdit from '../pages/MauPhatHanh/edit'
-import MauPhatHanhAdd from '../pages/MauPhatHanh/add'
-import EditAbleCell from '../pages/MauBaoCao/textEditAbleCell'
+// import EditAbleCell from '../pages/MauBaoCao/textEditAbleCell'
+import QuanLyDonVi from '../pages/QuanLyDonVi'
+import ThietDatQuiTrinh from '../pages/ThietDatQuiTrinh'
+import QuanLyMucBaoCao from '../pages/QuanLyMucBaoCao'
+import ThietDatTieuChi from '../pages/ThietDatTieuChi'
+import QuanLyCoQuanChuTri from '../pages/QuanLyCoQuanChuTri'
+import ThietDatUser from '../pages/ThietDatUser'
 
 const RootLayout = styled(Layout)`
   && {
@@ -63,27 +65,33 @@ function DashBoardPage () {
               <ContentWrapper>
                 <Switch>
                   <Route exact path='/home' component={HomePage} />
+                  <Route exact path='/quanlydonvi' component={QuanLyDonVi} />
                   <Route
                     exact
-                    path='/mauphathanh'
-                    component={MauPhatHanhList}
+                    path='/thietdatquitrinh'
+                    component={ThietDatQuiTrinh}
                   />
                   <Route
                     exact
-                    path='/mauphathanh/edit'
-                    render={props => <MauPhatHanhEdit {...props} />}
+                    path='/quanlymucbaocao'
+                    component={QuanLyMucBaoCao}
                   />
                   <Route
                     exact
-                    path='/mauphathanh/add'
-                    render={props => <MauPhatHanhAdd {...props} />}
+                    path='/thietdattieuchi'
+                    component={ThietDatTieuChi}
                   />
-                  <Route exact path='/maubaocao' component={MauBaoCao} />
                   <Route
                     exact
-                    path='/maubaocao/editAbleCell'
-                    component={EditAbleCell}
+                    path='/quanlycoquanchutri'
+                    component={QuanLyCoQuanChuTri}
                   />
+                  <Route exact path='/thietdatuser' component={ThietDatUser} />
+                  {/* <Route */}
+                  {/* exact */}
+                  {/* path='/maubaocao/editAbleCell' */}
+                  {/* component={EditAbleCell} */}
+                  {/* /> */}
                   <Redirect exact from='/' to='/home' component={HomePage} />
                 </Switch>
               </ContentWrapper>
