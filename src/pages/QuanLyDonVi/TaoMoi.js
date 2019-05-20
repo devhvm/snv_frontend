@@ -1,12 +1,11 @@
 import React, { Fragment } from 'react'
-import { Col, Form, Input, PageHeader, Row, Select, Modal } from 'antd'
+import { Col, Form, Input, Row, Select, Modal } from 'antd'
 
 export default function TaoMoiCoQuanHanhChinh ({ addVisible, setAddVisible }) {
   console.log(addVisible)
   console.log(setAddVisible)
   return (
     <Fragment>
-      <PageHeader title='TẠO MỚI CƠ QUAN HÀNH CHÍNH' />
       <Modal
         title='TẠO MỚI CƠ QUAN HÀNH CHÍNH'
         visible={addVisible}

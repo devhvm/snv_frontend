@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import { Col, Form, Input, PageHeader, Row, Select, Modal } from 'antd'
+import { Col, Form, Input, Row, Select, Modal } from 'antd'
 
 export default function ChiTietCoQuanHanhChinh ({
   editVisible,
@@ -7,7 +7,6 @@ export default function ChiTietCoQuanHanhChinh ({
 }) {
   return (
     <Fragment>
-      <PageHeader title='CHI TIẾT CƠ QUAN HÀNH CHÍNH' />
       <Modal
         title='CHI TIẾT CƠ QUAN HÀNH CHÍNH'
         visible={editVisible}
