@@ -2,8 +2,6 @@ import React, { Fragment } from 'react'
 import { Col, Form, Input, Row, Select, Modal } from 'antd'
 
 export default function TaoMoiCoQuanHanhChinh ({ addVisible, setAddVisible }) {
-  console.log(addVisible)
-  console.log(setAddVisible)
   return (
     <Fragment>
       <Modal

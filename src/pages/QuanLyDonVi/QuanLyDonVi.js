@@ -1,13 +1,17 @@
-import React, { Fragment, useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Button, Col, Divider, PageHeader, Row, Table } from 'antd'
 import TaoMoiCoQuanHanhChinh from './TaoMoi'
 import ChiTietCoQuanHanhChinh from './ChiTiet'
 
-export default function QuanLyDonVi () {
+export default function QuanLyDonVi ({ coQuanHanhChinh, getCoQuanHanhChinh }) {
+  useEffect(() => {
+    getCoQuanHanhChinh()
+  })
   const { Column } = Table
   const [editVisible, setEditVisible] = useState(false)
   const [addVisible, setAddVisible] = useState(false)
 
+  console.log(coQuanHanhChinh)
   const data = [
     {
       key: '1',
@@ -36,7 +40,7 @@ export default function QuanLyDonVi () {
   ]
 
   return (
-    <Fragment>
+    <>
       <PageHeader title='DANH SÁCH CƠ QUAN HÀNH CHÍNH' />
       <Row>
         <Col col={4} offset={21}>
@@ -83,6 +87,6 @@ export default function QuanLyDonVi () {
         addVisible={addVisible}
         setAddVisible={setAddVisible}
       />
-    </Fragment>
+    </>
   )
 }
