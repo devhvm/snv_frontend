@@ -6,7 +6,7 @@ export const USERS = 'USERS'
 export const USERS_EDITING = 'USERS_EDITING'
 
 // Action Creator
-export const getUser = () => dispatch => {
+export const getUsers = () => dispatch => {
   rest
     .get('common/api/co-quan-chu-tris')
     .then(res => {
@@ -55,7 +55,7 @@ const getUserEditingRequest = createAction(USERS_EDITING)
 
 // Initial State
 const initialState = {
-  user: [],
+  usersList: [],
   userEditing: {}
 }
 
@@ -64,7 +64,7 @@ export default handleActions(
   {
     [USERS]: (state, { payload }) => ({
       ...state,
-      user: payload
+      usersList: payload
     }),
     [USERS_EDITING]: (state, { payload }) => ({
       ...state,

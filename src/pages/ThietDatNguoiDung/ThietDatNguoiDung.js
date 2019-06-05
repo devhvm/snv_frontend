@@ -2,11 +2,20 @@ import React, { useEffect, Fragment, useState } from 'react'
 import { PageHeader, Table, Divider, Row, Col, Button } from 'antd'
 import TaoMoiThietDatNguoiDung from './TaoMoi'
 
-export default function ThietDatNguoiDung () {
+export default function ThietDatNguoiDung ({
+  usersList,
+  userEditing,
+  getUsers,
+  getUserEditing,
+  editUser,
+  addUser
+}) {
   const { Column } = Table
   const [setEditVisible] = useState(false)
   const [addVisible, setAddVisible] = useState(false)
-  useEffect(() => {}, [])
+  useEffect(() => {
+    // getUsers()
+  }, [])
 
   const data = [
     {
