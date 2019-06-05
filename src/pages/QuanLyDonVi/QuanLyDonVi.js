@@ -3,7 +3,12 @@ import { Button, Col, Divider, PageHeader, Row, Table } from 'antd'
 import TaoMoiCoQuanHanhChinh from './TaoMoi'
 import ChiTietCoQuanHanhChinh from './ChiTiet'
 
-export default function QuanLyDonVi ({ coQuanHanhChinh, getCoQuanHanhChinh }) {
+export default function QuanLyDonVi ({
+  coQuanHanhChinh,
+  coQuanHanhChinhEditing,
+  getCoQuanHanhChinh,
+  getCoQuanHanhChinhEditing
+}) {
   useEffect(() => {
     getCoQuanHanhChinh()
   })
@@ -11,33 +16,15 @@ export default function QuanLyDonVi ({ coQuanHanhChinh, getCoQuanHanhChinh }) {
   const [editVisible, setEditVisible] = useState(false)
   const [addVisible, setAddVisible] = useState(false)
 
-  console.log(coQuanHanhChinh)
-  const data = [
-    {
-      key: '1',
-      firstName: 'John',
-      lastName: 'Brown',
-      age: 32,
-      address: 'New York No. 1 Lake Park',
-      tags: ['nice', 'developer']
-    },
-    {
-      key: '2',
-      firstName: 'Jim',
-      lastName: 'Green',
-      age: 42,
-      address: 'London No. 1 Lake Park',
-      tags: ['loser']
-    },
-    {
-      key: '3',
-      firstName: 'Joe',
-      lastName: 'Black',
-      age: 32,
-      address: 'Sidney No. 1 Lake Park',
-      tags: ['cool', 'teacher']
-    }
-  ]
+  const dataTable =
+    coQuanHanhChinh &&
+    coQuanHanhChinh.map((item, index) => ({
+      key: item.id,
+      stt: index,
+      maDinhDanh: item.maDinhDanhCode,
+      tenCoQuanHanhChinh: item.name,
+      maCoQuanHanhChinh: item.id
+    }))
 
   return (
     <>
@@ -56,11 +43,19 @@ export default function QuanLyDonVi ({ coQuanHanhChinh, getCoQuanHanhChinh }) {
           </Button>
         </Col>
       </Row>
-      <Table dataSource={data}>
-        <Column title='STT' dataIndex='firstName' key='firstName' />
-        <Column title='MÃ QUI TRÌNH' dataIndex='lastName' key='lastName' />
-        <Column title='LOẠI QUI TRÌNH' dataIndex='age' key='age' />
-        <Column title='TÊN QUI TRÌNH' dataIndex='address' key='address' />
+      <Table dataSource={dataTable}>
+        <Column title='STT' dataIndex='stt' key='firstName' />
+        <Column
+          title='MÃ CƠ QUAN HÀNH CHÍNH'
+          dataIndex='maCoQuanHanhChinh'
+          key='maCoQuanHanhChinh'
+        />
+        <Column title='MÃ ĐỊNH DANH' dataIndex='maDinhDanh' key='maDinhDanh' />
+        <Column
+          title='TÊN CƠ QUAN HÀNH CHÍNH'
+          dataIndex='tenCoQuanHanhChinh'
+          key='tenCoQuanHanhChinh'
+        />
         <Column
           title=''
           key='action'
@@ -69,6 +64,7 @@ export default function QuanLyDonVi ({ coQuanHanhChinh, getCoQuanHanhChinh }) {
               <a
                 onClick={() => {
                   setEditVisible(true)
+                  getCoQuanHanhChinhEditing(record.maCoQuanHanhChinh)
                 }}
               >
                 Chi tiết
@@ -82,6 +78,7 @@ export default function QuanLyDonVi ({ coQuanHanhChinh, getCoQuanHanhChinh }) {
       <ChiTietCoQuanHanhChinh
         editVisible={editVisible}
         setEditVisible={setEditVisible}
+        coQuanHanhChinhEditing={coQuanHanhChinhEditing}
       />
       <TaoMoiCoQuanHanhChinh
         addVisible={addVisible}

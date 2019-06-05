@@ -1,9 +1,12 @@
 import React, { Fragment } from 'react'
-import { Col, Form, Input, Row, Select, Modal } from 'antd'
+import { Col, Form, Row, Modal, Select } from 'antd'
+import InputItem from '../../components/InputItem'
 
-export default function ChiTietCoQuanHanhChinh ({
+function ChiTietCoQuanHanhChinh ({
+  form,
   editVisible,
-  setEditVisible
+  setEditVisible,
+  coQuanHanhChinhEditing
 }) {
   return (
     <Fragment>
@@ -20,43 +23,85 @@ export default function ChiTietCoQuanHanhChinh ({
         <Form>
           <Row>
             <Col span={11}>
-              <Form.Item label='Mã đơn vị'>
-                <Input />
-              </Form.Item>
-              <Form.Item label='Tên đơn vị'>
-                <Input />
-              </Form.Item>
+              <InputItem
+                form={form}
+                label='Mã đơn vị'
+                field='maDonVi'
+                initialValue={
+                  coQuanHanhChinhEditing ? coQuanHanhChinhEditing.id : ''
+                }
+                rules={[
+                  { required: true, message: 'Vui lòng không để trống thẻ này' }
+                ]}
+              />
+              <InputItem
+                form={form}
+                label='Tên đơn vị'
+                field='tenDonVi'
+                initialValue={
+                  coQuanHanhChinhEditing ? coQuanHanhChinhEditing.name : ''
+                }
+                rules={[
+                  { required: true, message: 'Vui lòng không để trống thẻ này' }
+                ]}
+              />
             </Col>
-            <Col span={11} offset={1}>
-              <Form.Item label='Mã đơn vị'>
-                <Select
-                  defaultValue=''
-                  // onSelect={value => {
-                  // }}
-                />
-              </Form.Item>
-              <Form.Item label='Tên đơn vị'>
-                <Select
-                  defaultValue=''
-                  // value={coQuanChuTriList ? coQuanChuTriList[0].name : ''}
-                  // onSelect={value => {
-                  // }}
-                />
-              </Form.Item>
+            <Col span={11} offset={2}>
+              <InputItem
+                form={form}
+                label='Mã định danh'
+                field='maDinhDanh'
+                type='select'
+                options={
+                  <Select.Option />
+                  // coQuanHanhChinhEditing &&
+                  // coQuanHanhChinhEditing.map((item, i) => (
+                  //   <Select.Option key={String(item.id)} value={JSON.stringify(item)}>
+                  //     {item.name}
+                  //   </Select.Option>
+                  // ))
+                }
+                initialValue={
+                  coQuanHanhChinhEditing
+                    ? coQuanHanhChinhEditing.maDinhDanhCode
+                    : ''
+                }
+                rules={[
+                  { required: true, message: 'Vui lòng không để trống thẻ này' }
+                ]}
+              />
+              <InputItem
+                form={form}
+                label='Qui Trình'
+                field='quiTrinh'
+                type='select'
+                initialValue={
+                  coQuanHanhChinhEditing
+                    ? coQuanHanhChinhEditing.maDinhDanhCode
+                    : ''
+                }
+                rules={[
+                  { required: true, message: 'Vui lòng không để trống thẻ này' }
+                ]}
+              />
             </Col>
           </Row>
-          <Form.Item label='Mô tả'>
-            <Input.TextArea
-              placeholder='Mô tả'
-              style={{
-                height: 95,
-                width: '96%',
-                maxWidth: 'unset'
-              }}
-            />
-          </Form.Item>
+          <InputItem
+            form={form}
+            label='Mô tả'
+            field='moTa'
+            type='textarea'
+            initialValue={
+              coQuanHanhChinhEditing ? coQuanHanhChinhEditing.status : ''
+            }
+            rules={[
+              { required: true, message: 'Vui lòng không để trống thẻ này' }
+            ]}
+          />
         </Form>
       </Modal>
     </Fragment>
   )
 }
+
+export default Form.create({ name: 'form_modal' })(ChiTietCoQuanHanhChinh)
