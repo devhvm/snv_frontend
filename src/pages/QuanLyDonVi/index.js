@@ -2,7 +2,9 @@ import { connect } from 'react-redux'
 import QuanLyDonVi from './QuanLyDonVi'
 import {
   getCoQuanHanhChinh,
-  getCoQuanHanhChinhEditing
+  getCoQuanHanhChinhEditing,
+  editCoQuanHanhChinh,
+  addCoQuanHanhChinh
 } from '../../reducers/quanLiDonVi'
 
 export default connect(
@@ -16,6 +18,12 @@ export default connect(
     },
     getCoQuanHanhChinhEditing: id => {
       dispatch(getCoQuanHanhChinhEditing(id))
+    },
+    editCoQuanHanhChinh: form => {
+      dispatch(editCoQuanHanhChinh(form))
+    },
+    addCoQuanHanhChinh: form => {
+      dispatch(addCoQuanHanhChinh(form))
     }
   })
 )(QuanLyDonVi)

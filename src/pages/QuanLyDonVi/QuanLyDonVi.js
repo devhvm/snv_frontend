@@ -7,7 +7,9 @@ export default function QuanLyDonVi ({
   coQuanHanhChinh,
   coQuanHanhChinhEditing,
   getCoQuanHanhChinh,
-  getCoQuanHanhChinhEditing
+  getCoQuanHanhChinhEditing,
+  editCoQuanHanhChinh,
+  addCoQuanHanhChinh
 }) {
   useEffect(() => {
     getCoQuanHanhChinh()
@@ -79,10 +81,12 @@ export default function QuanLyDonVi ({
         editVisible={editVisible}
         setEditVisible={setEditVisible}
         coQuanHanhChinhEditing={coQuanHanhChinhEditing}
+        editCoQuanHanhChinh={editCoQuanHanhChinh}
       />
       <TaoMoiCoQuanHanhChinh
         addVisible={addVisible}
         setAddVisible={setAddVisible}
+        addCoQuanHanhChinh={addCoQuanHanhChinh}
       />
     </>
   )

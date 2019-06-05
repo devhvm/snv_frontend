@@ -2,33 +2,33 @@ import { handleActions, createAction } from 'redux-actions'
 import { rest } from '../utils/rest'
 
 // Action
-export const CO_QUAN_HANH_CHINH = 'CO_QUAN_HANH_CHINH'
-export const CO_QUAN_HANH_CHINH_EDITING = 'CO_QUAN_HANH_CHINH_EDITING'
+export const USERS = 'USERS'
+export const USERS_EDITING = 'USERS_EDITING'
 
 // Action Creator
-export const getCoQuanHanhChinh = () => dispatch => {
+export const getUser = () => dispatch => {
   rest
     .get('common/api/co-quan-chu-tris')
     .then(res => {
-      dispatch(getCoQuanHanhChinhRequest(res.data))
+      dispatch(getUserRequest(res.data))
     })
     .catch(err => {
       console.log(err)
     })
 }
 
-export const getCoQuanHanhChinhEditing = id => dispatch => {
+export const getUserEditing = id => dispatch => {
   rest
     .get(`quytrinhdonvi/api/co-quan-hanh-chinhs/${id}`)
     .then(res => {
-      dispatch(getCoQuanHanhChinhEditingRequest(res.data))
+      dispatch(getUserEditingRequest(res.data))
     })
     .catch(err => {
       console.log(err)
     })
 }
 
-export const editCoQuanHanhChinh = form => dispatch => {
+export const editUser = form => dispatch => {
   rest
     .put(`quytrinhdonvi/api/co-quan-hanh-chinhs/`)
     .then(res => {
@@ -39,7 +39,7 @@ export const editCoQuanHanhChinh = form => dispatch => {
     })
 }
 
-export const addCoQuanHanhChinh = form => dispatch => {
+export const addUser = form => dispatch => {
   rest
     .post(`quytrinhdonvi/api/co-quan-hanh-chinhs/`)
     .then(res => {
@@ -50,27 +50,25 @@ export const addCoQuanHanhChinh = form => dispatch => {
     })
 }
 
-const getCoQuanHanhChinhRequest = createAction(CO_QUAN_HANH_CHINH)
-const getCoQuanHanhChinhEditingRequest = createAction(
-  CO_QUAN_HANH_CHINH_EDITING
-)
+const getUserRequest = createAction(USERS)
+const getUserEditingRequest = createAction(USERS_EDITING)
 
 // Initial State
 const initialState = {
-  coQuanHanhChinh: [],
-  coQuanHanhChinhEditing: {}
+  user: [],
+  userEditing: {}
 }
 
 // reducer
 export default handleActions(
   {
-    [CO_QUAN_HANH_CHINH]: (state, { payload }) => ({
+    [USERS]: (state, { payload }) => ({
       ...state,
-      coQuanHanhChinh: payload
+      user: payload
     }),
-    [CO_QUAN_HANH_CHINH_EDITING]: (state, { payload }) => ({
+    [USERS_EDITING]: (state, { payload }) => ({
       ...state,
-      coQuanHanhChinhEditing: payload
+      userEditing: payload
     })
   },
   initialState

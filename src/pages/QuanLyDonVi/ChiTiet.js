@@ -6,7 +6,8 @@ function ChiTietCoQuanHanhChinh ({
   form,
   editVisible,
   setEditVisible,
-  coQuanHanhChinhEditing
+  coQuanHanhChinhEditing,
+  addCoQuanHanhChinh
 }) {
   return (
     <Fragment>
