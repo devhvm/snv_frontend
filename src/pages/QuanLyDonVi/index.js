@@ -4,7 +4,7 @@ import { getCoQuanHanhChinh } from '../../reducers/quanLiDonVi'
 
 export default connect(
   state => ({
-    data: state.quanLiDonVi
+    ...state.quanLiDonVi
   }),
   {
     getCoQuanHanhChinh

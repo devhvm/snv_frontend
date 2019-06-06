@@ -28,7 +28,7 @@ export default handleActions(
   {
     [CO_QUAN_HANH_CHINH]: (state, { payload }) => ({
       ...state,
-      coQuanChuTriList: payload
+      coQuanHanhChinh: payload
     })
   },
   initialState

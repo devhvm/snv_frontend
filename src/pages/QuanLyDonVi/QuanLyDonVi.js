@@ -1,12 +1,16 @@
-import React, { Fragment, useState } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import { Button, Col, Divider, PageHeader, Row, Table } from 'antd'
 import TaoMoiCoQuanHanhChinh from './TaoMoi'
 import ChiTietCoQuanHanhChinh from './ChiTiet'
 
-export default function QuanLyDonVi () {
+export default function QuanLyDonVi ({ getCoQuanHanhChinh }) {
   const { Column } = Table
   const [editVisible, setEditVisible] = useState(false)
   const [addVisible, setAddVisible] = useState(false)
+
+  useEffect(() => {
+    getCoQuanHanhChinh()
+  })
 
   const data = [
     {
