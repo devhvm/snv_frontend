@@ -10,10 +10,14 @@ import LoginPage from '../pages/LoginPage'
 // import EditAbleCell from '../pages/MauBaoCao/textEditAbleCell'
 import QuanLyDonVi from '../pages/QuanLyDonVi'
 import ThietDatQuiTrinh from '../pages/ThietDatQuiTrinh'
-import QuanLyMucBaoCao from '../pages/QuanLyMucBaoCao'
 import ThietDatTieuChi from '../pages/ThietDatTieuChi'
 import QuanLyCoQuanChuTri from '../pages/QuanLyCoQuanChuTri'
-import ThietDatUser from '../pages/ThietDatUser'
+import NhomChiTieu from '../pages/QuanLyMucBaoCao/NhomChiTieu'
+import ChiTieu from '../pages/QuanLyMucBaoCao/ChiTieu'
+import PhanTo from '../pages/QuanLyMucBaoCao/PhanTo'
+import NoiDungBaoCao from '../pages/QuanLyMucBaoCao/NoiDungBaoCao'
+import ThietDatNguoiDung from '../pages/ThietDatNguoiDung'
+import QuanLyHoSo from '../pages/QuanLyHoSo'
 
 const RootLayout = styled(Layout)`
   && {
@@ -71,11 +75,20 @@ function DashBoardPage () {
                     path='/thietdatquitrinh'
                     component={ThietDatQuiTrinh}
                   />
+                  <Route exact path='/nhomchitieu' component={NhomChiTieu} />
+                  <Route exact path='/chitieu' component={ChiTieu} />
+                  <Route exact path='/phanto' component={PhanTo} />
                   <Route
                     exact
-                    path='/quanlymucbaocao'
-                    component={QuanLyMucBaoCao}
+                    path='/noidungbaocao'
+                    component={NoiDungBaoCao}
                   />
+                  <Route
+                    exact
+                    path='/thietdatnguoidung'
+                    component={ThietDatNguoiDung}
+                  />
+                  <Route exact path='/quanlyhoso' component={QuanLyHoSo} />
                   <Route
                     exact
                     path='/thietdattieuchi'
@@ -86,7 +99,6 @@ function DashBoardPage () {
                     path='/quanlycoquanchutri'
                     component={QuanLyCoQuanChuTri}
                   />
-                  <Route exact path='/thietdatuser' component={ThietDatUser} />
                   {/* <Route */}
                   {/* exact */}
                   {/* path='/maubaocao/editAbleCell' */}

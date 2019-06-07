@@ -19,7 +19,7 @@
     "react-hooks/rules-of-hooks": "error",
     "react/display-name": false,
     "compat/compat": "error",
-    "allowEmptyReject": true
+    "eol-last": 0
   },
   "parser": "babel-eslint",
   "globals": {

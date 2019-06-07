@@ -1,3 +1,3 @@
 export default function () {
-  return 'Bearer ' + localStorage.getItem('jwt_token')
+  return 'Bearer ' + localStorage.getItem('id_token')
 }

@@ -2,26 +2,26 @@ import { handleActions, createAction } from 'redux-actions'
 import { rest } from '../utils/rest'
 
 // Action
-export const CO_QUAN_HANH_CHINH = 'CO_QUAN_HANH_CHINH'
-export const CO_QUAN_HANH_CHINH_EDITING = 'CO_QUAN_HANH_CHINH_EDITING'
+export const QUI_TRINH = 'QUI_TRINH'
+export const QUI_TRINH_EDITING = 'QUI_TRINH_EDITING'
 
 // Action Creator
-export const getCoQuanHanhChinh = () => dispatch => {
+export const getQuyTrinhs = () => dispatch => {
   rest
-    .get('common/api/co-quan-chu-tris')
+    .get('quanlyquytrinh/api/quy-trinhs')
     .then(res => {
-      dispatch(getCoQuanHanhChinhRequest(res.data))
+      dispatch(getQuyTrinhsRequest(res.data))
     })
     .catch(err => {
       console.log(err)
     })
 }
 
-export const getCoQuanHanhChinhEditing = id => dispatch => {
+export const getQuyTrinhEditing = id => dispatch => {
   rest
     .get(`quytrinhdonvi/api/co-quan-hanh-chinhs/${id}`)
     .then(res => {
-      dispatch(getCoQuanHanhChinhEditingRequest(res.data))
+      dispatch(getQuyTrinhEditingRequest(res.data))
     })
     .catch(err => {
       console.log(err)
@@ -50,27 +50,25 @@ export const addCoQuanHanhChinh = form => dispatch => {
     })
 }
 
-const getCoQuanHanhChinhRequest = createAction(CO_QUAN_HANH_CHINH)
-const getCoQuanHanhChinhEditingRequest = createAction(
-  CO_QUAN_HANH_CHINH_EDITING
-)
+const getQuyTrinhsRequest = createAction(QUI_TRINH)
+const getQuyTrinhEditingRequest = createAction(QUI_TRINH_EDITING)
 
 // Initial State
 const initialState = {
-  coQuanHanhChinh: [],
-  coQuanHanhChinhEditing: {}
+  quyTrinhList: [],
+  quyTrinhEditing: {}
 }
 
 // reducer
 export default handleActions(
   {
-    [CO_QUAN_HANH_CHINH]: (state, { payload }) => ({
+    [QUI_TRINH]: (state, { payload }) => ({
       ...state,
-      coQuanHanhChinh: payload
+      quyTrinhList: payload
     }),
-    [CO_QUAN_HANH_CHINH_EDITING]: (state, { payload }) => ({
+    [QUI_TRINH_EDITING]: (state, { payload }) => ({
       ...state,
-      coQuanHanhChinhEditing: payload
+      quyTrinhEditing: payload
     })
   },
   initialState

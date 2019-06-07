@@ -1,8 +1,8 @@
 import React, { useEffect, Fragment, useState } from 'react'
 import { PageHeader, Table, Divider, Row, Col, Button } from 'antd'
-import TaoMoiThietDatQuiTrinh from './TaoMoi'
+import TaoMoiQuanLyHoSo from './TaoMoi'
 
-export default function ThietDatQuiTrinh () {
+export default function QuanLyHoSo () {
   const { Column } = Table
   const [setEditVisible] = useState(false)
   const [addVisible, setAddVisible] = useState(false)
@@ -10,34 +10,25 @@ export default function ThietDatQuiTrinh () {
 
   const data = [
     {
-      key: '1',
-      firstName: 'John',
-      lastName: 'Brown',
-      age: 32,
-      address: 'New York No. 1 Lake Park',
-      tags: ['nice', 'developer']
+      soThuTu: '1',
+      tenNguoiDung: 'John',
+      donVi: 'Brown'
     },
     {
-      key: '2',
-      firstName: 'Jim',
-      lastName: 'Green',
-      age: 42,
-      address: 'London No. 1 Lake Park',
-      tags: ['loser']
+      soThuTu: '2',
+      tenNguoiDung: 'John',
+      donVi: 'Brown'
     },
     {
-      key: '3',
-      firstName: 'Joe',
-      lastName: 'Black',
-      age: 32,
-      address: 'Sidney No. 1 Lake Park',
-      tags: ['cool', 'teacher']
+      soThuTu: '3',
+      tenNguoiDung: 'John',
+      donVi: 'Brown'
     }
   ]
 
   return (
     <Fragment>
-      <PageHeader title='DANH SÁCH QUI TRÌNH' />
+      <PageHeader title='DANH SÁCH HỒ SƠ' />
       <Row>
         <Col col={4} offset={21}>
           <Button
@@ -53,10 +44,13 @@ export default function ThietDatQuiTrinh () {
         </Col>
       </Row>
       <Table dataSource={data}>
-        <Column title='STT' dataIndex='firstName' key='firstName' />
-        <Column title='MÃ QUI TRÌNH' dataIndex='lastName' key='lastName' />
-        <Column title='LOẠI QUI TRÌNH' dataIndex='age' key='age' />
-        <Column title='TÊN QUI TRÌNH' dataIndex='address' key='address' />
+        <Column title='STT' dataIndex='soThuTu' key='soThuTu' />
+        <Column
+          title='TÊN NGƯỜI DÙNG'
+          dataIndex='tenNguoiDung'
+          key='tenNguoiDung'
+        />
+        <Column title='CHỨC VỤ' dataIndex='chucVu' key='chucVu' />
         <Column
           title=''
           key='action'
@@ -75,10 +69,7 @@ export default function ThietDatQuiTrinh () {
           )}
         />
       </Table>
-      <TaoMoiThietDatQuiTrinh
-        addVisible={addVisible}
-        setAddVisible={setAddVisible}
-      />
+      <TaoMoiQuanLyHoSo addVisible={addVisible} setAddVisible={setAddVisible} />
     </Fragment>
   )
 }

@@ -20,6 +20,7 @@ const AppName = styled.span`
 `
 
 export default function Sidebar (props) {
+  const SubMenu = Menu.SubMenu
   return (
     <Layout.Sider
       theme='dark'
@@ -31,7 +32,7 @@ export default function Sidebar (props) {
         <Logo src={logo} alt='logo' />
         <AppName>SNV</AppName>
       </App>
-      <Menu mode='inline' theme='dark'>
+      <Menu theme='dark' mode='vertical'>
         <Menu.Item key='0'>
           <Link to='/quanlydonvi'>
             <Icon type='line-chart' />
@@ -44,12 +45,40 @@ export default function Sidebar (props) {
             <span>Thiết Đặt Qui Trình</span>
           </Link>
         </Menu.Item>
-        <Menu.Item key='2'>
-          <Link to='/quanlymucbaocao'>
-            <Icon type='user' />
-            <span>Quản Lí Mục Báo Cáo</span>
-          </Link>
-        </Menu.Item>
+        <SubMenu
+          title={
+            <span>
+              <Icon type='user' />
+              <span>Quản Lí Mục Báo Cáo</span>
+            </span>
+          }
+        >
+          <Menu.Item key='1'>
+            <Link to='/nhomchitieu'>
+              <Icon type='line-chart' />
+              <span>Nhóm Chỉ Tiêu</span>
+            </Link>
+          </Menu.Item>
+          <Menu.Item key='2'>
+            <Link to='/chitieu'>
+              <Icon type='line-chart' />
+              <span>Chỉ Tiêu</span>
+            </Link>
+          </Menu.Item>
+          <Menu.Item key='3'>
+            <Link to='/phanto'>
+              <Icon type='line-chart' />
+              <span>Phân tổ</span>
+            </Link>
+          </Menu.Item>
+          <Menu.Item key='4'>
+            <Link to='/noidungbaocao'>
+              <Icon type='line-chart' />
+              <span>Nội Dung Báo Cáo</span>
+            </Link>
+          </Menu.Item>
+          <Menu.Item key='5'>Nhóm Phân Loại</Menu.Item>
+        </SubMenu>
         <Menu.Item key='3'>
           <Link to='/thietdattieuchi'>
             <Icon type='user' />
@@ -63,9 +92,15 @@ export default function Sidebar (props) {
           </Link>
         </Menu.Item>
         <Menu.Item key='5'>
-          <Link to='/thietdatuser'>
+          <Link to='/thietdatnguoidung'>
             <Icon type='user' />
-            <span>Thiết Đặt User</span>
+            <span>Thiết Đặt Người Dùng</span>
+          </Link>
+        </Menu.Item>
+        <Menu.Item key='6'>
+          <Link to='/quanlyhoso'>
+            <Icon type='user' />
+            <span>Quản Lý Hồ Sơ</span>
           </Link>
         </Menu.Item>
       </Menu>

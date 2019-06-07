@@ -78,7 +78,8 @@
   "lint-staged": {
     "src/**/*.js": [
       "prettier-standard",
-      "yarn run eslint",
+      "eslint --fix",
+      "eslint src",
       "git add"
     ],
     "package.json": [

@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
-import ThietDatUser from './ThietDatUser'
+import NoiDungBaoCao from './NoiDungBaoCao'
 
 export default connect(
   state => ({}),
   {}
-)(ThietDatUser)
+)(NoiDungBaoCao)
