@@ -24,74 +24,98 @@ const RootLayout = styled(Layout)`
     min-height: 100vh;
 `
 const LayoutContent = styled(Layout.Content)`
-    && {
-        margin: 16px 16px 0;
-    }
+  && {
+    margin: 16px 16px 0;
+  }
 `
 const ContentWrapper = styled.div`
-    && {
-        padding: 24px;
-        background: #fff;
-        min-height: 520px;
-    }
+  && {
+    padding: 24px;
+    background: #fff;
+    min-height: 520px;
+  }
 `
 
 function DashBoardPage () {
-    const [login, setLogin] = useState(true)
-    const [collapsed, setCollapsed] = useState(false)
+  const [login, setLogin] = useState(true)
+  const [collapsed, setCollapsed] = useState(false)
 
-    const loginReq = () => {
-        setLogin(true)
-    }
+  const loginReq = () => {
+    setLogin(true)
+  }
 
-    const logoutReq = () => {
-        setLogin(false)
-    }
+  const logoutReq = () => {
+    setLogin(false)
+  }
 
-    const ExContext = React.createContext(login)
+  const ExContext = React.createContext(login)
 
-    const toggleSideBar = () => {
-        setCollapsed(!collapsed)
-    }
+  const toggleSideBar = () => {
+    setCollapsed(!collapsed)
+  }
 
-    return (
-        <div className='App'>
-            {login ? (
-                <RootLayout>
-                    <Sidebar collapsed={collapsed} />
-                    <Layout>
-                        <Header toggleSideBar={toggleSideBar} collapsed={collapsed} logoutReq={logoutReq} />
-                        <LayoutContent>
-                            <ContentWrapper>
-                                <Switch>
-                                    <Route exact path='/home' component={HomePage} />
-                                    <Route exact path='/quanlydonvi' component={QuanLyDonVi} />
-                                    <Route exact path='/thietdatquitrinh' component={ThietDatQuiTrinh} />
-                                    <Route exact path='/nhomchitieu' component={NhomChiTieu} />
-                                    <Route exact path='/chitieu' component={ChiTieu} />
-                                    <Route exact path='/phanto' component={PhanTo} />
-                                    <Route exact path='/noidungbaocao' component={NoiDungBaoCao} />
-                                    <Route exact path='/thietdatnguoidung' component={ThietDatNguoiDung} />
-                                    <Route exact path='/quanlyhoso' component={QuanLyHoSo} />
-                                    <Route exact path='/thietdattieuchi' component={ThietDatTieuChi} />
-                                    <Route exact path='/quanlycoquanchutri' component={QuanLyCoQuanChuTri} />
-                                    {/* <Route */}
-                                    {/* exact */}
-                                    {/* path='/maubaocao/editAbleCell' */}
-                                    {/* component={EditAbleCell} */}
-                                    {/* /> */}
-                                    <Redirect exact from='/' to='/home' component={HomePage} />
-                                </Switch>
-                            </ContentWrapper>
-                        </LayoutContent>
-                        <Footer />
-                    </Layout>
-                </RootLayout>
-            ) : (
-                <LoginPage ExContext={ExContext} loginReq={loginReq} />
-            )}
-        </div>
-    )
+  return (
+    <div className='App'>
+      {login ? (
+        <RootLayout>
+          <Sidebar collapsed={collapsed} />
+          <Layout>
+            <Header
+              toggleSideBar={toggleSideBar}
+              collapsed={collapsed}
+              logoutReq={logoutReq}
+            />
+            <LayoutContent>
+              <ContentWrapper>
+                <Switch>
+                  <Route exact path='/home' component={HomePage} />
+                  <Route exact path='/quanlydonvi' component={QuanLyDonVi} />
+                  <Route
+                    exact
+                    path='/thietdatquitrinh'
+                    component={ThietDatQuiTrinh}
+                  />
+                  <Route exact path='/nhomchitieu' component={NhomChiTieu} />
+                  <Route exact path='/chitieu' component={ChiTieu} />
+                  <Route exact path='/phanto' component={PhanTo} />
+                  <Route
+                    exact
+                    path='/noidungbaocao'
+                    component={NoiDungBaoCao}
+                  />
+                  <Route
+                    exact
+                    path='/thietdatnguoidung'
+                    component={ThietDatNguoiDung}
+                  />
+                  <Route exact path='/quanlyhoso' component={QuanLyHoSo} />
+                  <Route
+                    exact
+                    path='/thietdattieuchi'
+                    component={ThietDatTieuChi}
+                  />
+                  <Route
+                    exact
+                    path='/quanlycoquanchutri'
+                    component={QuanLyCoQuanChuTri}
+                  />
+                  {/* <Route */}
+                  {/* exact */}
+                  {/* path='/maubaocao/editAbleCell' */}
+                  {/* component={EditAbleCell} */}
+                  {/* /> */}
+                  <Redirect exact from='/' to='/home' component={HomePage} />
+                </Switch>
+              </ContentWrapper>
+            </LayoutContent>
+            <Footer />
+          </Layout>
+        </RootLayout>
+      ) : (
+        <LoginPage ExContext={ExContext} loginReq={loginReq} />
+      )}
+    </div>
+  )
 }
 
 export default DashBoardPage

@@ -9,8 +9,7 @@ import {
 
 export default connect(
   state => ({
-    coQuanHanhChinh: state.quanLiDonVi.coQuanHanhChinh,
-    coQuanHanhChinhEditing: state.quanLiDonVi.coQuanHanhChinhEditing
+    ...state.quanLiDonVi
   }),
   dispatch => ({
     getCoQuanHanhChinh: () => {

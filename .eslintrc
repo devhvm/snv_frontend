@@ -18,7 +18,8 @@
     "standard/computed-property-even-spacing": "off",
     "react-hooks/rules-of-hooks": "error",
     "react/display-name": false,
-    "compat/compat": "error"
+    "compat/compat": "error",
+    "eol-last": 0
   },
   "parser": "babel-eslint",
   "globals": {
