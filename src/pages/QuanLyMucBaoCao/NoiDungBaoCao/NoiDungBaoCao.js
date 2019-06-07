@@ -1,31 +1,30 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { PageHeader, Table, Divider, Row, Col, Button } from 'antd'
 import TaoMoiNoiDungBaoCao from './TaoMoi'
 
-export default function NoiDungBaoCao () {
+export default function NoiDungBaoCao ({
+  noiDungBaoCaoList,
+  noiDungBaoCaoEditing,
+  getNoiDungBaoCaos,
+  getNoiDungBaoCaoEditing,
+  editNoiDungBaoCao,
+  addNoiDungBaoCao,
+  deleteNoiDungBaoCao
+}) {
   const { Column } = Table
   const [addVisible, setAddVisible] = useState(false)
-
-  const data = [
-    {
-      soThuTu: '1',
-      maNoiDung: 'John',
-      maTieuChi: 'Brown',
-      tenNoiDung: 32
-    },
-    {
-      soThuTu: '2',
-      maNoiDung: 'John',
-      maTieuChi: 'Brown',
-      tenNoiDung: 32
-    },
-    {
-      soThuTu: '3',
-      maNoiDung: 'John',
-      maTieuChi: 'Brown',
-      tenNoiDung: 32
-    }
-  ]
+  useEffect(() => {
+    getNoiDungBaoCaos()
+  }, [])
+  const dataTable =
+    noiDungBaoCaoList &&
+    noiDungBaoCaoList.map((item, index) => ({
+      key: item.id,
+      stt: item.id,
+      maNoiDung: item.noiDungCode,
+      maTieuChi: item.tieuChiId,
+      tenNoiDung: item.name
+    }))
 
   return (
     <>
@@ -44,11 +43,16 @@ export default function NoiDungBaoCao () {
           </Button>
         </Col>
       </Row>
-      <Table dataSource={data}>
-        <Column title='STT' dataIndex='soThuTu' key='soThuTu' />
+      <Table dataSource={dataTable}>
+        <Column title='STT' dataIndex='stt' key='stt' />
         <Column title='MÃ NỘI DUNG' dataIndex='maNoiDung' key='maNoiDung' />
         <Column title='MÃ TIÊU CHÍ' dataIndex='maTieuChi' key='maTieuChi' />
-        <Column title='TÊN NỘI DUNG' dataIndex='tenNoiDung' key='tenNoiDung' />
+        <Column
+          width='30%'
+          title='TÊN NỘI DUNG'
+          dataIndex='tenNoiDung'
+          key='tenNoiDung'
+        />
         <Column
           title=''
           key='action'

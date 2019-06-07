@@ -2,38 +2,31 @@ import React, { useEffect, useState } from 'react'
 import { PageHeader, Table, Divider, Row, Col, Button } from 'antd'
 import TaoMoiThietDatQuiTrinh from './TaoMoi'
 
-export default function ThietDatQuiTrinh () {
+export default function ThietDatQuiTrinh ({
+  quyTrinhList,
+  quyTrinhEditing,
+  getQuyTrinhs,
+  getQuyTrinhEditing,
+  editQuyTrinh,
+  addQuyTrinh,
+  deleteQuyTrinh
+}) {
   const { Column } = Table
   const [setEditVisible] = useState(false)
   const [addVisible, setAddVisible] = useState(false)
-  useEffect(() => {}, [])
+  useEffect(() => {
+    getQuyTrinhs()
+  }, [])
 
-  const data = [
-    {
-      key: '1',
-      firstName: 'John',
-      lastName: 'Brown',
-      age: 32,
-      address: 'New York No. 1 Lake Park',
-      tags: ['nice', 'developer']
-    },
-    {
-      key: '2',
-      firstName: 'Jim',
-      lastName: 'Green',
-      age: 42,
-      address: 'London No. 1 Lake Park',
-      tags: ['loser']
-    },
-    {
-      key: '3',
-      firstName: 'Joe',
-      lastName: 'Black',
-      age: 32,
-      address: 'Sidney No. 1 Lake Park',
-      tags: ['cool', 'teacher']
-    }
-  ]
+  const dataTable =
+    quyTrinhList &&
+    quyTrinhList.map((item, index) => ({
+      key: item.id,
+      stt: item.id,
+      maQuiTrinh: item.quyTrinhCode,
+      loaiQuiTrinh: item.loaiQuyTrinhName,
+      tenQuiTrinh: item.name
+    }))
 
   return (
     <>
@@ -52,11 +45,19 @@ export default function ThietDatQuiTrinh () {
           </Button>
         </Col>
       </Row>
-      <Table dataSource={data}>
-        <Column title='STT' dataIndex='firstName' key='firstName' />
-        <Column title='MÃ QUI TRÌNH' dataIndex='lastName' key='lastName' />
-        <Column title='LOẠI QUI TRÌNH' dataIndex='age' key='age' />
-        <Column title='TÊN QUI TRÌNH' dataIndex='address' key='address' />
+      <Table dataSource={dataTable}>
+        <Column title='STT' dataIndex='stt' key='stt' />
+        <Column title='MÃ QUI TRÌNH' dataIndex='maQuiTrinh' key='maQuiTrinh' />
+        <Column
+          title='LOẠI QUI TRÌNH'
+          dataIndex='loaiQuiTrinh'
+          key='loaiQuiTrinh'
+        />
+        <Column
+          title='TÊN QUI TRÌNH'
+          dataIndex='tenQuiTrinh'
+          key='tenQuiTrinh'
+        />
         <Column
           title=''
           key='action'

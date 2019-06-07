@@ -1,67 +1,52 @@
 import React, { useEffect } from 'react'
-import { PageHeader, Table, Tag, Divider } from 'antd'
+import { PageHeader, Table, Divider } from 'antd'
 
-export default function ThietDatQuiTrinh () {
-  const { Column, ColumnGroup } = Table
-  useEffect(() => {}, [])
-
-  const data = [
-    {
-      key: '1',
-      firstName: 'John',
-      lastName: 'Brown',
-      age: 32,
-      address: 'New York No. 1 Lake Park',
-      tags: ['nice', 'developer']
-    },
-    {
-      key: '2',
-      firstName: 'Jim',
-      lastName: 'Green',
-      age: 42,
-      address: 'London No. 1 Lake Park',
-      tags: ['loser']
-    },
-    {
-      key: '3',
-      firstName: 'Joe',
-      lastName: 'Black',
-      age: 32,
-      address: 'Sidney No. 1 Lake Park',
-      tags: ['cool', 'teacher']
-    }
-  ]
+export default function ThietDatQuiTrinh ({
+  tieuChiList,
+  tieuChiEditing,
+  getTieuChis,
+  getTieuChiEditing,
+  editTieuChi,
+  addTieuChi,
+  deleteTieuChi
+}) {
+  const { Column } = Table
+  console.log('tieuChiList', tieuChiList)
+  useEffect(() => {
+    getTieuChis()
+  }, [])
+  const dataTable =
+    tieuChiList &&
+    tieuChiList.map((item, index) => ({
+      key: item.id,
+      stt: item.id,
+      maTieuChi: item.id,
+      maCoQuanChuTri: item.coQuanChuTriId,
+      maChiTieu: item.chiTieuId,
+      maKiCongBo: item.kyCongBoId,
+      trangThai: item.status
+    }))
 
   return (
     <>
-      <PageHeader title='DANH SÁCH QUI TRÌNH' />
-      <Table dataSource={data}>
-        <ColumnGroup title='Name'>
-          <Column title='First Name' dataIndex='firstName' key='firstName' />
-          <Column title='Last Name' dataIndex='lastName' key='lastName' />
-        </ColumnGroup>
-        <Column title='Age' dataIndex='age' key='age' />
-        <Column title='Address' dataIndex='address' key='address' />
+      <PageHeader title='DANH SÁCH TIÊU CHÍ' />
+      <Table dataSource={dataTable}>
+        <Column title='STT' dataIndex='stt' key='stt' />
+        <Column title='MÃ TIÊU CHÍ' dataIndex='maTieuChi' key='maTieuChi' />
+        <Column title='MÃ KÌ CÔNG BỐ' dataIndex='maKiCongBo' key='maKiCongBo' />
         <Column
-          title='Tags'
-          dataIndex='tags'
-          key='tags'
-          render={tags => (
-            <span>
-              {tags.map(tag => (
-                <Tag color='blue' key={tag}>
-                  {tag}
-                </Tag>
-              ))}
-            </span>
-          )}
+          title='MÃ CƠ QUAN CHỦ TRÌ'
+          dataIndex='maCoQuanChuTri'
+          key='maCoQuanChuTri'
         />
+        <Column title='MÃ CHỈ TIÊU' dataIndex='maChiTieu' key='maChiTieu' />
+        <Column title='TRẠNG THÁI' dataIndex='trangThai' key='trangThai' />
         <Column
           title='Action'
           key='action'
           render={(text, record) => (
             <span>
-              <a href='javascript:;'>Invite {record.lastName}</a>
+              <a href='javascript:;'>Chi tiết</a>
               <Divider type='vertical' />
               <a href='javascript:;'>Delete</a>
             </span>

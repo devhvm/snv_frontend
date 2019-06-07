@@ -1,13 +1,12 @@
 import React from 'react'
-import { Col, Form, Row, Modal, Select } from 'antd'
+import { Col, Form, Row, Modal } from 'antd'
 import InputItem from '../../components/InputItem'
 
 function ChiTietCoQuanHanhChinh ({
   form,
   editVisible,
   setEditVisible,
-  coQuanHanhChinhEditing,
-  addCoQuanHanhChinh
+  coQuanHanhChinhEditing
 }) {
   return (
     <>
@@ -52,16 +51,16 @@ function ChiTietCoQuanHanhChinh ({
                 form={form}
                 label='Mã định danh'
                 field='maDinhDanh'
-                type='select'
-                options={
-                  <Select.Option />
-                  // coQuanHanhChinhEditing &&
-                  // coQuanHanhChinhEditing.map((item, i) => (
-                  //   <Select.Option key={String(item.id)} value={JSON.stringify(item)}>
-                  //     {item.name}
-                  //   </Select.Option>
-                  // ))
-                }
+                // type='select'
+                // options={
+                //   <Select.Option>aaa</Select.Option>
+                //   coQuanHanhChinhEditing &&
+                //   coQuanHanhChinhEditing.map((item, i) => (
+                //     <Select.Option key={String(item.id)} value={JSON.stringify(item)}>
+                //       {item.name}
+                //     </Select.Option>
+                //   ))
+                // }
                 initialValue={
                   coQuanHanhChinhEditing
                     ? coQuanHanhChinhEditing.maDinhDanhCode
@@ -75,12 +74,21 @@ function ChiTietCoQuanHanhChinh ({
                 form={form}
                 label='Qui Trình'
                 field='quiTrinh'
-                type='select'
                 initialValue={
                   coQuanHanhChinhEditing
                     ? coQuanHanhChinhEditing.maDinhDanhCode
                     : ''
                 }
+                // type='select'
+                // options={
+                //   <Select.Option>aaa</Select.Option>
+                //   coQuanHanhChinhEditing &&
+                //   coQuanHanhChinhEditing.map((item, i) => (
+                //     <Select.Option key={String(item.id)} value={JSON.stringify(item)}>
+                //       {item.name}
+                //     </Select.Option>
+                //   ))
+                // }
                 rules={[
                   { required: true, message: 'Vui lòng không để trống thẻ này' }
                 ]}

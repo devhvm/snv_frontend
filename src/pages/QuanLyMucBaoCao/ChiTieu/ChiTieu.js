@@ -1,31 +1,30 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { PageHeader, Table, Divider, Row, Col, Button } from 'antd'
 import TaoMoiChiTieu from './TaoMoi'
 
-export default function ChiTieu () {
+export default function ChiTieu ({
+  chiTieuList,
+  chiTieuEditing,
+  getChiTieus,
+  getChiTieuEditing,
+  editChiTieu,
+  addChiTieu,
+  deleteChiTieu
+}) {
   const { Column } = Table
   const [addVisible, setAddVisible] = useState(false)
-
-  const data = [
-    {
-      soThuTu: '1',
-      maNhom: 'John',
-      maChiTieu: 'Brown',
-      tenNhom: 32
-    },
-    {
-      soThuTu: '2',
-      maNhom: 'John',
-      maChiTieu: 'Brown',
-      tenNhom: 32
-    },
-    {
-      soThuTu: '3',
-      maNhom: 'John',
-      maChiTieu: 'Brown',
-      tenNhom: 32
-    }
-  ]
+  useEffect(() => {
+    getChiTieus()
+  }, [])
+  const dataTable =
+    chiTieuList &&
+    chiTieuList.map((item, index) => ({
+      key: item.id,
+      stt: item.id,
+      maNhom: item.nhomChiTieuId,
+      maChiTieu: item.chiTieuCode,
+      tenNhom: item.name
+    }))
 
   return (
     <>
@@ -44,8 +43,8 @@ export default function ChiTieu () {
           </Button>
         </Col>
       </Row>
-      <Table dataSource={data}>
-        <Column title='STT' dataIndex='soThuTu' key='soThuTu' />
+      <Table dataSource={dataTable}>
+        <Column title='STT' dataIndex='stt' key='stt' />
         <Column title='MÃ NHÓM' dataIndex='maNhom' key='maNhom' />
         <Column title='MÃ CHỈ TIÊU' dataIndex='maChiTieu' key='maChiTieu' />
         <Column title='TÊN NHÓM' dataIndex='tenNhom' key='tenNhom' />

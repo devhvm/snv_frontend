@@ -2,8 +2,8 @@ import { handleActions, createAction } from 'redux-actions'
 import { rest } from '../utils/rest'
 
 // Action
-export const QUI_TRINH = 'QUI_TRINH'
-export const QUI_TRINH_EDITING = 'QUI_TRINH_EDITING'
+export const QUY_TRINH = 'QUY_TRINH'
+export const QUY_TRINH_EDITING = 'QUY_TRINH_EDITING'
 
 // Action Creator
 export const getQuyTrinhs = () => dispatch => {
@@ -28,7 +28,7 @@ export const getQuyTrinhEditing = id => dispatch => {
     })
 }
 
-export const editCoQuanHanhChinh = form => dispatch => {
+export const editQuyTrinh = form => dispatch => {
   rest
     .put(`quytrinhdonvi/api/co-quan-hanh-chinhs/`)
     .then(res => {
@@ -39,7 +39,7 @@ export const editCoQuanHanhChinh = form => dispatch => {
     })
 }
 
-export const addCoQuanHanhChinh = form => dispatch => {
+export const addQuyTrinh = form => dispatch => {
   rest
     .post(`quytrinhdonvi/api/co-quan-hanh-chinhs/`)
     .then(res => {
@@ -50,8 +50,19 @@ export const addCoQuanHanhChinh = form => dispatch => {
     })
 }
 
-const getQuyTrinhsRequest = createAction(QUI_TRINH)
-const getQuyTrinhEditingRequest = createAction(QUI_TRINH_EDITING)
+export const deleteQuyTrinh = id => dispatch => {
+  rest
+    .delete(`quytrinhdonvi/api/co-quan-hanh-chinhs/`)
+    .then(res => {
+      console.log(res)
+    })
+    .catch(err => {
+      console.log(err)
+    })
+}
+
+const getQuyTrinhsRequest = createAction(QUY_TRINH)
+const getQuyTrinhEditingRequest = createAction(QUY_TRINH_EDITING)
 
 // Initial State
 const initialState = {
@@ -62,11 +73,11 @@ const initialState = {
 // reducer
 export default handleActions(
   {
-    [QUI_TRINH]: (state, { payload }) => ({
+    [QUY_TRINH]: (state, { payload }) => ({
       ...state,
       quyTrinhList: payload
     }),
-    [QUI_TRINH_EDITING]: (state, { payload }) => ({
+    [QUY_TRINH_EDITING]: (state, { payload }) => ({
       ...state,
       quyTrinhEditing: payload
     })

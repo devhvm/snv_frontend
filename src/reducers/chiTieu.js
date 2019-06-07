@@ -2,33 +2,33 @@ import { handleActions, createAction } from 'redux-actions'
 import { rest } from '../utils/rest'
 
 // Action
-export const TIEU_CHI = 'TIEU_CHI'
-export const TIEU_CHI_EDITING = 'TIEU_CHI_EDITING'
+export const CHI_TIEU = 'CHI_TIEU'
+export const CHI_TIEU_EDITING = 'NHOM_CHI_TIEU_EDITING'
 
 // Action Creator
-export const getTieuChis = () => dispatch => {
+export const getChiTieus = () => dispatch => {
   rest
-    .get('common/api/tieu-chis')
+    .get('common/api/chi-tieus')
     .then(res => {
-      dispatch(getTieuChiRequest(res.data))
+      dispatch(getChiTieuRequest(res.data))
     })
     .catch(err => {
       console.log(err)
     })
 }
 
-export const getTieuChiEditing = id => dispatch => {
+export const getChiTieuEditing = id => dispatch => {
   rest
     .get(`quytrinhdonvi/api/co-quan-hanh-chinhs/${id}`)
     .then(res => {
-      dispatch(getTieuChiEditingRequest(res.data))
+      dispatch(getChiTieuEditingRequest(res.data))
     })
     .catch(err => {
       console.log(err)
     })
 }
 
-export const editTieuChi = form => dispatch => {
+export const editChiTieu = form => dispatch => {
   rest
     .put(`quytrinhdonvi/api/co-quan-hanh-chinhs/`)
     .then(res => {
@@ -39,9 +39,9 @@ export const editTieuChi = form => dispatch => {
     })
 }
 
-export const addTieuChi = form => dispatch => {
+export const addChiTieu = form => dispatch => {
   rest
-    .post(`quytrinhdonvi/api/co-quan-hanh-chinhs/`)
+    .post('common/api/nhom-chi-tieus')
     .then(res => {
       console.log(res)
     })
@@ -50,9 +50,9 @@ export const addTieuChi = form => dispatch => {
     })
 }
 
-export const deleteTieuChi = id => dispatch => {
+export const deleteChiTieu = id => dispatch => {
   rest
-    .delete(`quytrinhdonvi/api/co-quan-hanh-chinhs/`)
+    .delete(`common/api/nhom-chi-tieus/${id}`)
     .then(res => {
       console.log(res)
     })
@@ -61,25 +61,25 @@ export const deleteTieuChi = id => dispatch => {
     })
 }
 
-const getTieuChiRequest = createAction(TIEU_CHI)
-const getTieuChiEditingRequest = createAction(TIEU_CHI_EDITING)
+const getChiTieuRequest = createAction(CHI_TIEU)
+const getChiTieuEditingRequest = createAction(CHI_TIEU_EDITING)
 
 // Initial State
 const initialState = {
-  tieuChiList: [],
-  tieuChiEditing: {}
+  chiTieuList: [],
+  chiTieuEditing: {}
 }
 
 // reducer
 export default handleActions(
   {
-    [TIEU_CHI]: (state, { payload }) => ({
+    [CHI_TIEU]: (state, { payload }) => ({
       ...state,
-      tieuChiList: payload
+      chiTieuList: payload
     }),
-    [TIEU_CHI_EDITING]: (state, { payload }) => ({
+    [CHI_TIEU_EDITING]: (state, { payload }) => ({
       ...state,
-      tieuChiEditing: payload
+      chiTieuEditing: payload
     })
   },
   initialState

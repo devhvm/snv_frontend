@@ -7,7 +7,6 @@ import Footer from '../components/Footer'
 import styled from 'styled-components'
 import HomePage from '../pages/HomePage'
 import LoginPage from '../pages/LoginPage'
-// import EditAbleCell from '../pages/MauBaoCao/textEditAbleCell'
 import QuanLyDonVi from '../pages/QuanLyDonVi'
 import ThietDatQuiTrinh from '../pages/ThietDatQuiTrinh'
 import ThietDatTieuChi from '../pages/ThietDatTieuChi'
@@ -99,11 +98,6 @@ function DashBoardPage () {
                     path='/quanlycoquanchutri'
                     component={QuanLyCoQuanChuTri}
                   />
-                  {/* <Route */}
-                  {/* exact */}
-                  {/* path='/maubaocao/editAbleCell' */}
-                  {/* component={EditAbleCell} */}
-                  {/* /> */}
                   <Redirect exact from='/' to='/home' component={HomePage} />
                 </Switch>
               </ContentWrapper>

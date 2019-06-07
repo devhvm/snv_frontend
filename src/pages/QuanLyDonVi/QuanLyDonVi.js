@@ -17,6 +17,7 @@ export default function QuanLyDonVi ({
   const { Column } = Table
   const [editVisible, setEditVisible] = useState(false)
   const [addVisible, setAddVisible] = useState(false)
+  console.log(coQuanHanhChinhEditing)
 
   const dataTable =
     coQuanHanhChinh &&

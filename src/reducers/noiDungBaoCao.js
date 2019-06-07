@@ -2,33 +2,33 @@ import { handleActions, createAction } from 'redux-actions'
 import { rest } from '../utils/rest'
 
 // Action
-export const NHOM_CHI_TIEU = 'NHOM_CHI_TIEU'
-export const NHOM_CHI_TIEU_EDITING = 'NHOM_CHI_TIEU_EDITING'
+export const NOI_DUNG_BAO_CAO = 'NOI_DUNG_BAO_CAO'
+export const NOI_DUNG_BAO_CAO_EDITING = 'NOI_DUNG_BAO_CAO_EDITING'
 
 // Action Creator
-export const getNhomChiTieu = () => dispatch => {
+export const getNoiDungBaoCaos = () => dispatch => {
   rest
-    .get('common/api/nhom-chi-tieus')
+    .get('common/api/noi-dungs')
     .then(res => {
-      dispatch(getNhomChiTieuRequest(res.data))
+      dispatch(getNoiDungBaoCaoRequest(res.data))
     })
     .catch(err => {
       console.log(err)
     })
 }
 
-export const getNhomChiTieuEditing = id => dispatch => {
+export const getNoiDungBaoCaoEditing = id => dispatch => {
   rest
     .get(`quytrinhdonvi/api/co-quan-hanh-chinhs/${id}`)
     .then(res => {
-      dispatch(getNhomChiTieuEditingRequest(res.data))
+      dispatch(getNoiDungBaoCaoEditingRequest(res.data))
     })
     .catch(err => {
       console.log(err)
     })
 }
 
-export const editNhomChiTieu = form => dispatch => {
+export const editNoiDungBaoCao = form => dispatch => {
   rest
     .put(`quytrinhdonvi/api/co-quan-hanh-chinhs/`)
     .then(res => {
@@ -39,7 +39,7 @@ export const editNhomChiTieu = form => dispatch => {
     })
 }
 
-export const addNhomChiTieu = form => dispatch => {
+export const addNoiDungBaoCao = form => dispatch => {
   rest
     .post('common/api/nhom-chi-tieus')
     .then(res => {
@@ -50,7 +50,7 @@ export const addNhomChiTieu = form => dispatch => {
     })
 }
 
-export const deleteNhomChiTieu = id => dispatch => {
+export const deleteNoiDungBaoCao = id => dispatch => {
   rest
     .delete(`common/api/nhom-chi-tieus/${id}`)
     .then(res => {
@@ -61,25 +61,25 @@ export const deleteNhomChiTieu = id => dispatch => {
     })
 }
 
-const getNhomChiTieuRequest = createAction(NHOM_CHI_TIEU)
-const getNhomChiTieuEditingRequest = createAction(NHOM_CHI_TIEU_EDITING)
+const getNoiDungBaoCaoRequest = createAction(NOI_DUNG_BAO_CAO)
+const getNoiDungBaoCaoEditingRequest = createAction(NOI_DUNG_BAO_CAO_EDITING)
 
 // Initial State
 const initialState = {
-  nhomChiTieuList: [],
-  nhomChiTieuEditing: {}
+  noiDungBaoCaoList: [],
+  noiDungBaoCaoEditing: {}
 }
 
 // reducer
 export default handleActions(
   {
-    [NHOM_CHI_TIEU]: (state, { payload }) => ({
+    [NOI_DUNG_BAO_CAO]: (state, { payload }) => ({
       ...state,
-      nhomChiTieuList: payload
+      noiDungBaoCaoList: payload
     }),
-    [NHOM_CHI_TIEU_EDITING]: (state, { payload }) => ({
+    [NOI_DUNG_BAO_CAO_EDITING]: (state, { payload }) => ({
       ...state,
-      nhomChiTieuEditing: payload
+      noiDungBaoCaoEditing: payload
     })
   },
   initialState

@@ -2,33 +2,33 @@ import { handleActions, createAction } from 'redux-actions'
 import { rest } from '../utils/rest'
 
 // Action
-export const NHOM_CHI_TIEU = 'NHOM_CHI_TIEU'
-export const NHOM_CHI_TIEU_EDITING = 'NHOM_CHI_TIEU_EDITING'
+export const CO_QUAN_CHU_TRI = 'CO_QUAN_CHU_TRI'
+export const CO_QUAN_CHU_TRI_EDITING = 'CO_QUAN_CHU_TRI_EDITING'
 
 // Action Creator
-export const getNhomChiTieu = () => dispatch => {
+export const getCoQuanChuTris = () => dispatch => {
   rest
-    .get('common/api/nhom-chi-tieus')
+    .get('common/api/chi-tieus')
     .then(res => {
-      dispatch(getNhomChiTieuRequest(res.data))
+      dispatch(getCoQuanChuTriRequest(res.data))
     })
     .catch(err => {
       console.log(err)
     })
 }
 
-export const getNhomChiTieuEditing = id => dispatch => {
+export const getCoQuanChuTriEditing = id => dispatch => {
   rest
     .get(`quytrinhdonvi/api/co-quan-hanh-chinhs/${id}`)
     .then(res => {
-      dispatch(getNhomChiTieuEditingRequest(res.data))
+      dispatch(getCoQuanChuTriEditingRequest(res.data))
     })
     .catch(err => {
       console.log(err)
     })
 }
 
-export const editNhomChiTieu = form => dispatch => {
+export const editCoQuanChuTri = form => dispatch => {
   rest
     .put(`quytrinhdonvi/api/co-quan-hanh-chinhs/`)
     .then(res => {
@@ -39,7 +39,7 @@ export const editNhomChiTieu = form => dispatch => {
     })
 }
 
-export const addNhomChiTieu = form => dispatch => {
+export const addCoQuanChuTri = form => dispatch => {
   rest
     .post('common/api/nhom-chi-tieus')
     .then(res => {
@@ -50,7 +50,7 @@ export const addNhomChiTieu = form => dispatch => {
     })
 }
 
-export const deleteNhomChiTieu = id => dispatch => {
+export const deleteCoQuanChuTri = id => dispatch => {
   rest
     .delete(`common/api/nhom-chi-tieus/${id}`)
     .then(res => {
@@ -61,25 +61,25 @@ export const deleteNhomChiTieu = id => dispatch => {
     })
 }
 
-const getNhomChiTieuRequest = createAction(NHOM_CHI_TIEU)
-const getNhomChiTieuEditingRequest = createAction(NHOM_CHI_TIEU_EDITING)
+const getCoQuanChuTriRequest = createAction(CO_QUAN_CHU_TRI)
+const getCoQuanChuTriEditingRequest = createAction(CO_QUAN_CHU_TRI_EDITING)
 
 // Initial State
 const initialState = {
-  nhomChiTieuList: [],
-  nhomChiTieuEditing: {}
+  coQuanChuTriList: [],
+  coQuanChuTriEditing: {}
 }
 
 // reducer
 export default handleActions(
   {
-    [NHOM_CHI_TIEU]: (state, { payload }) => ({
+    [CO_QUAN_CHU_TRI]: (state, { payload }) => ({
       ...state,
-      nhomChiTieuList: payload
+      coQuanChuTriList: payload
     }),
-    [NHOM_CHI_TIEU_EDITING]: (state, { payload }) => ({
+    [CO_QUAN_CHU_TRI_EDITING]: (state, { payload }) => ({
       ...state,
-      nhomChiTieuEditing: payload
+      coQuanChuTriEditing: payload
     })
   },
   initialState

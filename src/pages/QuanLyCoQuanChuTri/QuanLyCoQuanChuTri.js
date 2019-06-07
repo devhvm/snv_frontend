@@ -1,51 +1,84 @@
-import React, { useEffect } from 'react'
-import { Col, Form, Input, PageHeader, Row, Select } from 'antd'
+import React, { useEffect, useState } from 'react'
+import { Button, Col, Divider, PageHeader, Row, Table } from 'antd'
+import TaoMoiThietDatQuiTrinh from '../ThietDatQuiTrinh/ThietDatQuiTrinh'
 
-export default function QuanLyDonVi () {
-  useEffect(() => {}, [])
+export default function QuanLyCoQuanChuTri ({
+  coQuanChuTriList,
+  coQuanChuTriEditing,
+  getCoQuanChuTris,
+  getCoQuanChuTriEditing,
+  editCoQuanChuTri,
+  addCoQuanChuTri,
+  deleteCoQuanChuTri
+}) {
+  const { Column } = Table
+  const [setEditVisible] = useState(false)
+  const [addVisible, setAddVisible] = useState(false)
+  useEffect(() => {
+    getCoQuanChuTris()
+  }, [])
+  const dataTable =
+    coQuanChuTriList &&
+    coQuanChuTriList.map((item, index) => ({
+      key: item.id,
+      stt: item.id,
+      maCoQuanChuTri: item.id,
+      tenCoQuanChuTri: item.name,
+      maDinhDanh: item.maDinhDanhCode
+    }))
 
   return (
     <>
-      <PageHeader title='TẠO MỚI CƠ QUAN HÀNH CHÍNH' />
-      <Form>
-        <Row>
-          <Col span={11}>
-            <Form.Item label='Mã đơn vị'>
-              <Input />
-            </Form.Item>
-            <Form.Item label='Tên đơn vị'>
-              <Input />
-            </Form.Item>
-          </Col>
-          <Col span={11} offset={1}>
-            <Form.Item label='Mã đơn vị'>
-              <Select
-                defaultValue=''
-                // onSelect={value => {
-                // }}
-              />
-            </Form.Item>
-            <Form.Item label='Tên đơn vị'>
-              <Select
-                defaultValue=''
-                // value={coQuanChuTriList ? coQuanChuTriList[0].name : ''}
-                // onSelect={value => {
-                // }}
-              />
-            </Form.Item>
-          </Col>
-        </Row>
-        <Form.Item label='Mô tả'>
-          <Input.TextArea
-            placeholder='Mô tả'
-            style={{
-              height: 95,
-              width: '96%',
-              maxWidth: 'unset'
+      <PageHeader title='DANH SÁCH CƠ QUAN CHỦ TRÌ' />
+      <Row>
+        <Col col={4} offset={21}>
+          <Button
+            style={{ marginBottom: '20px' }}
+            type='primary'
+            icon='plus'
+            onClick={() => {
+              setAddVisible(true)
             }}
-          />
-        </Form.Item>
-      </Form>
+          >
+            Tạo mới
+          </Button>
+        </Col>
+      </Row>
+      <Table dataSource={dataTable}>
+        <Column title='STT' dataIndex='stt' key='stt' />
+        <Column
+          title='MÃ CƠ QUAN CHỦ TRÌ'
+          dataIndex='maCoQuanChuTri'
+          key='maCoQuanChuTri'
+        />
+        <Column
+          title='TÊN CƠ QUAN CHỦ TRÌ'
+          dataIndex='tenCoQuanChuTri'
+          key='tenCoQuanChuTri'
+        />
+        <Column title='MÃ ĐỊNH DANH' dataIndex='maDinhDanh' key='maDinhDanh' />
+        <Column
+          title=''
+          key='action'
+          render={(text, record) => (
+            <span>
+              <a
+                onClick={() => {
+                  setEditVisible(true)
+                }}
+              >
+                Chi tiết
+              </a>
+              <Divider type='vertical' />
+              <a href='javascript:;'>Xoá</a>
+            </span>
+          )}
+        />
+      </Table>
+      <TaoMoiThietDatQuiTrinh
+        addVisible={addVisible}
+        setAddVisible={setAddVisible}
+      />
     </>
   )
 }
