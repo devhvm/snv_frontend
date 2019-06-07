@@ -1,9 +1,9 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { Col, Form, Input, Row, Modal, Select } from 'antd'
 
 export default function TaoMoiNoiDungBaoCao ({ addVisible, setAddVisible }) {
   return (
-    <Fragment>
+    <>
       <Modal
         title='TẠO MỚI NỘI DUNG BÁO CÁO'
         visible={addVisible}
@@ -41,6 +41,6 @@ export default function TaoMoiNoiDungBaoCao ({ addVisible, setAddVisible }) {
           </Row>
         </Form>
       </Modal>
-    </Fragment>
+    </>
   )
 }

@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react'
+import React, { useState } from 'react'
 import { PageHeader, Table, Divider, Row, Col, Button } from 'antd'
 import TaoMoiNoiDungBaoCao from './TaoMoi'
 
@@ -28,7 +28,7 @@ export default function NoiDungBaoCao () {
   ]
 
   return (
-    <Fragment>
+    <>
       <PageHeader title='Danh sách nội dung báo cáo' />
       <Row>
         <Col col={4} offset={21}>
@@ -65,6 +65,6 @@ export default function NoiDungBaoCao () {
         addVisible={addVisible}
         setAddVisible={setAddVisible}
       />
-    </Fragment>
+    </>
   )
 }

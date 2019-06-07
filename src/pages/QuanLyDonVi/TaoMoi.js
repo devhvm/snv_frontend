@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { Col, Form, Row, Select, Modal } from 'antd'
 import InputItem from '../../components/InputItem'
 
@@ -9,7 +9,7 @@ function TaoMoiCoQuanHanhChinh ({
   addCoQuanHanhChinh
 }) {
   return (
-    <Fragment>
+    <>
       <Modal
         title='TẠO MỚI CƠ QUAN HÀNH CHÍNH'
         visible={addVisible}
@@ -81,7 +81,7 @@ function TaoMoiCoQuanHanhChinh ({
           />
         </Form>
       </Modal>
-    </Fragment>
+    </>
   )
 }
 

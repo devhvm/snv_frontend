@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react'
+import React, { useState } from 'react'
 import { PageHeader, Table, Divider, Row, Col, Button } from 'antd'
 import TaoMoiChiTieu from './TaoMoi'
 
@@ -28,7 +28,7 @@ export default function ChiTieu () {
   ]
 
   return (
-    <Fragment>
+    <>
       <PageHeader title='Danh sách phân tổ' />
       <Row>
         <Col col={4} offset={21}>
@@ -62,6 +62,6 @@ export default function ChiTieu () {
         />
       </Table>
       <TaoMoiChiTieu addVisible={addVisible} setAddVisible={setAddVisible} />
-    </Fragment>
+    </>
   )
 }

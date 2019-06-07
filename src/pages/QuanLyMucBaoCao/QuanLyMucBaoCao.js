@@ -1,4 +1,4 @@
-import React, { useEffect, Fragment } from 'react'
+import React, { useEffect } from 'react'
 import { PageHeader, Table, Divider, Row, Col, Button } from 'antd'
 
 export default function ThietDatQuiTrinh () {
@@ -33,7 +33,7 @@ export default function ThietDatQuiTrinh () {
   ]
 
   return (
-    <Fragment>
+    <>
       <PageHeader title='DANH SÁCH QUI TRÌNH' />
       <Row>
         <Col col={4} offset={21}>
@@ -59,6 +59,6 @@ export default function ThietDatQuiTrinh () {
           )}
         />
       </Table>
-    </Fragment>
+    </>
   )
 }

@@ -1,11 +1,11 @@
-import React, { useEffect, Fragment } from 'react'
+import React, { useEffect } from 'react'
 import { Col, Form, Input, PageHeader, Row, Select } from 'antd'
 
 export default function QuanLyDonVi () {
   useEffect(() => {}, [])
 
   return (
-    <Fragment>
+    <>
       <PageHeader title='TẠO MỚI CƠ QUAN HÀNH CHÍNH' />
       <Form>
         <Row>
@@ -46,6 +46,6 @@ export default function QuanLyDonVi () {
           />
         </Form.Item>
       </Form>
-    </Fragment>
+    </>
   )
 }
