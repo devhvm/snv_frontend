@@ -4,7 +4,8 @@ import {
   getCoQuanHanhChinh,
   getCoQuanHanhChinhEditing,
   editCoQuanHanhChinh,
-  addCoQuanHanhChinh
+  addCoQuanHanhChinh,
+  deleteCoQuanHanhChinh
 } from '../../reducers/quanLiDonVi'
 
 export default connect(
@@ -23,6 +24,9 @@ export default connect(
     },
     addCoQuanHanhChinh: form => {
       dispatch(addCoQuanHanhChinh(form))
+    },
+    deleteCoQuanHanhChinh: form => {
+      dispatch(deleteCoQuanHanhChinh(form))
     }
   })
 )(QuanLyDonVi)

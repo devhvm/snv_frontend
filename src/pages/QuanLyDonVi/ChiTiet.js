@@ -1,5 +1,5 @@
 import React from 'react'
-import { Col, Form, Row, Modal } from 'antd'
+import { Col, Form, Row, Modal, Select } from 'antd'
 import InputItem from '../../components/InputItem'
 
 function ChiTietCoQuanHanhChinh ({
@@ -51,16 +51,18 @@ function ChiTietCoQuanHanhChinh ({
                 form={form}
                 label='Mã định danh'
                 field='maDinhDanh'
-                // type='select'
-                // options={
-                //   <Select.Option>aaa</Select.Option>
-                //   coQuanHanhChinhEditing &&
-                //   coQuanHanhChinhEditing.map((item, i) => (
-                //     <Select.Option key={String(item.id)} value={JSON.stringify(item)}>
-                //       {item.name}
-                //     </Select.Option>
-                //   ))
-                // }
+                type='select'
+                options={
+                  <Select.Option key='1' value='item'>
+                    aaa
+                  </Select.Option>
+                  //   coQuanHanhChinhEditing &&
+                  //   coQuanHanhChinhEditing.map((item, i) => (
+                  //     <Select.Option key={String(item.id)} value={JSON.stringify(item)}>
+                  //       {item.name}
+                  //     </Select.Option>
+                  //   ))
+                }
                 initialValue={
                   coQuanHanhChinhEditing
                     ? coQuanHanhChinhEditing.maDinhDanhCode

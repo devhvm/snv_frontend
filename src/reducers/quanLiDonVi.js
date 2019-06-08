@@ -8,7 +8,7 @@ export const CO_QUAN_HANH_CHINH_EDITING = 'CO_QUAN_HANH_CHINH_EDITING'
 // Action Creator
 export const getCoQuanHanhChinh = () => dispatch => {
   rest
-    .get('common/api/co-quan-chu-tris')
+    .get('quytrinhdonvi/api/co-quan-hanh-chinhs')
     .then(res => {
       dispatch(getCoQuanHanhChinhRequest(res.data))
     })
@@ -42,6 +42,17 @@ export const editCoQuanHanhChinh = form => dispatch => {
 export const addCoQuanHanhChinh = form => dispatch => {
   rest
     .post(`quytrinhdonvi/api/co-quan-hanh-chinhs/`)
+    .then(res => {
+      console.log(res)
+    })
+    .catch(err => {
+      console.log(err)
+    })
+}
+
+export const deleteCoQuanHanhChinh = id => dispatch => {
+  rest
+    .delete(`quytrinhdonvi/api/co-quan-hanh-chinhs/${id}`)
     .then(res => {
       console.log(res)
     })

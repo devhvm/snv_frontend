@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { Button, Col, Divider, PageHeader, Row, Table } from 'antd'
-import TaoMoiThietDatQuiTrinh from '../ThietDatQuiTrinh/ThietDatQuiTrinh'
 
 export default function QuanLyCoQuanChuTri ({
   coQuanChuTriList,
@@ -13,7 +12,7 @@ export default function QuanLyCoQuanChuTri ({
 }) {
   const { Column } = Table
   const [setEditVisible] = useState(false)
-  const [addVisible, setAddVisible] = useState(false)
+  // const [addVisible, setAddVisible] = useState(false)
   useEffect(() => {
     getCoQuanChuTris()
   }, [])
@@ -36,9 +35,9 @@ export default function QuanLyCoQuanChuTri ({
             style={{ marginBottom: '20px' }}
             type='primary'
             icon='plus'
-            onClick={() => {
-              setAddVisible(true)
-            }}
+            // onClick={() => {
+            //   setAddVisible(true)
+            // }}
           >
             Tạo mới
           </Button>
@@ -75,10 +74,10 @@ export default function QuanLyCoQuanChuTri ({
           )}
         />
       </Table>
-      <TaoMoiThietDatQuiTrinh
-        addVisible={addVisible}
-        setAddVisible={setAddVisible}
-      />
+      {/* <TaoMoiThietDatQuiTrinh */}
+      {/* addVisible={addVisible} */}
+      {/* setAddVisible={setAddVisible} */}
+      {/* /> */}
     </>
   )
 }

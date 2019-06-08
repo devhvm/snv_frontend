@@ -9,7 +9,8 @@ export default function QuanLyDonVi ({
   getCoQuanHanhChinh,
   getCoQuanHanhChinhEditing,
   editCoQuanHanhChinh,
-  addCoQuanHanhChinh
+  addCoQuanHanhChinh,
+  deleteCoQuanHanhChinh
 }) {
   useEffect(() => {
     getCoQuanHanhChinh()
@@ -17,7 +18,6 @@ export default function QuanLyDonVi ({
   const { Column } = Table
   const [editVisible, setEditVisible] = useState(false)
   const [addVisible, setAddVisible] = useState(false)
-  console.log(coQuanHanhChinhEditing)
 
   const dataTable =
     coQuanHanhChinh &&
@@ -73,7 +73,13 @@ export default function QuanLyDonVi ({
                 Chi tiết
               </a>
               <Divider type='vertical' />
-              <a href='javascript:;'>Xoá</a>
+              <a
+                onClick={() => {
+                  deleteCoQuanHanhChinh(record.maCoQuanHanhChinh)
+                }}
+              >
+                Xoá
+              </a>
             </span>
           )}
         />

@@ -8,7 +8,7 @@ export const CO_QUAN_CHU_TRI_EDITING = 'CO_QUAN_CHU_TRI_EDITING'
 // Action Creator
 export const getCoQuanChuTris = () => dispatch => {
   rest
-    .get('common/api/chi-tieus')
+    .get('common/api/co-quan-chu-tris')
     .then(res => {
       dispatch(getCoQuanChuTriRequest(res.data))
     })

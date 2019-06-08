@@ -11,7 +11,6 @@ export default function ThietDatQuiTrinh ({
   deleteTieuChi
 }) {
   const { Column } = Table
-  console.log('tieuChiList', tieuChiList)
   useEffect(() => {
     getTieuChis()
   }, [])
