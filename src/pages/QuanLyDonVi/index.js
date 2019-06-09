@@ -14,7 +14,7 @@ import { getQuyTrinhs } from '../../reducers/quyTrinh'
 
 export default connect(
   state => ({
-    ...state.quanLiDonVi,
+    ...state.coQuanHanhChinh,
     ...state.maDinhDanh,
     ...state.quyTrinh
   }),

@@ -3,21 +3,22 @@ import { PageHeader, Table, Divider, Row, Col, Button } from 'antd'
 import TaoMoiThietDatNguoiDung from './TaoMoi'
 
 export default function ThietDatNguoiDung ({
+  coQuanHanhChinh,
   usersList,
   userEditing,
   getUsers,
   getUserEditing,
   editUser,
-  addUser
+  addUser,
+  getCoQuanHanhChinh
 }) {
   const { Column } = Table
   const [setEditVisible] = useState(false)
   const [addVisible, setAddVisible] = useState(false)
   useEffect(() => {
     getUsers()
+    getCoQuanHanhChinh()
   }, [])
-
-  console.log(usersList)
 
   const dataTable =
     usersList &&
@@ -74,6 +75,8 @@ export default function ThietDatNguoiDung ({
       <TaoMoiThietDatNguoiDung
         addVisible={addVisible}
         setAddVisible={setAddVisible}
+        coQuanHanhChinh={coQuanHanhChinh}
+        addUser={addUser}
       />
     </>
   )

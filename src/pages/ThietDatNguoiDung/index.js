@@ -6,11 +6,12 @@ import {
   editUser,
   addUser
 } from '../../reducers/user'
+import { getCoQuanHanhChinh } from '../../reducers/coQuanHanhChinh'
 
 export default connect(
   state => ({
-    usersList: state.user.usersList,
-    userEditing: state.user.userEditing
+    ...state.user,
+    ...state.coQuanHanhChinh
   }),
   dispatch => ({
     getUsers: () => {
@@ -24,6 +25,9 @@ export default connect(
     },
     addUser: form => {
       dispatch(addUser(form))
+    },
+    getCoQuanHanhChinh: () => {
+      dispatch(getCoQuanHanhChinh())
     }
   })
 )(ThietDatNguoiDung)

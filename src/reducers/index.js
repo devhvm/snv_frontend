@@ -2,7 +2,7 @@ import { combineReducers } from 'redux'
 import { connectRouter } from 'connected-react-router'
 import login from './login'
 import mauphathanh from './mauphathanh'
-import quanLiDonVi from './coQuanHanhChinh'
+import coQuanHanhChinh from './coQuanHanhChinh'
 import user from './user'
 import quyTrinh from './quyTrinh'
 import nhomChiTieu from './nhomChiTieu'
@@ -18,7 +18,7 @@ export default history =>
     router: connectRouter(history),
     login,
     mauphathanh,
-    quanLiDonVi,
+    coQuanHanhChinh,
     user,
     quyTrinh,
     nhomChiTieu,

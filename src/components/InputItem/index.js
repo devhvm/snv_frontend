@@ -12,7 +12,7 @@ function InputItem ({
   type = 'text',
   rules,
   autosize,
-  options
+  optionsData
 }) {
   return (
     <Item label={label}>
@@ -22,7 +22,11 @@ function InputItem ({
         ) : type === 'textarea' ? (
           <TextArea autosize={autosize} />
         ) : type === 'select' ? (
-          <Select>{options}</Select>
+          <Select>
+            {optionsData.map((item, index) => (
+              <Select.Option key={index}>aaaa</Select.Option>
+            ))}
+          </Select>
         ) : (
           <Input />
         )

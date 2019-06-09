@@ -40,10 +40,11 @@ export const editUser = form => dispatch => {
 }
 
 export const addUser = form => dispatch => {
+  console.log(form)
   rest
-    .post(`quytrinhdonvi/api/co-quan-hanh-chinhs/`)
+    .post('phanquyenchucnang/api/nguoiDungs', form)
     .then(res => {
-      console.log(res)
+      dispatch(getUsers())
     })
     .catch(err => {
       console.log(err)
