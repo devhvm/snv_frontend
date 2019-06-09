@@ -14,26 +14,19 @@ export default function ThietDatNguoiDung ({
   const [setEditVisible] = useState(false)
   const [addVisible, setAddVisible] = useState(false)
   useEffect(() => {
-    // getUsers()
+    getUsers()
   }, [])
 
-  const data = [
-    {
-      soThuTu: '1',
-      tenNguoiDung: 'John',
-      donVi: 'Brown'
-    },
-    {
-      soThuTu: '2',
-      tenNguoiDung: 'John',
-      donVi: 'Brown'
-    },
-    {
-      soThuTu: '3',
-      tenNguoiDung: 'John',
-      donVi: 'Brown'
-    }
-  ]
+  console.log(usersList)
+
+  const dataTable =
+    usersList &&
+    usersList.map((item, index) => ({
+      key: item.id,
+      stt: index,
+      tenNguoiDung: `${item.firstName} ${item.lastName}`,
+      donVi: item.name
+    }))
 
   return (
     <>
@@ -52,8 +45,8 @@ export default function ThietDatNguoiDung ({
           </Button>
         </Col>
       </Row>
-      <Table dataSource={data}>
-        <Column title='STT' dataIndex='soThuTu' key='soThuTu' />
+      <Table dataSource={dataTable}>
+        <Column title='STT' dataIndex='stt' key='stt' />
         <Column
           title='TÊN NGƯỜI DÙNG'
           dataIndex='tenNguoiDung'

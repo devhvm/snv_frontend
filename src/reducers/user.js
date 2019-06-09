@@ -8,7 +8,7 @@ export const USERS_EDITING = 'USERS_EDITING'
 // Action Creator
 export const getUsers = () => dispatch => {
   rest
-    .get('common/api/co-quan-chu-tris')
+    .get('phanquyenchucnang/api/nguoiDungs')
     .then(res => {
       dispatch(getUserRequest(res.data))
     })
