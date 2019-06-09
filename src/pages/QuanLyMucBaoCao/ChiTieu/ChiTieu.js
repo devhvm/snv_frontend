@@ -28,7 +28,7 @@ export default function ChiTieu ({
 
   return (
     <>
-      <PageHeader title='Danh sách phân tổ' />
+      <PageHeader title='Danh sách chỉ tiêu' />
       <Row>
         <Col col={4} offset={21}>
           <Button
@@ -55,12 +55,22 @@ export default function ChiTieu ({
             <span>
               <a href='javascript:;'>Chi tiết</a>
               <Divider type='vertical' />
-              <a href='javascript:;'>Xoá</a>
+              <a
+                onClick={() => {
+                  deleteChiTieu(record.stt)
+                }}
+              >
+                Xoá
+              </a>
             </span>
           )}
         />
       </Table>
-      <TaoMoiChiTieu addVisible={addVisible} setAddVisible={setAddVisible} />
+      <TaoMoiChiTieu
+        addVisible={addVisible}
+        setAddVisible={setAddVisible}
+        addChiTieu={addChiTieu}
+      />
     </>
   )
 }

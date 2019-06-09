@@ -1,43 +1,91 @@
 import React from 'react'
-import { Col, Form, Input, Row, Modal, Select } from 'antd'
+import { Form, Modal, Select } from 'antd'
+import InputItem from '../../../components/InputItem'
 
-export default function TaoMoiChiTieu ({ addVisible, setAddVisible }) {
+function TaoMoiChiTieu ({ form, addVisible, setAddVisible, addChiTieu }) {
+  const statusList = [
+    {
+      value: 'PUBLISH'
+    },
+    {
+      value: 'UNPUBLISH'
+    },
+    {
+      value: 'DELETE'
+    }
+  ]
+
+  const handleOk = () => {
+    setAddVisible(false)
+    form.validateFields((err, values) => {
+      if (err) {
+        return
+      }
+      form.resetFields()
+      addChiTieu({
+        nhomChiTieuId: values.nhomChiTieuId,
+        chiTieuCode: values.chiTieuCode,
+        name: values.name,
+        status: values.status
+      })
+    })
+  }
+
   return (
     <>
       <Modal
-        title='TẠO MỚI PHÂN TỔ'
+        title='TẠO MỚI CHỈ TIÊU'
         visible={addVisible}
-        onOk={() => {
-          setAddVisible(false)
-        }}
+        onOk={handleOk}
         onCancel={() => {
           setAddVisible(false)
         }}
       >
         <Form>
-          <Row>
-            <Col span={11}>
-              <Form.Item label='Mã phân tổ'>
-                <Input />
-              </Form.Item>
-            </Col>
-          </Row>
-          <Row>
-            <Col span={11}>
-              <Form.Item label='Tên phân tổ'>
-                <Input />
-              </Form.Item>
-            </Col>
-          </Row>
-          <Row>
-            <Col span={11}>
-              <Form.Item label='Nhóm chỉ tiêu'>
-                <Select defaultValue='' />
-              </Form.Item>
-            </Col>
-          </Row>
+          <InputItem
+            form={form}
+            label='Mã nhóm chỉ tiêu'
+            field='nhomChiTieuId'
+            rules={[
+              { required: true, message: 'Vui lòng không để trống thẻ này' }
+            ]}
+          />
+          <InputItem
+            form={form}
+            label='Mã chỉ tiêu'
+            field='chiTieuCode'
+            rules={[
+              { required: true, message: 'Vui lòng không để trống thẻ này' }
+            ]}
+          />
+          <InputItem
+            form={form}
+            label='Tên chỉ tiêu'
+            field='name'
+            rules={[
+              { required: true, message: 'Vui lòng không để trống thẻ này' }
+            ]}
+          />
+          <InputItem
+            form={form}
+            label='Status'
+            field='status'
+            type='select'
+            options={
+              statusList &&
+              statusList.map((item, index) => (
+                <Select.Option key={index} value={item.value}>
+                  {item.value}
+                </Select.Option>
+              ))
+            }
+            rules={[
+              { required: true, message: 'Vui lòng không để trống thẻ này' }
+            ]}
+          />
         </Form>
       </Modal>
     </>
   )
 }
+export default Form.create({ name: 'form_modal' })(TaoMoiChiTieu)

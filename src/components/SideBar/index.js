@@ -53,51 +53,51 @@ export default function Sidebar (props) {
             </span>
           }
         >
-          <Menu.Item key='1'>
+          <Menu.Item key='2'>
             <Link to='/nhomchitieu'>
               <Icon type='line-chart' />
               <span>Nhóm Chỉ Tiêu</span>
             </Link>
           </Menu.Item>
-          <Menu.Item key='2'>
+          <Menu.Item key='3'>
             <Link to='/chitieu'>
               <Icon type='line-chart' />
               <span>Chỉ Tiêu</span>
             </Link>
           </Menu.Item>
-          <Menu.Item key='3'>
+          <Menu.Item key='4'>
             <Link to='/phanto'>
               <Icon type='line-chart' />
               <span>Phân tổ</span>
             </Link>
           </Menu.Item>
-          <Menu.Item key='4'>
+          <Menu.Item key='5'>
             <Link to='/noidungbaocao'>
               <Icon type='line-chart' />
               <span>Nội Dung Báo Cáo</span>
             </Link>
           </Menu.Item>
-          <Menu.Item key='5'>Nhóm Phân Loại</Menu.Item>
+          <Menu.Item key='6'>Nhóm Phân Loại</Menu.Item>
         </SubMenu>
-        <Menu.Item key='3'>
+        <Menu.Item key='7'>
           <Link to='/thietdattieuchi'>
             <Icon type='user' />
             <span>Thiết Đặt Tiêu Chí</span>
           </Link>
         </Menu.Item>
-        <Menu.Item key='4'>
+        <Menu.Item key='8'>
           <Link to='/quanlycoquanchutri'>
             <Icon type='user' />
             <span>Quản Lí Cơ Quan Chủ Trì</span>
           </Link>
         </Menu.Item>
-        <Menu.Item key='5'>
+        <Menu.Item key='9'>
           <Link to='/thietdatnguoidung'>
             <Icon type='user' />
             <span>Thiết Đặt Người Dùng</span>
           </Link>
         </Menu.Item>
-        <Menu.Item key='6'>
+        <Menu.Item key='10'>
           <Link to='/quanlyhoso'>
             <Icon type='user' />
             <span>Quản Lý Hồ Sơ</span>

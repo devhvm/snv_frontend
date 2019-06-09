@@ -2,22 +2,22 @@ import { handleActions, createAction } from 'redux-actions'
 import { rest } from '../utils/rest'
 
 // Action
-export const CHI_TIEU = 'CHI_TIEU'
+export const MA_DINH_DANH = 'MA_DINH_DANH'
 export const CHI_TIEU_EDITING = 'NHOM_CHI_TIEU_EDITING'
 
 // Action Creator
-export const getChiTieus = () => dispatch => {
+export const getMaDinhDanhs = () => dispatch => {
   rest
-    .get('common/api/chi-tieus')
+    .get('common/api/ma-dinh-danh-don-vis')
     .then(res => {
-      dispatch(getChiTieuRequest(res.data))
+      dispatch(getMaDinhDanhRequest(res.data))
     })
     .catch(err => {
       console.log(err)
     })
 }
 
-export const getChiTieuEditing = id => dispatch => {
+export const getMaDinhDanhEditing = id => dispatch => {
   rest
     .get(`quytrinhdonvi/api/co-quan-hanh-chinhs/${id}`)
     .then(res => {
@@ -28,7 +28,7 @@ export const getChiTieuEditing = id => dispatch => {
     })
 }
 
-export const editChiTieu = form => dispatch => {
+export const editMaDinhDanh = form => dispatch => {
   rest
     .put(`quytrinhdonvi/api/co-quan-hanh-chinhs/`)
     .then(res => {
@@ -39,49 +39,47 @@ export const editChiTieu = form => dispatch => {
     })
 }
 
-export const addChiTieu = form => dispatch => {
+export const addMaDinhDanh = form => dispatch => {
   rest
-    .post('common/api/chi-tieus', form)
+    .post('common/api/nhom-chi-tieus')
     .then(res => {
       console.log(res)
-      dispatch(getChiTieus())
     })
     .catch(err => {
       console.log(err)
     })
 }
 
-export const deleteChiTieu = id => dispatch => {
+export const deleteMaDinhDanh = id => dispatch => {
   rest
     .delete(`common/api/nhom-chi-tieus/${id}`)
     .then(res => {
       console.log(res)
-      dispatch(getChiTieus())
     })
     .catch(err => {
       console.log(err)
     })
 }
 
-const getChiTieuRequest = createAction(CHI_TIEU)
+const getMaDinhDanhRequest = createAction(MA_DINH_DANH)
 const getChiTieuEditingRequest = createAction(CHI_TIEU_EDITING)
 
 // Initial State
 const initialState = {
-  chiTieuList: [],
-  chiTieuEditing: {}
+  maDinhDanhList: [],
+  maDinhDanhEditing: {}
 }
 
 // reducer
 export default handleActions(
   {
-    [CHI_TIEU]: (state, { payload }) => ({
+    [MA_DINH_DANH]: (state, { payload }) => ({
       ...state,
-      chiTieuList: payload
+      maDinhDanhList: payload
     }),
     [CHI_TIEU_EDITING]: (state, { payload }) => ({
       ...state,
-      chiTieuEditing: payload
+      maDinhDanhEditing: payload
     })
   },
   initialState

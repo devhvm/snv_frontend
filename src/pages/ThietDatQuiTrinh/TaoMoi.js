@@ -1,7 +1,8 @@
-import React, { Fragment } from 'react'
-import { Col, Form, Input, Row, Select, Modal, Table, Button } from 'antd'
+import React from 'react'
+import { Col, Form, Row, Modal, Table, Button } from 'antd'
+import InputItem from '../../components/InputItem'
 
-export default function TaoMoiThietDatQuiTrinh ({ addVisible, setAddVisible }) {
+function TaoMoiThietDatQuiTrinh ({ form, addVisible, setAddVisible }) {
   const columns = [
     {
       title: 'STT',
@@ -45,7 +46,7 @@ export default function TaoMoiThietDatQuiTrinh ({ addVisible, setAddVisible }) {
   }
 
   return (
-    <Fragment style={style}>
+    <>
       <Modal
         title='TẠO MỚI QUY TRÌNH'
         visible={addVisible}
@@ -60,17 +61,32 @@ export default function TaoMoiThietDatQuiTrinh ({ addVisible, setAddVisible }) {
         <Form>
           <Row>
             <Col span={11}>
-              <Form.Item label='Mã quy trình'>
-                <Input />
-              </Form.Item>
-              <Form.Item label='Loại quy trình'>
-                <Input />
-              </Form.Item>
+              <InputItem
+                form={form}
+                label='Mã quy trình'
+                field='coQuanHanhChinhCode'
+                rules={[
+                  { required: true, message: 'Vui lòng không để trống thẻ này' }
+                ]}
+              />
+              <InputItem
+                form={form}
+                label='Loại quy trình'
+                field='coQuanHanhChinhCode'
+                rules={[
+                  { required: true, message: 'Vui lòng không để trống thẻ này' }
+                ]}
+              />
             </Col>
             <Col span={11} offset={1}>
-              <Form.Item label='Tên quy trình'>
-                <Input />
-              </Form.Item>
+              <InputItem
+                form={form}
+                label='Tên quy trình'
+                field='coQuanHanhChinhCode'
+                rules={[
+                  { required: true, message: 'Vui lòng không để trống thẻ này' }
+                ]}
+              />
             </Col>
           </Row>
           <Row>
@@ -78,17 +94,32 @@ export default function TaoMoiThietDatQuiTrinh ({ addVisible, setAddVisible }) {
           </Row>
           <Row>
             <Col span={11}>
-              <Form.Item label='Tiến trình bắt đầu'>
-                <Input />
-              </Form.Item>
-              <Form.Item label='Trạng Thái'>
-                <Input />
-              </Form.Item>
+              <InputItem
+                form={form}
+                label='Tiến trình bắt đầu'
+                field='coQuanHanhChinhCode'
+                rules={[
+                  { required: true, message: 'Vui lòng không để trống thẻ này' }
+                ]}
+              />
+              <InputItem
+                form={form}
+                label='Trạng Thái'
+                field='coQuanHanhChinhCode'
+                rules={[
+                  { required: true, message: 'Vui lòng không để trống thẻ này' }
+                ]}
+              />
             </Col>
             <Col span={11} offset={1}>
-              <Form.Item label='Tiến trình kết thúc'>
-                <Select defaultValue='' />
-              </Form.Item>
+              <InputItem
+                form={form}
+                label='Tiến trình kết thúc'
+                field='coQuanHanhChinhCode'
+                rules={[
+                  { required: true, message: 'Vui lòng không để trống thẻ này' }
+                ]}
+              />
               <Form.Item>
                 <Button>Xác nhận</Button>
               </Form.Item>
@@ -99,6 +130,7 @@ export default function TaoMoiThietDatQuiTrinh ({ addVisible, setAddVisible }) {
           </Row>
         </Form>
       </Modal>
-    </Fragment>
+    </>
   )
 }
+export default Form.create({ name: 'form_modal' })(TaoMoiThietDatQuiTrinh)

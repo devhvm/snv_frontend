@@ -60,7 +60,13 @@ export default function NoiDungBaoCao ({
             <span>
               <a href='javascript:;'>Chi tiết</a>
               <Divider type='vertical' />
-              <a href='javascript:;'>Xoá</a>
+              <a
+                onClick={() => {
+                  deleteNoiDungBaoCao(record.stt)
+                }}
+              >
+                Xoá
+              </a>
             </span>
           )}
         />

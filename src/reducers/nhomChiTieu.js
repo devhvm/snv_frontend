@@ -40,10 +40,11 @@ export const editNhomChiTieu = form => dispatch => {
 }
 
 export const addNhomChiTieu = form => dispatch => {
+  console.log(form)
   rest
-    .post('common/api/nhom-chi-tieus')
+    .post('common/api/nhom-chi-tieus', form)
     .then(res => {
-      console.log(res)
+      dispatch(getNhomChiTieu())
     })
     .catch(err => {
       console.log(err)
@@ -54,7 +55,7 @@ export const deleteNhomChiTieu = id => dispatch => {
   rest
     .delete(`common/api/nhom-chi-tieus/${id}`)
     .then(res => {
-      console.log(res)
+      dispatch(getNhomChiTieu())
     })
     .catch(err => {
       console.log(err)

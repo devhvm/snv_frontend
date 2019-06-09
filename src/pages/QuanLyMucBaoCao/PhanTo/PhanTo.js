@@ -1,31 +1,30 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { PageHeader, Table, Divider, Row, Col, Button } from 'antd'
 import TaoMoiPhanTo from './TaoMoi'
 
-export default function PhanTo () {
+export default function PhanTo ({
+  phanToList,
+  phanToEditing,
+  getPhanTos,
+  getPhanToEditing,
+  editPhanTo,
+  addPhanTo,
+  deletePhanTo
+}) {
   const { Column } = Table
   const [addVisible, setAddVisible] = useState(false)
-
-  const data = [
-    {
-      soThuTu: '1',
-      maNhom: 'John',
-      maChiTieu: 'Brown',
-      tenNhom: 32
-    },
-    {
-      soThuTu: '2',
-      maNhom: 'John',
-      maChiTieu: 'Brown',
-      tenNhom: 32
-    },
-    {
-      soThuTu: '3',
-      maNhom: 'John',
-      maChiTieu: 'Brown',
-      tenNhom: 32
-    }
-  ]
+  useEffect(() => {
+    getPhanTos()
+  }, [])
+  const dataTable =
+    phanToList &&
+    phanToList.map((item, index) => ({
+      key: item.id,
+      stt: item.id,
+      maNhom: item.nhomPhanLoaiCode,
+      maTieuChi: item.tieuChiId,
+      tenNhom: item.name
+    }))
 
   return (
     <>
@@ -44,10 +43,10 @@ export default function PhanTo () {
           </Button>
         </Col>
       </Row>
-      <Table dataSource={data}>
-        <Column title='STT' dataIndex='soThuTu' key='soThuTu' />
+      <Table dataSource={dataTable}>
+        <Column title='STT' dataIndex='stt' key='stt' />
         <Column title='MÃ NHÓM' dataIndex='maNhom' key='maNhom' />
-        <Column title='MÃ CHỈ TIÊU' dataIndex='maChiTieu' key='maChiTieu' />
+        <Column title='MÃ TIÊU CHÍ' dataIndex='maTieuChi' key='maTieuChi' />
         <Column title='TÊN NHÓM' dataIndex='tenNhom' key='tenNhom' />
         <Column
           title=''

@@ -6,11 +6,17 @@ import {
   editCoQuanHanhChinh,
   addCoQuanHanhChinh,
   deleteCoQuanHanhChinh
-} from '../../reducers/quanLiDonVi'
+} from '../../reducers/coQuanHanhChinh'
+
+import { getMaDinhDanhs } from '../../reducers/maDinhDanh'
+
+import { getQuyTrinhs } from '../../reducers/quyTrinh'
 
 export default connect(
   state => ({
-    ...state.quanLiDonVi
+    ...state.quanLiDonVi,
+    ...state.maDinhDanh,
+    ...state.quyTrinh
   }),
   dispatch => ({
     getCoQuanHanhChinh: () => {
@@ -27,6 +33,12 @@ export default connect(
     },
     deleteCoQuanHanhChinh: form => {
       dispatch(deleteCoQuanHanhChinh(form))
+    },
+    getMaDinhDanhs: () => {
+      dispatch(getMaDinhDanhs())
+    },
+    getQuyTrinhs: () => {
+      dispatch(getQuyTrinhs())
     }
   })
 )(QuanLyDonVi)

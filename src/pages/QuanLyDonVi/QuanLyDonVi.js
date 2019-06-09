@@ -6,15 +6,21 @@ import ChiTietCoQuanHanhChinh from './ChiTiet'
 export default function QuanLyDonVi ({
   coQuanHanhChinh,
   coQuanHanhChinhEditing,
+  maDinhDanhList,
+  quyTrinhList,
   getCoQuanHanhChinh,
   getCoQuanHanhChinhEditing,
   editCoQuanHanhChinh,
   addCoQuanHanhChinh,
-  deleteCoQuanHanhChinh
+  deleteCoQuanHanhChinh,
+  getMaDinhDanhs,
+  getQuyTrinhs
 }) {
   useEffect(() => {
     getCoQuanHanhChinh()
-  })
+    getMaDinhDanhs()
+    getQuyTrinhs()
+  }, [])
   const { Column } = Table
   const [editVisible, setEditVisible] = useState(false)
   const [addVisible, setAddVisible] = useState(false)
@@ -94,6 +100,8 @@ export default function QuanLyDonVi ({
         addVisible={addVisible}
         setAddVisible={setAddVisible}
         addCoQuanHanhChinh={addCoQuanHanhChinh}
+        maDinhDanhList={maDinhDanhList}
+        quyTrinhList={quyTrinhList}
       />
     </>
   )

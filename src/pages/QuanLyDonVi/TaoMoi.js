@@ -6,16 +6,37 @@ function TaoMoiCoQuanHanhChinh ({
   form,
   addVisible,
   setAddVisible,
-  addCoQuanHanhChinh
+  addCoQuanHanhChinh,
+  maDinhDanhList,
+  quyTrinhList
 }) {
+  console.log('maDinhDanhList', maDinhDanhList)
+  console.log('quyTrinhList', quyTrinhList)
+  const handleOk = () => {
+    setAddVisible(false)
+    form.validateFields((err, values) => {
+      console.log(values)
+      if (err) {
+        return
+      }
+      form.resetFields()
+      addCoQuanHanhChinh({
+        coQuanHanhChinhCode: values.coQuanHanhChinhCode,
+        description: values.description,
+        maDinhDanhCode: values.maDinhDanhCode,
+        name: values.name,
+        level: 'aaa',
+        status: 'bbb'
+      })
+    })
+  }
+
   return (
     <>
       <Modal
         title='TẠO MỚI CƠ QUAN HÀNH CHÍNH'
         visible={addVisible}
-        onOk={() => {
-          setAddVisible(false)
-        }}
+        onOk={handleOk}
         onCancel={() => {
           setAddVisible(false)
         }}
@@ -26,7 +47,7 @@ function TaoMoiCoQuanHanhChinh ({
               <InputItem
                 form={form}
                 label='Mã đơn vị'
-                field='maDonVi'
+                field='coQuanHanhChinhCode'
                 rules={[
                   { required: true, message: 'Vui lòng không để trống thẻ này' }
                 ]}
@@ -34,7 +55,7 @@ function TaoMoiCoQuanHanhChinh ({
               <InputItem
                 form={form}
                 label='Tên đơn vị'
-                field='tenDonVi'
+                field='name'
                 rules={[
                   { required: true, message: 'Vui lòng không để trống thẻ này' }
                 ]}
@@ -44,16 +65,18 @@ function TaoMoiCoQuanHanhChinh ({
               <InputItem
                 form={form}
                 label='Mã định danh'
-                field='maDinhDanh'
+                field='maDinhDanhCode'
                 type='select'
                 options={
-                  <Select.Option />
-                  // coQuanHanhChinhEditing &&
-                  // coQuanHanhChinhEditing.map((item, i) => (
-                  //   <Select.Option key={String(item.id)} value={JSON.stringify(item)}>
-                  //     {item.name}
-                  //   </Select.Option>
-                  // ))
+                  maDinhDanhList &&
+                  maDinhDanhList.map((item, i) => (
+                    <Select.Option
+                      key={String(item.id)}
+                      value={JSON.stringify(item.maDinhDanhCode)}
+                    >
+                      {item.name}
+                    </Select.Option>
+                  ))
                 }
                 rules={[
                   { required: true, message: 'Vui lòng không để trống thẻ này' }
@@ -67,13 +90,24 @@ function TaoMoiCoQuanHanhChinh ({
                 rules={[
                   { required: true, message: 'Vui lòng không để trống thẻ này' }
                 ]}
+                options={
+                  quyTrinhList &&
+                  quyTrinhList.map((item, i) => (
+                    <Select.Option
+                      key={String(item.id)}
+                      value={JSON.stringify(item.quyTrinhCode)}
+                    >
+                      {item.name}
+                    </Select.Option>
+                  ))
+                }
               />
             </Col>
           </Row>
           <InputItem
             form={form}
             label='Mô tả'
-            field='moTa'
+            field='description'
             type='textarea'
             rules={[
               { required: true, message: 'Vui lòng không để trống thẻ này' }
