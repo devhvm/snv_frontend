@@ -2,12 +2,12 @@ import React from 'react'
 import { Form, Modal, Select } from 'antd'
 import InputItem from '../../../components/InputItem'
 
-function ChiTietCoQuanHanhChinh ({
+function ChiTietChiTieu ({
   form,
   editVisible,
   setEditVisible,
-  nhomChiTieuEditing,
-  editNhomChiTieu
+  chiTieuEditing,
+  editChiTieu
 }) {
   const statusList = [
     {
@@ -24,7 +24,7 @@ function ChiTietCoQuanHanhChinh ({
   return (
     <>
       <Modal
-        title='CHI TIẾT NHÓM CHỈ TIÊU'
+        title='CHI TIẾT CHỈ TIÊU'
         visible={editVisible}
         onOk={() => {
           setEditVisible(false)
@@ -33,11 +33,12 @@ function ChiTietCoQuanHanhChinh ({
               return
             }
             form.resetFields()
-            editNhomChiTieu({
-              nhomChiTieuCode: values.nhomChiTieuCode,
+            editChiTieu({
+              nhomChiTieuId: values.nhomChiTieuId,
               name: values.name,
               status: values.status,
-              id: values.id
+              id: values.id,
+              chiTieuCode: values.chiTieuCode
             })
           })
         }}
@@ -49,32 +50,39 @@ function ChiTietCoQuanHanhChinh ({
           <InputItem
             form={form}
             type='hidden'
-            initialValue={nhomChiTieuEditing ? nhomChiTieuEditing.id : ''}
+            initialValue={chiTieuEditing ? chiTieuEditing.id : ''}
             field='id'
           />
           <InputItem
             form={form}
             label='Mã nhóm chỉ tiêu'
-            field='nhomChiTieuCode'
+            field='nhomChiTieuId'
             rules={[
               { required: true, message: 'Vui lòng không để trống thẻ này' }
             ]}
-            initialValue={
-              nhomChiTieuEditing ? nhomChiTieuEditing.nhomChiTieuCode : ''
-            }
+            initialValue={chiTieuEditing ? chiTieuEditing.nhomChiTieuId : ''}
           />
           <InputItem
             form={form}
-            label='Tên nhóm chỉ tiêu'
+            label='Mã chỉ tiêu'
+            field='chiTieuCode'
+            rules={[
+              { required: true, message: 'Vui lòng không để trống thẻ này' }
+            ]}
+            initialValue={chiTieuEditing ? chiTieuEditing.chiTieuCode : ''}
+          />
+          <InputItem
+            form={form}
+            label='Tên chỉ tiêu'
             field='name'
             rules={[
               { required: true, message: 'Vui lòng không để trống thẻ này' }
             ]}
-            initialValue={nhomChiTieuEditing ? nhomChiTieuEditing.name : ''}
+            initialValue={chiTieuEditing ? chiTieuEditing.name : ''}
           />
           <InputItem
             form={form}
-            label='Mã định danh'
+            label='Status'
             field='status'
             type='select'
             options={
@@ -88,7 +96,7 @@ function ChiTietCoQuanHanhChinh ({
             rules={[
               { required: true, message: 'Vui lòng không để trống thẻ này' }
             ]}
-            initialValue={nhomChiTieuEditing ? nhomChiTieuEditing.status : ''}
+            initialValue={chiTieuEditing ? chiTieuEditing.status : ''}
           />
         </Form>
       </Modal>
@@ -96,4 +104,4 @@ function ChiTietCoQuanHanhChinh ({
   )
 }
 
-export default Form.create({ name: 'form_modal' })(ChiTietCoQuanHanhChinh)
+export default Form.create({ name: 'form_modal' })(ChiTietChiTieu)

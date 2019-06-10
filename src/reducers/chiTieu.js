@@ -30,7 +30,7 @@ export const getChiTieuEditing = id => dispatch => {
 
 export const editChiTieu = form => dispatch => {
   rest
-    .put(`common/api/chi-tieus/`)
+    .put(`common/api/chi-tieus/`, form)
     .then(res => {
       console.log(res)
     })
