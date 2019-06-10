@@ -10,10 +10,7 @@ function TaoMoiThietDatNguoiDung ({
   coQuanHanhChinh
 }) {
   const [donVi, setDonVi] = useState('')
-  const handleChange = val => {
-    console.log(val)
-    setDonVi(val)
-  }
+
   return (
     <>
       <Modal
@@ -72,16 +69,26 @@ function TaoMoiThietDatNguoiDung ({
               { required: true, message: 'Vui lòng không để trống thẻ này' }
             ]}
           />
-          <Form.Item label='Đơn vị'>
-            <Select onChange={handleChange}>
-              {coQuanHanhChinh &&
-                coQuanHanhChinh.map((item, i) => (
-                  <Select.Option key={i} value={item.id}>
-                    {item.name}
-                  </Select.Option>
-                ))}
-            </Select>
-          </Form.Item>
+          <InputItem
+            form={form}
+            label='Đơn vị'
+            field='donVi'
+            rules={[
+              { required: true, message: 'Vui lòng không để trống thẻ này' }
+            ]}
+            type='select'
+            onChangeSelect={val => {
+              setDonVi(val)
+            }}
+            optionsData={
+              coQuanHanhChinh &&
+              coQuanHanhChinh.map((item, i) => (
+                <Select.Option key={i} value={item.id}>
+                  {item.name}
+                </Select.Option>
+              ))
+            }
+          />
         </Form>
       </Modal>
     </>
