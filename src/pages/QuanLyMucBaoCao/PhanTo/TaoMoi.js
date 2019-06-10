@@ -1,7 +1,8 @@
 import React from 'react'
-import { Col, Form, Input, Row, Modal, Select } from 'antd'
+import { Form, Modal } from 'antd'
+import InputItem from '../../../components/InputItem'
 
-export default function TaoMoiPhanTo ({ addVisible, setAddVisible }) {
+function TaoMoiPhanTo ({ form, addVisible, setAddVisible }) {
   return (
     <>
       <Modal
@@ -15,29 +16,33 @@ export default function TaoMoiPhanTo ({ addVisible, setAddVisible }) {
         }}
       >
         <Form>
-          <Row>
-            <Col span={11}>
-              <Form.Item label='Mã phân tổ'>
-                <Input />
-              </Form.Item>
-            </Col>
-          </Row>
-          <Row>
-            <Col span={11}>
-              <Form.Item label='Tên phân tổ'>
-                <Input />
-              </Form.Item>
-            </Col>
-          </Row>
-          <Row>
-            <Col span={11}>
-              <Form.Item label='Nhóm chỉ tiêu'>
-                <Select defaultValue='' />
-              </Form.Item>
-            </Col>
-          </Row>
+          <InputItem
+            form={form}
+            label='Mã phân tổ'
+            field='nhomChiTieuId'
+            rules={[
+              { required: true, message: 'Vui lòng không để trống thẻ này' }
+            ]}
+          />
+          <InputItem
+            form={form}
+            label='Tên phân tổ'
+            field='nhomChiTieuId'
+            rules={[
+              { required: true, message: 'Vui lòng không để trống thẻ này' }
+            ]}
+          />
+          <InputItem
+            form={form}
+            label='Nhóm chỉ tiêu'
+            field='nhomChiTieuId'
+            rules={[
+              { required: true, message: 'Vui lòng không để trống thẻ này' }
+            ]}
+          />
         </Form>
       </Modal>
     </>
   )
 }
+export default Form.create({ name: 'form_modal' })(TaoMoiPhanTo)

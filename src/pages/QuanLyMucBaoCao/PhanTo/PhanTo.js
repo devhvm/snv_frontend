@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { PageHeader, Table, Divider, Row, Col, Button } from 'antd'
 import TaoMoiPhanTo from './TaoMoi'
+import ChiTietPhanTo from './ChiTiet'
 
 export default function PhanTo ({
   phanToList,
@@ -13,6 +14,7 @@ export default function PhanTo ({
 }) {
   const { Column } = Table
   const [addVisible, setAddVisible] = useState(false)
+  const [editVisible, setEditVisible] = useState(false)
   useEffect(() => {
     getPhanTos()
   }, [])
@@ -25,6 +27,7 @@ export default function PhanTo ({
       maTieuChi: item.tieuChiId,
       tenNhom: item.name
     }))
+  console.log(phanToList)
 
   return (
     <>
@@ -53,14 +56,37 @@ export default function PhanTo ({
           key='action'
           render={(text, record) => (
             <span>
-              <a href='javascript:;'>Chi tiết</a>
+              <a
+                onClick={() => {
+                  setEditVisible(true)
+                  getPhanToEditing(record.stt)
+                }}
+              >
+                Chi tiết
+              </a>
               <Divider type='vertical' />
-              <a href='javascript:;'>Xoá</a>
+              <a
+                onClick={() => {
+                  deletePhanTo(record.stt)
+                }}
+              >
+                Xoá
+              </a>
             </span>
           )}
         />
       </Table>
-      <TaoMoiPhanTo addVisible={addVisible} setAddVisible={setAddVisible} />
+      <TaoMoiPhanTo
+        addVisible={addVisible}
+        setAddVisible={setAddVisible}
+        addPhanTo={addPhanTo}
+      />
+      <ChiTietPhanTo
+        editVisible={editVisible}
+        setEditVisible={setEditVisible}
+        phanToEditing={phanToEditing}
+        editPhanTo={editPhanTo}
+      />
     </>
   )
 }
