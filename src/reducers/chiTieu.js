@@ -19,7 +19,7 @@ export const getChiTieus = () => dispatch => {
 
 export const getChiTieuEditing = id => dispatch => {
   rest
-    .get(`quytrinhdonvi/api/co-quan-hanh-chinhs/${id}`)
+    .get(`common/api/chi-tieus/${id}`)
     .then(res => {
       dispatch(getChiTieuEditingRequest(res.data))
     })
@@ -30,7 +30,7 @@ export const getChiTieuEditing = id => dispatch => {
 
 export const editChiTieu = form => dispatch => {
   rest
-    .put(`quytrinhdonvi/api/co-quan-hanh-chinhs/`)
+    .put(`common/api/chi-tieus/`)
     .then(res => {
       console.log(res)
     })

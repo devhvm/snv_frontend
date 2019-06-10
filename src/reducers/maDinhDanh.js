@@ -19,7 +19,7 @@ export const getMaDinhDanhs = () => dispatch => {
 
 export const getMaDinhDanhEditing = id => dispatch => {
   rest
-    .get(`quytrinhdonvi/api/co-quan-hanh-chinhs/${id}`)
+    .get(`common/api/ma-dinh-danh-don-vis/${id}`)
     .then(res => {
       dispatch(getChiTieuEditingRequest(res.data))
     })

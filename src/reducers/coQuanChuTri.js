@@ -19,7 +19,7 @@ export const getCoQuanChuTris = () => dispatch => {
 
 export const getCoQuanChuTriEditing = id => dispatch => {
   rest
-    .get(`quytrinhdonvi/api/co-quan-hanh-chinhs/${id}`)
+    .get(`common/api/co-quan-chu-tris/${id}`)
     .then(res => {
       dispatch(getCoQuanChuTriEditingRequest(res.data))
     })
@@ -30,7 +30,7 @@ export const getCoQuanChuTriEditing = id => dispatch => {
 
 export const editCoQuanChuTri = form => dispatch => {
   rest
-    .put(`quytrinhdonvi/api/co-quan-hanh-chinhs/`)
+    .put('common/api/co-quan-chu-tris')
     .then(res => {
       console.log(res)
     })
@@ -41,7 +41,7 @@ export const editCoQuanChuTri = form => dispatch => {
 
 export const addCoQuanChuTri = form => dispatch => {
   rest
-    .post('common/api/nhom-chi-tieus')
+    .post('common/api/co-quan-chu-tris')
     .then(res => {
       console.log(res)
     })
@@ -52,7 +52,7 @@ export const addCoQuanChuTri = form => dispatch => {
 
 export const deleteCoQuanChuTri = id => dispatch => {
   rest
-    .delete(`common/api/nhom-chi-tieus/${id}`)
+    .delete(`common/api/co-quan-chu-tris/${id}`)
     .then(res => {
       console.log(res)
     })

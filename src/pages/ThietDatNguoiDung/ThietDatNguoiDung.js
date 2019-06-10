@@ -3,7 +3,7 @@ import { PageHeader, Table, Divider, Row, Col, Button } from 'antd'
 import TaoMoiThietDatNguoiDung from './TaoMoi'
 
 export default function ThietDatNguoiDung ({
-  coQuanHanhChinh,
+  coQuanHanhChinhList,
   usersList,
   userEditing,
   getUsers,
@@ -75,7 +75,7 @@ export default function ThietDatNguoiDung ({
       <TaoMoiThietDatNguoiDung
         addVisible={addVisible}
         setAddVisible={setAddVisible}
-        coQuanHanhChinh={coQuanHanhChinh}
+        coQuanHanhChinhList={coQuanHanhChinhList}
         addUser={addUser}
       />
     </>

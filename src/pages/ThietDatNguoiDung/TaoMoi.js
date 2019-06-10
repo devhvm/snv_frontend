@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Form, Select, Modal } from 'antd'
 import InputItem from '../../components/InputItem'
 
@@ -7,10 +7,8 @@ function TaoMoiThietDatNguoiDung ({
   addVisible,
   setAddVisible,
   addUser,
-  coQuanHanhChinh
+  coQuanHanhChinhList
 }) {
-  const [donVi, setDonVi] = useState('')
-
   return (
     <>
       <Modal
@@ -24,7 +22,7 @@ function TaoMoiThietDatNguoiDung ({
             }
             form.resetFields()
             addUser({
-              coQuanHanhChinhId: donVi,
+              coQuanHanhChinhId: values.donVi,
               firstName: values.firstName,
               lastName: values.lastName,
               email: values.email,
@@ -77,12 +75,9 @@ function TaoMoiThietDatNguoiDung ({
               { required: true, message: 'Vui lòng không để trống thẻ này' }
             ]}
             type='select'
-            onChangeSelect={val => {
-              setDonVi(val)
-            }}
-            optionsData={
-              coQuanHanhChinh &&
-              coQuanHanhChinh.map((item, i) => (
+            options={
+              coQuanHanhChinhList &&
+              coQuanHanhChinhList.map((item, i) => (
                 <Select.Option key={i} value={item.id}>
                   {item.name}
                 </Select.Option>

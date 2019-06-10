@@ -4,7 +4,7 @@ import TaoMoiCoQuanHanhChinh from './TaoMoi'
 import ChiTietCoQuanHanhChinh from './ChiTiet'
 
 export default function QuanLyDonVi ({
-  coQuanHanhChinh,
+  coQuanHanhChinhList,
   coQuanHanhChinhEditing,
   maDinhDanhList,
   quyTrinhList,
@@ -26,14 +26,16 @@ export default function QuanLyDonVi ({
   const [addVisible, setAddVisible] = useState(false)
 
   const dataTable =
-    coQuanHanhChinh &&
-    coQuanHanhChinh.map((item, index) => ({
+    coQuanHanhChinhList &&
+    coQuanHanhChinhList.map((item, index) => ({
       key: item.id,
-      stt: index,
+      stt: item.id,
       maDinhDanh: item.maDinhDanhCode,
       tenCoQuanHanhChinh: item.name,
-      maCoQuanHanhChinh: item.id
+      maCoQuanHanhChinh: item.coQuanHanhChinhCode
     }))
+
+  console.log(coQuanHanhChinhList)
 
   return (
     <>
@@ -69,11 +71,11 @@ export default function QuanLyDonVi ({
           title=''
           key='action'
           render={(text, record) => (
-            <span>
+            <>
               <a
                 onClick={() => {
                   setEditVisible(true)
-                  getCoQuanHanhChinhEditing(record.maCoQuanHanhChinh)
+                  getCoQuanHanhChinhEditing(record.stt)
                 }}
               >
                 Chi tiết
@@ -86,7 +88,7 @@ export default function QuanLyDonVi ({
               >
                 Xoá
               </a>
-            </span>
+            </>
           )}
         />
       </Table>
@@ -95,6 +97,8 @@ export default function QuanLyDonVi ({
         setEditVisible={setEditVisible}
         coQuanHanhChinhEditing={coQuanHanhChinhEditing}
         editCoQuanHanhChinh={editCoQuanHanhChinh}
+        maDinhDanhList={maDinhDanhList}
+        quyTrinhList={quyTrinhList}
       />
       <TaoMoiCoQuanHanhChinh
         addVisible={addVisible}

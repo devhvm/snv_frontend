@@ -11,9 +11,9 @@ function InputItem ({
   initialValue = '',
   type = 'text',
   rules,
+  disabled,
   autosize,
-  optionsData,
-  onChangeSelect
+  options
 }) {
   return (
     <Item label={label}>
@@ -23,7 +23,11 @@ function InputItem ({
         ) : type === 'textarea' ? (
           <TextArea autosize={autosize} />
         ) : type === 'select' ? (
-          <Select onChange={onChangeSelect}>{optionsData}</Select>
+          <Select>{options}</Select>
+        ) : type === 'disabled' ? (
+          <Input disabled />
+        ) : type === 'hidden' ? (
+          <Input type='hidden' />
         ) : (
           <Input />
         )

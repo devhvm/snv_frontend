@@ -40,12 +40,10 @@ export const editCoQuanHanhChinh = form => dispatch => {
 }
 
 export const addCoQuanHanhChinh = form => dispatch => {
-  console.log(form)
   rest
     .post('quytrinhdonvi/api/co-quan-hanh-chinhs/', form)
-    .then(res => {
-      console.log(res)
-      getCoQuanHanhChinh()
+    .then(() => {
+      dispatch(getCoQuanHanhChinh())
     })
     .catch(err => {
       console.log(err)
@@ -71,7 +69,7 @@ const getCoQuanHanhChinhEditingRequest = createAction(
 
 // Initial State
 const initialState = {
-  coQuanHanhChinh: [],
+  coQuanHanhChinhList: [],
   coQuanHanhChinhEditing: {}
 }
 
@@ -80,7 +78,7 @@ export default handleActions(
   {
     [CO_QUAN_HANH_CHINH]: (state, { payload }) => ({
       ...state,
-      coQuanHanhChinh: payload
+      coQuanHanhChinhList: payload
     }),
     [CO_QUAN_HANH_CHINH_EDITING]: (state, { payload }) => ({
       ...state,
