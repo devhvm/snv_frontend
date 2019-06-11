@@ -17,6 +17,8 @@ import PhanTo from '../pages/QuanLyMucBaoCao/PhanTo'
 import NoiDungBaoCao from '../pages/QuanLyMucBaoCao/NoiDungBaoCao'
 import ThietDatNguoiDung from '../pages/ThietDatNguoiDung'
 import QuanLyHoSo from '../pages/QuanLyHoSo'
+import QuanLyHangMuc from '../pages/QuanLyHangMuc'
+import CongThucTongHop from '../pages/CongThucTongHop'
 
 const RootLayout = styled(Layout)`
   && {
@@ -92,6 +94,16 @@ function DashBoardPage () {
                     exact
                     path='/thietdattieuchi'
                     component={ThietDatTieuChi}
+                  />
+                  <Route
+                    exact
+                    path='/quanlyhangmuc'
+                    component={QuanLyHangMuc}
+                  />
+                  <Route
+                    exact
+                    path='/congthuctonghop'
+                    component={CongThucTongHop}
                   />
                   <Route
                     exact

@@ -22,13 +22,11 @@ export default function PhanTo ({
     phanToList &&
     phanToList.map((item, index) => ({
       key: item.id,
-      stt: item.id,
+      stt: index + 1,
       maNhom: item.nhomPhanLoaiCode,
       maTieuChi: item.tieuChiId,
       tenNhom: item.name
     }))
-  console.log(phanToList)
-
   return (
     <>
       <PageHeader title='Danh sách phân tổ' />
@@ -59,7 +57,7 @@ export default function PhanTo ({
               <a
                 onClick={() => {
                   setEditVisible(true)
-                  getPhanToEditing(record.stt)
+                  getPhanToEditing(record.key)
                 }}
               >
                 Chi tiết
@@ -67,7 +65,7 @@ export default function PhanTo ({
               <Divider type='vertical' />
               <a
                 onClick={() => {
-                  deletePhanTo(record.stt)
+                  deletePhanTo(record.key)
                 }}
               >
                 Xoá

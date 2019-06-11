@@ -51,6 +51,17 @@ export const addUser = form => dispatch => {
     })
 }
 
+export const deleteUser = id => dispatch => {
+  rest
+    .delete(`phanquyenchucnang/api/nguoiDungs/${id}`)
+    .then(() => {
+      dispatch(getUsers())
+    })
+    .catch(err => {
+      console.log(err)
+    })
+}
+
 const getUserRequest = createAction(USERS)
 const getUserEditingRequest = createAction(USERS_EDITING)
 

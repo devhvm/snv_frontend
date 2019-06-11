@@ -10,6 +10,7 @@ export default function ThietDatNguoiDung ({
   getUserEditing,
   editUser,
   addUser,
+  deleteUser,
   getCoQuanHanhChinh
 }) {
   const { Column } = Table
@@ -67,7 +68,13 @@ export default function ThietDatNguoiDung ({
                 Chi tiết
               </a>
               <Divider type='vertical' />
-              <a href='javascript:;'>Xoá</a>
+              <a
+                onClick={() => {
+                  deleteUser(record.key)
+                }}
+              >
+                Xoá
+              </a>
             </span>
           )}
         />

@@ -2,30 +2,22 @@ import React, { useState, useEffect } from 'react'
 import { Button, Col, Divider, PageHeader, Row, Table } from 'antd'
 import TaoMoiCoQuanHanhChinh from './TaoMoi'
 import ChiTietCoQuanHanhChinh from './ChiTiet'
-import DeleteConfirm from '../../components/DeleteConfirm'
 
 export default function QuanLyDonVi ({
   coQuanHanhChinhList,
   coQuanHanhChinhEditing,
-  maDinhDanhList,
-  quyTrinhList,
   getCoQuanHanhChinh,
   getCoQuanHanhChinhEditing,
   editCoQuanHanhChinh,
   addCoQuanHanhChinh,
-  deleteCoQuanHanhChinh,
-  getMaDinhDanhs,
-  getQuyTrinhs
+  deleteCoQuanHanhChinh
 }) {
   useEffect(() => {
     getCoQuanHanhChinh()
-    getMaDinhDanhs()
-    getQuyTrinhs()
   }, [])
   const { Column } = Table
   const [editVisible, setEditVisible] = useState(false)
   const [addVisible, setAddVisible] = useState(false)
-  const [deleteVisible, setDeleteVisible] = useState(false)
 
   const dataTable =
     coQuanHanhChinhList &&
@@ -39,7 +31,7 @@ export default function QuanLyDonVi ({
 
   return (
     <>
-      <PageHeader title='DANH SÁCH CƠ QUAN HÀNH CHÍNH' />
+      <PageHeader title='DANH SÁCH HẠNG MỤC' />
       <Row>
         <Col col={4} offset={21}>
           <Button
@@ -57,13 +49,12 @@ export default function QuanLyDonVi ({
       <Table dataSource={dataTable}>
         <Column title='STT' dataIndex='stt' key='firstName' />
         <Column
-          title='MÃ CƠ QUAN HÀNH CHÍNH'
+          title='MÃ HẠNG MỤC'
           dataIndex='maCoQuanHanhChinh'
           key='maCoQuanHanhChinh'
         />
-        <Column title='MÃ ĐỊNH DANH' dataIndex='maDinhDanh' key='maDinhDanh' />
         <Column
-          title='TÊN CƠ QUAN HÀNH CHÍNH'
+          title='TÊN HẠNG MỤC'
           dataIndex='tenCoQuanHanhChinh'
           key='tenCoQuanHanhChinh'
         />
@@ -83,8 +74,7 @@ export default function QuanLyDonVi ({
               <Divider type='vertical' />
               <a
                 onClick={() => {
-                  setDeleteVisible(true)
-                  getCoQuanHanhChinhEditing(record.key)
+                  deleteCoQuanHanhChinh(record.key)
                 }}
               >
                 Xoá
@@ -98,22 +88,11 @@ export default function QuanLyDonVi ({
         setEditVisible={setEditVisible}
         coQuanHanhChinhEditing={coQuanHanhChinhEditing}
         editCoQuanHanhChinh={editCoQuanHanhChinh}
-        maDinhDanhList={maDinhDanhList}
-        quyTrinhList={quyTrinhList}
       />
       <TaoMoiCoQuanHanhChinh
         addVisible={addVisible}
         setAddVisible={setAddVisible}
         addCoQuanHanhChinh={addCoQuanHanhChinh}
-        maDinhDanhList={maDinhDanhList}
-        quyTrinhList={quyTrinhList}
-      />
-      <DeleteConfirm
-        title='Cơ quan hành chính'
-        deleteVisible={deleteVisible}
-        setDeleteVisible={setDeleteVisible}
-        deleteAction={deleteCoQuanHanhChinh}
-        coQuanHanhChinhEditingId={coQuanHanhChinhEditing.id}
       />
     </>
   )

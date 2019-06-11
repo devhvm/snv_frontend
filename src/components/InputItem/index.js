@@ -1,7 +1,7 @@
 import React from 'react'
 import { Input, InputNumber, Form, Select } from 'antd'
 
-const { TextArea } = Input
+const { TextArea, Group } = Input
 const { Item } = Form
 
 function InputItem ({
@@ -13,7 +13,8 @@ function InputItem ({
   rules,
   disabled,
   autosize,
-  options
+  options,
+  group
 }) {
   return (
     <Item label={label}>
@@ -28,6 +29,8 @@ function InputItem ({
           <Input disabled />
         ) : type === 'hidden' ? (
           <Input type='hidden' />
+        ) : type === 'group' ? (
+          <Group compact>{group}</Group>
         ) : (
           <Input />
         )

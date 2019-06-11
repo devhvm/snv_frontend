@@ -77,27 +77,38 @@ export default function Sidebar (props) {
               <span>Nội Dung Báo Cáo</span>
             </Link>
           </Menu.Item>
-          <Menu.Item key='6'>Nhóm Phân Loại</Menu.Item>
         </SubMenu>
         <Menu.Item key='7'>
+          <Link to='/quanlyhangmuc'>
+            <Icon type='user' />
+            <span>Quản Lý Hạng Mục</span>
+          </Link>
+        </Menu.Item>
+        <Menu.Item key='8'>
+          <Link to='/congthuctonghop'>
+            <Icon type='user' />
+            <span>Công Thức Tổng Hợp</span>
+          </Link>
+        </Menu.Item>
+        <Menu.Item key='9'>
           <Link to='/thietdattieuchi'>
             <Icon type='user' />
             <span>Thiết Đặt Tiêu Chí</span>
           </Link>
         </Menu.Item>
-        <Menu.Item key='8'>
+        <Menu.Item key='10'>
           <Link to='/quanlycoquanchutri'>
             <Icon type='user' />
             <span>Quản Lí Cơ Quan Chủ Trì</span>
           </Link>
         </Menu.Item>
-        <Menu.Item key='9'>
+        <Menu.Item key='11'>
           <Link to='/thietdatnguoidung'>
             <Icon type='user' />
             <span>Thiết Đặt Người Dùng</span>
           </Link>
         </Menu.Item>
-        <Menu.Item key='10'>
+        <Menu.Item key='12'>
           <Link to='/quanlyhoso'>
             <Icon type='user' />
             <span>Quản Lý Hồ Sơ</span>

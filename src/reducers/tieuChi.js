@@ -8,7 +8,7 @@ export const TIEU_CHI_EDITING = 'TIEU_CHI_EDITING'
 // Action Creator
 export const getTieuChis = () => dispatch => {
   rest
-    .get('common/api/tieu-chis')
+    .get('common/api/tieu-chis?size=100')
     .then(res => {
       dispatch(getTieuChiRequest(res.data))
     })
@@ -19,7 +19,7 @@ export const getTieuChis = () => dispatch => {
 
 export const getTieuChiEditing = id => dispatch => {
   rest
-    .get(`quytrinhdonvi/api/co-quan-hanh-chinhs/${id}`)
+    .get(`common/api/tieu-chis/${id}`)
     .then(res => {
       dispatch(getTieuChiEditingRequest(res.data))
     })
@@ -30,9 +30,9 @@ export const getTieuChiEditing = id => dispatch => {
 
 export const editTieuChi = form => dispatch => {
   rest
-    .put(`quytrinhdonvi/api/co-quan-hanh-chinhs/`)
-    .then(res => {
-      console.log(res)
+    .put(`common/api/tieu-chis/`, form)
+    .then(() => {
+      dispatch(getTieuChis())
     })
     .catch(err => {
       console.log(err)
@@ -41,9 +41,9 @@ export const editTieuChi = form => dispatch => {
 
 export const addTieuChi = form => dispatch => {
   rest
-    .post(`quytrinhdonvi/api/co-quan-hanh-chinhs/`)
-    .then(res => {
-      console.log(res)
+    .post('common/api/tieu-chis', form)
+    .then(() => {
+      dispatch(getTieuChis())
     })
     .catch(err => {
       console.log(err)
@@ -52,9 +52,9 @@ export const addTieuChi = form => dispatch => {
 
 export const deleteTieuChi = id => dispatch => {
   rest
-    .delete(`quytrinhdonvi/api/co-quan-hanh-chinhs/`)
+    .delete(`common/api/tieu-chis/${id}`)
     .then(res => {
-      console.log(res)
+      dispatch(getTieuChis())
     })
     .catch(err => {
       console.log(err)

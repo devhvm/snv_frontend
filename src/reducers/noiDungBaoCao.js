@@ -8,7 +8,7 @@ export const NOI_DUNG_BAO_CAO_EDITING = 'NOI_DUNG_BAO_CAO_EDITING'
 // Action Creator
 export const getNoiDungBaoCaos = () => dispatch => {
   rest
-    .get('common/api/noi-dungs')
+    .get('common/api/noi-dungs?size=100')
     .then(res => {
       dispatch(getNoiDungBaoCaoRequest(res.data))
     })

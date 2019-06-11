@@ -11,7 +11,6 @@ function ChiTietCoQuanHanhChinh ({
   quyTrinhList,
   editCoQuanHanhChinh
 }) {
-  console.log(coQuanHanhChinhEditing)
   return (
     <>
       <Modal

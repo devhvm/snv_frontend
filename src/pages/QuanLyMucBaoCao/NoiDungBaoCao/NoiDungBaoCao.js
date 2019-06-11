@@ -20,7 +20,7 @@ export default function NoiDungBaoCao ({
     noiDungBaoCaoList &&
     noiDungBaoCaoList.map((item, index) => ({
       key: item.id,
-      stt: item.id,
+      stt: index,
       maNoiDung: item.noiDungCode,
       maTieuChi: item.tieuChiId,
       tenNoiDung: item.name
@@ -62,7 +62,7 @@ export default function NoiDungBaoCao ({
               <Divider type='vertical' />
               <a
                 onClick={() => {
-                  deleteNoiDungBaoCao(record.stt)
+                  deleteNoiDungBaoCao(record.key)
                 }}
               >
                 Xoá

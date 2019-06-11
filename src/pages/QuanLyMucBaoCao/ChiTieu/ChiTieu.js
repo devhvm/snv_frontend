@@ -22,7 +22,7 @@ export default function ChiTieu ({
     chiTieuList &&
     chiTieuList.map((item, index) => ({
       key: item.id,
-      stt: item.id,
+      stt: index + 1,
       maNhom: item.nhomChiTieuId,
       maChiTieu: item.chiTieuCode,
       tenNhom: item.name
@@ -58,7 +58,7 @@ export default function ChiTieu ({
               <a
                 onClick={() => {
                   setEditVisible(true)
-                  getChiTieuEditing(record.stt)
+                  getChiTieuEditing(record.key)
                 }}
               >
                 Chi tiết
@@ -66,7 +66,7 @@ export default function ChiTieu ({
               <Divider type='vertical' />
               <a
                 onClick={() => {
-                  deleteChiTieu(record.stt)
+                  deleteChiTieu(record.key)
                 }}
               >
                 Xoá

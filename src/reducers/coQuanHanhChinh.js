@@ -53,9 +53,8 @@ export const addCoQuanHanhChinh = form => dispatch => {
 export const deleteCoQuanHanhChinh = id => dispatch => {
   rest
     .delete(`quytrinhdonvi/api/co-quan-hanh-chinhs/${id}`)
-    .then(res => {
-      console.log(res)
-      getCoQuanHanhChinh()
+    .then(() => {
+      dispatch(getCoQuanHanhChinh())
     })
     .catch(err => {
       console.log(err)

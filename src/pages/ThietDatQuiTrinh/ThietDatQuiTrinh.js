@@ -22,7 +22,7 @@ export default function ThietDatQuiTrinh ({
     quyTrinhList &&
     quyTrinhList.map((item, index) => ({
       key: item.id,
-      stt: item.id,
+      stt: index + 1,
       maQuiTrinh: item.quyTrinhCode,
       loaiQuiTrinh: item.loaiQuyTrinhName,
       tenQuiTrinh: item.name

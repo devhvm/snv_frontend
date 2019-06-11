@@ -1,8 +1,16 @@
 import React from 'react'
 import { Form, Modal, Select } from 'antd'
-import InputItem from '../../../components/InputItem'
+import InputItem from '../../components/InputItem'
 
-function TaoMoiChiTieu ({ form, addVisible, setAddVisible, addChiTieu }) {
+function TaoMoiTieuChi ({
+  form,
+  addVisible,
+  setAddVisible,
+  addChiTieu,
+  coQuanChuTriList,
+  chiTieuList,
+  kyCongBoList
+}) {
   const statusList = [
     {
       value: 'PUBLISH'
@@ -18,7 +26,7 @@ function TaoMoiChiTieu ({ form, addVisible, setAddVisible, addChiTieu }) {
   return (
     <>
       <Modal
-        title='TẠO MỚI CHỈ TIÊU'
+        title='TẠO MỚI TIÊU CHÍ'
         visible={addVisible}
         onOk={() => {
           setAddVisible(false)
@@ -28,9 +36,9 @@ function TaoMoiChiTieu ({ form, addVisible, setAddVisible, addChiTieu }) {
             }
             form.resetFields()
             addChiTieu({
-              nhomChiTieuId: values.nhomChiTieuId,
-              chiTieuCode: values.chiTieuCode,
-              name: values.name,
+              kyCongBoId: values.kyCongBoId,
+              coQuanChuTriId: values.coQuanChuTriId,
+              chiTieuId: values.chiTieuId,
               status: values.status
             })
           })
@@ -42,27 +50,54 @@ function TaoMoiChiTieu ({ form, addVisible, setAddVisible, addChiTieu }) {
         <Form>
           <InputItem
             form={form}
-            label='Mã nhóm chỉ tiêu'
-            field='nhomChiTieuId'
+            label='Mã kì công bố'
+            field='kyCongBoId'
+            type='select'
             rules={[
               { required: true, message: 'Vui lòng không để trống thẻ này' }
             ]}
+            options={
+              kyCongBoList &&
+              kyCongBoList.map((item, index) => (
+                <Select.Option key={index} value={item.id}>
+                  {item.name}
+                </Select.Option>
+              ))
+            }
+          />
+          <InputItem
+            form={form}
+            label='Mã cơ quan chủ trì'
+            field='coQuanChuTriId'
+            type='select'
+            rules={[
+              { required: true, message: 'Vui lòng không để trống thẻ này' }
+            ]}
+            options={
+              coQuanChuTriList &&
+              coQuanChuTriList.map((item, index) => (
+                <Select.Option key={index} value={item.id}>
+                  {item.name}
+                </Select.Option>
+              ))
+            }
           />
           <InputItem
             form={form}
             label='Mã chỉ tiêu'
-            field='chiTieuCode'
+            field='chiTieuId'
+            type='select'
             rules={[
               { required: true, message: 'Vui lòng không để trống thẻ này' }
             ]}
-          />
-          <InputItem
-            form={form}
-            label='Tên chỉ tiêu'
-            field='name'
-            rules={[
-              { required: true, message: 'Vui lòng không để trống thẻ này' }
-            ]}
+            options={
+              chiTieuList &&
+              chiTieuList.map((item, index) => (
+                <Select.Option key={index} value={item.id}>
+                  {item.name}
+                </Select.Option>
+              ))
+            }
           />
           <InputItem
             form={form}
@@ -86,4 +121,4 @@ function TaoMoiChiTieu ({ form, addVisible, setAddVisible, addChiTieu }) {
     </>
   )
 }
-export default Form.create({ name: 'form_modal' })(TaoMoiChiTieu)
+export default Form.create({ name: 'form_modal' })(TaoMoiTieuChi)
