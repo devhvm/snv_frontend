@@ -24,8 +24,6 @@ function ChiTietTieuChi ({
     }
   ]
 
-  console.log(tieuChiEditing)
-
   return (
     <>
       <Modal

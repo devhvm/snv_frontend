@@ -31,8 +31,8 @@ export const getCoQuanChuTriEditing = id => dispatch => {
 export const editCoQuanChuTri = form => dispatch => {
   rest
     .put('common/api/co-quan-chu-tris')
-    .then(res => {
-      console.log(res)
+    .then(() => {
+      dispatch(getCoQuanChuTris())
     })
     .catch(err => {
       console.log(err)
@@ -42,8 +42,8 @@ export const editCoQuanChuTri = form => dispatch => {
 export const addCoQuanChuTri = form => dispatch => {
   rest
     .post('common/api/co-quan-chu-tris')
-    .then(res => {
-      console.log(res)
+    .then(() => {
+      dispatch(getCoQuanChuTris())
     })
     .catch(err => {
       console.log(err)
@@ -53,8 +53,8 @@ export const addCoQuanChuTri = form => dispatch => {
 export const deleteCoQuanChuTri = id => dispatch => {
   rest
     .delete(`common/api/co-quan-chu-tris/${id}`)
-    .then(res => {
-      console.log(res)
+    .then(() => {
+      dispatch(getCoQuanChuTris())
     })
     .catch(err => {
       console.log(err)

@@ -43,7 +43,6 @@ export const addKyCongBo = form => dispatch => {
   rest
     .post('common/api/ky-cong-bos', form)
     .then(res => {
-      console.log(res)
       dispatch(getKyCongBos())
     })
     .catch(err => {
@@ -51,11 +50,10 @@ export const addKyCongBo = form => dispatch => {
     })
 }
 
-export const deleteChiTieu = id => dispatch => {
+export const deleteKyCongBo = id => dispatch => {
   rest
     .delete(`common/api/ky-cong-bos/${id}`)
-    .then(res => {
-      console.log(res)
+    .then(() => {
       dispatch(getKyCongBos())
     })
     .catch(err => {

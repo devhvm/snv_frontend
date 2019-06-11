@@ -40,7 +40,6 @@ export const editNhomChiTieu = form => dispatch => {
 }
 
 export const addNhomChiTieu = form => dispatch => {
-  console.log(form)
   rest
     .post('common/api/nhom-chi-tieus', form)
     .then(() => {
