@@ -4,7 +4,8 @@ import {
   getUsers,
   getUserEditing,
   editUser,
-  addUser
+  addUser,
+  deleteUser
 } from '../../reducers/user'
 import { getCoQuanHanhChinh } from '../../reducers/coQuanHanhChinh'
 
@@ -25,6 +26,9 @@ export default connect(
     },
     addUser: form => {
       dispatch(addUser(form))
+    },
+    deleteUser: id => {
+      dispatch(deleteUser(id))
     },
     getCoQuanHanhChinh: () => {
       dispatch(getCoQuanHanhChinh())

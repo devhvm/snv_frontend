@@ -12,6 +12,7 @@ import tieuChi from './tieuChi'
 import coQuanChuTri from './coQuanChuTri'
 import maDinhDanh from './maDinhDanh'
 import phanTo from './phanTo'
+import kyCongBo from './kyCongBo'
 
 export default history =>
   combineReducers({
@@ -27,5 +28,6 @@ export default history =>
     tieuChi,
     coQuanChuTri,
     maDinhDanh,
-    phanTo
+    phanTo,
+    kyCongBo
   })

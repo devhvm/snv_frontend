@@ -3,13 +3,14 @@ import { PageHeader, Table, Divider, Row, Col, Button } from 'antd'
 import TaoMoiThietDatNguoiDung from './TaoMoi'
 
 export default function ThietDatNguoiDung ({
-  coQuanHanhChinh,
+  coQuanHanhChinhList,
   usersList,
   userEditing,
   getUsers,
   getUserEditing,
   editUser,
   addUser,
+  deleteUser,
   getCoQuanHanhChinh
 }) {
   const { Column } = Table
@@ -67,7 +68,13 @@ export default function ThietDatNguoiDung ({
                 Chi tiết
               </a>
               <Divider type='vertical' />
-              <a href='javascript:;'>Xoá</a>
+              <a
+                onClick={() => {
+                  deleteUser(record.key)
+                }}
+              >
+                Xoá
+              </a>
             </span>
           )}
         />
@@ -75,7 +82,7 @@ export default function ThietDatNguoiDung ({
       <TaoMoiThietDatNguoiDung
         addVisible={addVisible}
         setAddVisible={setAddVisible}
-        coQuanHanhChinh={coQuanHanhChinh}
+        coQuanHanhChinhList={coQuanHanhChinhList}
         addUser={addUser}
       />
     </>

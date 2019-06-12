@@ -3,21 +3,6 @@ import { Form, Modal, Select } from 'antd'
 import InputItem from '../../../components/InputItem'
 
 function TaoMoiChiTieu ({ form, addVisible, setAddVisible, addNhomChiTieu }) {
-  const handleOk = () => {
-    setAddVisible(false)
-    form.validateFields((err, values) => {
-      if (err) {
-        return
-      }
-      form.resetFields()
-      addNhomChiTieu({
-        nhomChiTieuCode: values.nhomChiTieuCode,
-        name: values.name,
-        status: values.status
-      })
-    })
-  }
-
   const statusList = [
     {
       value: 'PUBLISH'
@@ -35,7 +20,20 @@ function TaoMoiChiTieu ({ form, addVisible, setAddVisible, addNhomChiTieu }) {
       <Modal
         title='TẠO MỚI NHÓM CHỈ TIÊU'
         visible={addVisible}
-        onOk={handleOk}
+        onOk={() => {
+          setAddVisible(false)
+          form.validateFields((err, values) => {
+            if (err) {
+              return
+            }
+            form.resetFields()
+            addNhomChiTieu({
+              nhomChiTieuCode: values.nhomChiTieuCode,
+              name: values.name,
+              status: values.status
+            })
+          })
+        }}
         onCancel={() => {
           setAddVisible(false)
         }}

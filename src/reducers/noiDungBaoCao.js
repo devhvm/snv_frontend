@@ -8,7 +8,7 @@ export const NOI_DUNG_BAO_CAO_EDITING = 'NOI_DUNG_BAO_CAO_EDITING'
 // Action Creator
 export const getNoiDungBaoCaos = () => dispatch => {
   rest
-    .get('common/api/noi-dungs')
+    .get('common/api/noi-dungs?size=100')
     .then(res => {
       dispatch(getNoiDungBaoCaoRequest(res.data))
     })
@@ -32,7 +32,6 @@ export const editNoiDungBaoCao = form => dispatch => {
   rest
     .put(`quytrinhdonvi/api/co-quan-hanh-chinhs/`)
     .then(res => {
-      console.log(res)
       dispatch(getNoiDungBaoCaos())
     })
     .catch(err => {
@@ -44,7 +43,6 @@ export const addNoiDungBaoCao = form => dispatch => {
   rest
     .post('common/api/noi-dungs')
     .then(res => {
-      console.log(res)
       dispatch(getNoiDungBaoCaos())
     })
     .catch(err => {
@@ -56,7 +54,6 @@ export const deleteNoiDungBaoCao = id => dispatch => {
   rest
     .delete(`common/api/noi-dungs/${id}`)
     .then(res => {
-      console.log(res)
       dispatch(getNoiDungBaoCaos())
     })
     .catch(err => {

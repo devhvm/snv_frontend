@@ -8,9 +8,18 @@ import {
   getTieuChis
 } from '../../reducers/tieuChi'
 
+import { getCoQuanChuTris } from '../../reducers/coQuanChuTri'
+
+import { getChiTieus } from '../../reducers/chiTieu'
+
+import { getKyCongBos } from '../../reducers/kyCongBo'
+
 export default connect(
   state => ({
-    ...state.tieuChi
+    ...state.tieuChi,
+    ...state.kyCongBo,
+    ...state.coQuanChuTri,
+    ...state.chiTieu
   }),
   dispatch => ({
     getTieuChis: () => {
@@ -27,6 +36,15 @@ export default connect(
     },
     deleteTieuChi: id => {
       dispatch(deleteTieuChi(id))
+    },
+    getKyCongBos: () => {
+      dispatch(getKyCongBos())
+    },
+    getChiTieus: () => {
+      dispatch(getChiTieus())
+    },
+    getCoQuanChuTris: () => {
+      dispatch(getCoQuanChuTris())
     }
   })
 )(ThietDatTieuChi)

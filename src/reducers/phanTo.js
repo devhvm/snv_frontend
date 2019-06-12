@@ -31,8 +31,8 @@ export const getPhanToEditing = id => dispatch => {
 export const editPhanTo = form => dispatch => {
   rest
     .put(`quytrinhdonvi/api/co-quan-hanh-chinhs/`)
-    .then(res => {
-      console.log(res)
+    .then(() => {
+      dispatch(getPhanTos())
     })
     .catch(err => {
       console.log(err)
@@ -42,8 +42,7 @@ export const editPhanTo = form => dispatch => {
 export const addPhanTo = form => dispatch => {
   rest
     .post('common/api/nhom-phan-loais', form)
-    .then(res => {
-      console.log(res)
+    .then(() => {
       dispatch(getPhanTos())
     })
     .catch(err => {
@@ -54,8 +53,7 @@ export const addPhanTo = form => dispatch => {
 export const deletePhanTo = id => dispatch => {
   rest
     .delete(`common/api/nhom-phan-loais/${id}`)
-    .then(res => {
-      console.log(res)
+    .then(() => {
       dispatch(getPhanTos())
     })
     .catch(err => {

@@ -20,7 +20,7 @@ export default function QuanLyCoQuanChuTri ({
     coQuanChuTriList &&
     coQuanChuTriList.map((item, index) => ({
       key: item.id,
-      stt: item.id,
+      stt: index + 1,
       maCoQuanChuTri: item.id,
       tenCoQuanChuTri: item.name,
       maDinhDanh: item.maDinhDanhCode

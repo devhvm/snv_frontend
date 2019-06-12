@@ -19,7 +19,7 @@ export const getUsers = () => dispatch => {
 
 export const getUserEditing = id => dispatch => {
   rest
-    .get(`quytrinhdonvi/api/co-quan-hanh-chinhs/${id}`)
+    .get(`phanquyenchucnang/api/nguoiDungs/${id}`)
     .then(res => {
       dispatch(getUserEditingRequest(res.data))
     })
@@ -30,9 +30,9 @@ export const getUserEditing = id => dispatch => {
 
 export const editUser = form => dispatch => {
   rest
-    .put(`quytrinhdonvi/api/co-quan-hanh-chinhs/`)
-    .then(res => {
-      console.log(res)
+    .put(`phanquyenchucnang/api/nguoiDungs`)
+    .then(() => {
+      dispatch(getUsers())
     })
     .catch(err => {
       console.log(err)
@@ -40,10 +40,20 @@ export const editUser = form => dispatch => {
 }
 
 export const addUser = form => dispatch => {
-  console.log(form)
   rest
     .post('phanquyenchucnang/api/nguoiDungs', form)
     .then(res => {
+      dispatch(getUsers())
+    })
+    .catch(err => {
+      console.log(err)
+    })
+}
+
+export const deleteUser = id => dispatch => {
+  rest
+    .delete(`phanquyenchucnang/api/nguoiDungs/${id}`)
+    .then(() => {
       dispatch(getUsers())
     })
     .catch(err => {

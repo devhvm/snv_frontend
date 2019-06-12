@@ -6,7 +6,10 @@ function ChiTietCoQuanHanhChinh ({
   form,
   editVisible,
   setEditVisible,
-  coQuanHanhChinhEditing
+  coQuanHanhChinhEditing,
+  maDinhDanhList,
+  quyTrinhList,
+  editCoQuanHanhChinh
 }) {
   return (
     <>
@@ -15,6 +18,20 @@ function ChiTietCoQuanHanhChinh ({
         visible={editVisible}
         onOk={() => {
           setEditVisible(false)
+          form.validateFields((err, values) => {
+            if (err) {
+              return
+            }
+            form.resetFields()
+            editCoQuanHanhChinh({
+              coQuanHanhChinhCode: values.coQuanHanhChinhCode,
+              description: values.description,
+              maDinhDanhCode: values.maDinhDanhCode,
+              name: values.name,
+              level: 1,
+              status: 'OK'
+            })
+          })
         }}
         onCancel={() => {
           setEditVisible(false)
@@ -26,7 +43,9 @@ function ChiTietCoQuanHanhChinh ({
               <InputItem
                 form={form}
                 label='Mã đơn vị'
-                field='maDonVi'
+                field='coQuanHanhChinhCode'
+                type='disabled'
+                disabled='disabled'
                 initialValue={
                   coQuanHanhChinhEditing ? coQuanHanhChinhEditing.id : ''
                 }
@@ -37,7 +56,7 @@ function ChiTietCoQuanHanhChinh ({
               <InputItem
                 form={form}
                 label='Tên đơn vị'
-                field='tenDonVi'
+                field='name'
                 initialValue={
                   coQuanHanhChinhEditing ? coQuanHanhChinhEditing.name : ''
                 }
@@ -50,18 +69,15 @@ function ChiTietCoQuanHanhChinh ({
               <InputItem
                 form={form}
                 label='Mã định danh'
-                field='maDinhDanh'
+                field='maDinhDanhCode'
                 type='select'
                 options={
-                  <Select.Option key='1' value='item'>
-                    aaa
-                  </Select.Option>
-                  //   coQuanHanhChinhEditing &&
-                  //   coQuanHanhChinhEditing.map((item, i) => (
-                  //     <Select.Option key={String(item.id)} value={JSON.stringify(item)}>
-                  //       {item.name}
-                  //     </Select.Option>
-                  //   ))
+                  maDinhDanhList &&
+                  maDinhDanhList.map(item => (
+                    <Select.Option key={item.id} value={item.maDinhDanhCode}>
+                      {item.name}
+                    </Select.Option>
+                  ))
                 }
                 initialValue={
                   coQuanHanhChinhEditing
@@ -76,21 +92,20 @@ function ChiTietCoQuanHanhChinh ({
                 form={form}
                 label='Qui Trình'
                 field='quiTrinh'
+                type='select'
                 initialValue={
                   coQuanHanhChinhEditing
                     ? coQuanHanhChinhEditing.maDinhDanhCode
                     : ''
                 }
-                // type='select'
-                // options={
-                //   <Select.Option>aaa</Select.Option>
-                //   coQuanHanhChinhEditing &&
-                //   coQuanHanhChinhEditing.map((item, i) => (
-                //     <Select.Option key={String(item.id)} value={JSON.stringify(item)}>
-                //       {item.name}
-                //     </Select.Option>
-                //   ))
-                // }
+                options={
+                  quyTrinhList &&
+                  quyTrinhList.map(item => (
+                    <Select.Option key={item.id} value={item.quyTrinhCode}>
+                      {item.name}
+                    </Select.Option>
+                  ))
+                }
                 rules={[
                   { required: true, message: 'Vui lòng không để trống thẻ này' }
                 ]}
@@ -101,9 +116,9 @@ function ChiTietCoQuanHanhChinh ({
             form={form}
             label='Mô tả'
             field='moTa'
-            type='textarea'
+            type='description'
             initialValue={
-              coQuanHanhChinhEditing ? coQuanHanhChinhEditing.status : ''
+              coQuanHanhChinhEditing ? coQuanHanhChinhEditing.description : ''
             }
             rules={[
               { required: true, message: 'Vui lòng không để trống thẻ này' }

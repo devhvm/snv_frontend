@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { PageHeader, Table, Divider, Row, Col, Button } from 'antd'
 import TaoMoiChiTieu from './TaoMoi'
+import ChiTietChiTieu from './ChiTiet'
 
 export default function ChiTieu ({
   chiTieuList,
@@ -13,6 +14,7 @@ export default function ChiTieu ({
 }) {
   const { Column } = Table
   const [addVisible, setAddVisible] = useState(false)
+  const [editVisible, setEditVisible] = useState(false)
   useEffect(() => {
     getChiTieus()
   }, [])
@@ -20,7 +22,7 @@ export default function ChiTieu ({
     chiTieuList &&
     chiTieuList.map((item, index) => ({
       key: item.id,
-      stt: item.id,
+      stt: index + 1,
       maNhom: item.nhomChiTieuId,
       maChiTieu: item.chiTieuCode,
       tenNhom: item.name
@@ -53,11 +55,18 @@ export default function ChiTieu ({
           key='action'
           render={(text, record) => (
             <span>
-              <a href='javascript:;'>Chi tiết</a>
+              <a
+                onClick={() => {
+                  setEditVisible(true)
+                  getChiTieuEditing(record.key)
+                }}
+              >
+                Chi tiết
+              </a>
               <Divider type='vertical' />
               <a
                 onClick={() => {
-                  deleteChiTieu(record.stt)
+                  deleteChiTieu(record.key)
                 }}
               >
                 Xoá
@@ -70,6 +79,12 @@ export default function ChiTieu ({
         addVisible={addVisible}
         setAddVisible={setAddVisible}
         addChiTieu={addChiTieu}
+      />
+      <ChiTietChiTieu
+        editVisible={editVisible}
+        setEditVisible={setEditVisible}
+        chiTieuEditing={chiTieuEditing}
+        editChiTieu={editChiTieu}
       />
     </>
   )

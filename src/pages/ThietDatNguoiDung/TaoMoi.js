@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Form, Select, Modal } from 'antd'
 import InputItem from '../../components/InputItem'
 
@@ -7,13 +7,8 @@ function TaoMoiThietDatNguoiDung ({
   addVisible,
   setAddVisible,
   addUser,
-  coQuanHanhChinh
+  coQuanHanhChinhList
 }) {
-  const [donVi, setDonVi] = useState('')
-  const handleChange = val => {
-    console.log(val)
-    setDonVi(val)
-  }
   return (
     <>
       <Modal
@@ -27,7 +22,7 @@ function TaoMoiThietDatNguoiDung ({
             }
             form.resetFields()
             addUser({
-              coQuanHanhChinhId: donVi,
+              coQuanHanhChinhId: values.donVi,
               firstName: values.firstName,
               lastName: values.lastName,
               email: values.email,
@@ -76,16 +71,23 @@ function TaoMoiThietDatNguoiDung ({
               }
             ]}
           />
-          <Form.Item label='Đơn vị'>
-            <Select onChange={handleChange}>
-              {coQuanHanhChinh &&
-                coQuanHanhChinh.map((item, i) => (
-                  <Select.Option key={i} value={item.id}>
-                    {item.name}
-                  </Select.Option>
-                ))}
-            </Select>
-          </Form.Item>
+          <InputItem
+            form={form}
+            label='Đơn vị'
+            field='donVi'
+            rules={[
+              { required: true, message: 'Vui lòng không để trống thẻ này' }
+            ]}
+            type='select'
+            options={
+              coQuanHanhChinhList &&
+              coQuanHanhChinhList.map((item, i) => (
+                <Select.Option key={i} value={item.id}>
+                  {item.name}
+                </Select.Option>
+              ))
+            }
+          />
         </Form>
       </Modal>
     </>

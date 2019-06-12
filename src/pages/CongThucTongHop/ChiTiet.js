@@ -1,8 +1,14 @@
 import React from 'react'
 import { Form, Modal, Select } from 'antd'
-import InputItem from '../../../components/InputItem'
+import InputItem from '../../components/InputItem'
 
-function TaoMoiChiTieu ({ form, addVisible, setAddVisible, addChiTieu }) {
+function ChiTietChiTieu ({
+  form,
+  editVisible,
+  setEditVisible,
+  chiTieuEditing,
+  editChiTieu
+}) {
   const statusList = [
     {
       value: 'PUBLISH'
@@ -18,28 +24,35 @@ function TaoMoiChiTieu ({ form, addVisible, setAddVisible, addChiTieu }) {
   return (
     <>
       <Modal
-        title='TẠO MỚI CHỈ TIÊU'
-        visible={addVisible}
+        title='CHI TIẾT HẠNG MỤC'
+        visible={editVisible}
         onOk={() => {
-          setAddVisible(false)
+          setEditVisible(false)
           form.validateFields((err, values) => {
             if (err) {
               return
             }
             form.resetFields()
-            addChiTieu({
+            editChiTieu({
               nhomChiTieuId: values.nhomChiTieuId,
-              chiTieuCode: values.chiTieuCode,
               name: values.name,
-              status: values.status
+              status: values.status,
+              id: values.id,
+              chiTieuCode: values.chiTieuCode
             })
           })
         }}
         onCancel={() => {
-          setAddVisible(false)
+          setEditVisible(false)
         }}
       >
         <Form>
+          <InputItem
+            form={form}
+            type='hidden'
+            initialValue={chiTieuEditing ? chiTieuEditing.id : ''}
+            field='id'
+          />
           <InputItem
             form={form}
             label='Mã nhóm chỉ tiêu'
@@ -47,6 +60,7 @@ function TaoMoiChiTieu ({ form, addVisible, setAddVisible, addChiTieu }) {
             rules={[
               { required: true, message: 'Vui lòng không để trống thẻ này' }
             ]}
+            initialValue={chiTieuEditing ? chiTieuEditing.nhomChiTieuId : ''}
           />
           <InputItem
             form={form}
@@ -55,6 +69,7 @@ function TaoMoiChiTieu ({ form, addVisible, setAddVisible, addChiTieu }) {
             rules={[
               { required: true, message: 'Vui lòng không để trống thẻ này' }
             ]}
+            initialValue={chiTieuEditing ? chiTieuEditing.chiTieuCode : ''}
           />
           <InputItem
             form={form}
@@ -63,6 +78,7 @@ function TaoMoiChiTieu ({ form, addVisible, setAddVisible, addChiTieu }) {
             rules={[
               { required: true, message: 'Vui lòng không để trống thẻ này' }
             ]}
+            initialValue={chiTieuEditing ? chiTieuEditing.name : ''}
           />
           <InputItem
             form={form}
@@ -80,10 +96,12 @@ function TaoMoiChiTieu ({ form, addVisible, setAddVisible, addChiTieu }) {
             rules={[
               { required: true, message: 'Vui lòng không để trống thẻ này' }
             ]}
+            initialValue={chiTieuEditing ? chiTieuEditing.status : ''}
           />
         </Form>
       </Modal>
     </>
   )
 }
-export default Form.create({ name: 'form_modal' })(TaoMoiChiTieu)
+
+export default Form.create({ name: 'form_modal' })(ChiTietChiTieu)

@@ -10,12 +10,9 @@ function TaoMoiCoQuanHanhChinh ({
   maDinhDanhList,
   quyTrinhList
 }) {
-  console.log('maDinhDanhList', maDinhDanhList)
-  console.log('quyTrinhList', quyTrinhList)
   const handleOk = () => {
     setAddVisible(false)
     form.validateFields((err, values) => {
-      console.log(values)
       if (err) {
         return
       }
@@ -25,8 +22,8 @@ function TaoMoiCoQuanHanhChinh ({
         description: values.description,
         maDinhDanhCode: values.maDinhDanhCode,
         name: values.name,
-        level: 'aaa',
-        status: 'bbb'
+        level: 1,
+        status: 'OK'
       })
     })
   }
@@ -69,10 +66,10 @@ function TaoMoiCoQuanHanhChinh ({
                 type='select'
                 options={
                   maDinhDanhList &&
-                  maDinhDanhList.map((item, i) => (
+                  maDinhDanhList.map(item => (
                     <Select.Option
                       key={String(item.id)}
-                      value={JSON.stringify(item.maDinhDanhCode)}
+                      value={item.maDinhDanhCode}
                     >
                       {item.name}
                     </Select.Option>
@@ -95,7 +92,7 @@ function TaoMoiCoQuanHanhChinh ({
                   quyTrinhList.map((item, i) => (
                     <Select.Option
                       key={String(item.id)}
-                      value={JSON.stringify(item.quyTrinhCode)}
+                      value={item.quyTrinhCode}
                     >
                       {item.name}
                     </Select.Option>
