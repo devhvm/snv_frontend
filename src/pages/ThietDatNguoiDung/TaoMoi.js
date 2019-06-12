@@ -69,7 +69,11 @@ function TaoMoiThietDatNguoiDung ({
             label='Email'
             field='email'
             rules={[
-              { required: true, message: 'Vui lòng không để trống thẻ này' }
+              { required: true, message: 'Vui lòng không để trống thẻ này' },
+              {
+                type: 'email',
+                message: 'Nhập đúng định dạng email aaa@gmail.com'
+              }
             ]}
           />
           <Form.Item label='Đơn vị'>
