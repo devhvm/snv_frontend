@@ -19,7 +19,7 @@ export const getNoiDungBaoCaos = () => dispatch => {
 
 export const getNoiDungBaoCaoEditing = id => dispatch => {
   rest
-    .get(`quytrinhdonvi/api/co-quan-hanh-chinhs/${id}`)
+    .get(`common/api/noi-dungs/${id}`)
     .then(res => {
       dispatch(getNoiDungBaoCaoEditingRequest(res.data))
     })
@@ -30,7 +30,7 @@ export const getNoiDungBaoCaoEditing = id => dispatch => {
 
 export const editNoiDungBaoCao = form => dispatch => {
   rest
-    .put(`quytrinhdonvi/api/co-quan-hanh-chinhs/`)
+    .put(`common/api/noi-dungs/`)
     .then(res => {
       dispatch(getNoiDungBaoCaos())
     })

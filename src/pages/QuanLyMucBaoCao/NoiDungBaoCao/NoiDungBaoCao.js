@@ -9,12 +9,18 @@ export default function NoiDungBaoCao ({
   getNoiDungBaoCaoEditing,
   editNoiDungBaoCao,
   addNoiDungBaoCao,
-  deleteNoiDungBaoCao
+  deleteNoiDungBaoCao,
+  chiTieuList,
+  getChiTieus,
+  nhomDanhMucList,
+  getNhomDanhMuc
 }) {
   const { Column } = Table
   const [addVisible, setAddVisible] = useState(false)
   useEffect(() => {
     getNoiDungBaoCaos()
+    getChiTieus()
+    getNhomDanhMuc()
   }, [])
   const dataTable =
     noiDungBaoCaoList &&
@@ -74,6 +80,9 @@ export default function NoiDungBaoCao ({
       <TaoMoiNoiDungBaoCao
         addVisible={addVisible}
         setAddVisible={setAddVisible}
+        chiTieuList={chiTieuList}
+        nhomDanhMucList={nhomDanhMucList}
+        addNoiDungBaoCao={addNoiDungBaoCao}
       />
     </>
   )

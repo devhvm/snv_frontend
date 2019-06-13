@@ -8,9 +8,14 @@ import {
   getNoiDungBaoCaos
 } from '../../../reducers/noiDungBaoCao'
 
+import { getChiTieus } from '../../../reducers/chiTieu'
+import { getNhomDanhMuc } from '../../../reducers/nhomDanhMuc'
+
 export default connect(
   state => ({
-    ...state.noiDungBaoCao
+    ...state.noiDungBaoCao,
+    ...state.chiTieu,
+    ...state.nhomDanhMuc
   }),
   dispatch => ({
     getNoiDungBaoCaos: () => {
@@ -27,6 +32,12 @@ export default connect(
     },
     deleteNoiDungBaoCao: id => {
       dispatch(deleteNoiDungBaoCao(id))
+    },
+    getChiTieus: () => {
+      dispatch(getChiTieus())
+    },
+    getNhomDanhMuc: () => {
+      dispatch(getNhomDanhMuc())
     }
   })
 )(NoiDungBaoCao)

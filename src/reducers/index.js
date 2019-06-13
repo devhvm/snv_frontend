@@ -13,6 +13,7 @@ import coQuanChuTri from './coQuanChuTri'
 import maDinhDanh from './maDinhDanh'
 import phanTo from './phanTo'
 import kyCongBo from './kyCongBo'
+import nhomDanhMuc from './nhomDanhMuc'
 
 export default history =>
   combineReducers({
@@ -29,5 +30,6 @@ export default history =>
     coQuanChuTri,
     maDinhDanh,
     phanTo,
-    kyCongBo
+    kyCongBo,
+    nhomDanhMuc
   })

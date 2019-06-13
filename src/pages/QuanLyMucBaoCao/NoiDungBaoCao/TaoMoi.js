@@ -1,7 +1,26 @@
 import React from 'react'
-import { Col, Form, Input, Row, Modal, Select } from 'antd'
+import { Col, Form, Row, Modal, Select } from 'antd'
+import InputItem from '../../../components/InputItem'
 
-export default function TaoMoiNoiDungBaoCao ({ addVisible, setAddVisible }) {
+function TaoMoiNoiDungBaoCao ({
+  form,
+  addVisible,
+  setAddVisible,
+  addNoiDungBaoCao,
+  chiTieuList,
+  nhomDanhMucList
+}) {
+  const statusList = [
+    {
+      value: 'PUBLISH'
+    },
+    {
+      value: 'UNPUBLISH'
+    },
+    {
+      value: 'DELETE'
+    }
+  ]
   return (
     <>
       <Modal
@@ -9,6 +28,18 @@ export default function TaoMoiNoiDungBaoCao ({ addVisible, setAddVisible }) {
         visible={addVisible}
         onOk={() => {
           setAddVisible(false)
+          form.validateFields((err, values) => {
+            if (err) {
+              return
+            }
+            form.resetFields()
+            addNoiDungBaoCao({
+              noiDungCode: values.noiDungCode,
+              tieuChiId: values.tieuChiId,
+              name: values.name,
+              status: values.status
+            })
+          })
         }}
         onCancel={() => {
           setAddVisible(false)
@@ -17,26 +48,81 @@ export default function TaoMoiNoiDungBaoCao ({ addVisible, setAddVisible }) {
         <Form>
           <Row>
             <Col span={11}>
-              <Form.Item label='MÃ NỘI DUNG'>
-                <Input />
-              </Form.Item>
+              <InputItem
+                form={form}
+                label='Mã nội dung'
+                field='noiDungCode'
+                rules={[
+                  { required: true, message: 'Vui lòng không để trống thẻ này' }
+                ]}
+              />
             </Col>
             <Col span={11} offset={1}>
-              <Form.Item label='CHỈ TIÊU'>
-                <Select defaultValue='' />
-              </Form.Item>
+              <InputItem
+                form={form}
+                label='Mã tiêu chí'
+                field='tieuChiId'
+                type='select'
+                options={
+                  chiTieuList &&
+                  chiTieuList.map(item => (
+                    <Select.Option key={String(item.id)} value={item.id}>
+                      {item.name}
+                    </Select.Option>
+                  ))
+                }
+                rules={[
+                  { required: true, message: 'Vui lòng không để trống thẻ này' }
+                ]}
+              />
             </Col>
           </Row>
           <Row>
             <Col span={11}>
-              <Form.Item label='TÊN NỘI DUNG'>
-                <Input />
-              </Form.Item>
+              <InputItem
+                form={form}
+                label='TÊN NỘI DUNG'
+                field='name'
+                rules={[
+                  { required: true, message: 'Vui lòng không để trống thẻ này' }
+                ]}
+              />
             </Col>
             <Col span={11} offset={1}>
-              <Form.Item label='NHÓM PHÂN TỔ'>
-                <Select defaultValue='' />
-              </Form.Item>
+              <InputItem
+                form={form}
+                label='NHÓM PHÂN TỔ'
+                type='select'
+                field='nhomChiTieuId'
+                rules={[
+                  { required: true, message: 'Vui lòng không để trống thẻ này' }
+                ]}
+                options={
+                  nhomDanhMucList &&
+                  nhomDanhMucList.map(item => (
+                    <Select.Option key={String(item.id)} value={item.id}>
+                      {item.name}
+                    </Select.Option>
+                  ))
+                }
+              />
+              <InputItem
+                form={form}
+                label='Status'
+                field='status'
+                type='select'
+                options={
+                  statusList &&
+                  statusList.map((item, index) => (
+                    <Select.Option key={index} value={item.value}>
+                      {item.value}
+                    </Select.Option>
+                  ))
+                }
+                rules={[
+                  { required: true, message: 'Vui lòng không để trống thẻ này' }
+                ]}
+              />
             </Col>
           </Row>
         </Form>
@@ -44,3 +130,5 @@ export default function TaoMoiNoiDungBaoCao ({ addVisible, setAddVisible }) {
     </>
   )
 }
+
+export default Form.create({ name: 'form_modal' })(TaoMoiNoiDungBaoCao)
