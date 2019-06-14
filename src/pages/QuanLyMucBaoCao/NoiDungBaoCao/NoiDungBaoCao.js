@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { PageHeader, Table, Divider, Row, Col, Button } from 'antd'
 import TaoMoiNoiDungBaoCao from './TaoMoi'
+import ChiTietNoiDungBaoCao from './ChiTiet'
 
 export default function NoiDungBaoCao ({
   noiDungBaoCaoList,
@@ -17,6 +18,7 @@ export default function NoiDungBaoCao ({
 }) {
   const { Column } = Table
   const [addVisible, setAddVisible] = useState(false)
+  const [editVisible, setEditVisible] = useState(false)
   useEffect(() => {
     getNoiDungBaoCaos()
     getChiTieus()
@@ -26,7 +28,7 @@ export default function NoiDungBaoCao ({
     noiDungBaoCaoList &&
     noiDungBaoCaoList.map((item, index) => ({
       key: item.id,
-      stt: index,
+      stt: index + 1,
       maNoiDung: item.noiDungCode,
       maTieuChi: item.tieuChiId,
       tenNoiDung: item.name
@@ -64,7 +66,14 @@ export default function NoiDungBaoCao ({
           key='action'
           render={(text, record) => (
             <span>
-              <a href='javascript:;'>Chi tiết</a>
+              <a
+                onClick={() => {
+                  setEditVisible(true)
+                  getNoiDungBaoCaoEditing(record.key)
+                }}
+              >
+                Chi tiết
+              </a>
               <Divider type='vertical' />
               <a
                 onClick={() => {
@@ -80,6 +89,15 @@ export default function NoiDungBaoCao ({
       <TaoMoiNoiDungBaoCao
         addVisible={addVisible}
         setAddVisible={setAddVisible}
+        chiTieuList={chiTieuList}
+        nhomDanhMucList={nhomDanhMucList}
+        addNoiDungBaoCao={addNoiDungBaoCao}
+      />
+      <ChiTietNoiDungBaoCao
+        editVisible={editVisible}
+        setEditVisible={setEditVisible}
+        noiDungBaoCaoEditing={noiDungBaoCaoEditing}
+        editNoiDungBaoCao={editNoiDungBaoCao}
         chiTieuList={chiTieuList}
         nhomDanhMucList={nhomDanhMucList}
         addNoiDungBaoCao={addNoiDungBaoCao}

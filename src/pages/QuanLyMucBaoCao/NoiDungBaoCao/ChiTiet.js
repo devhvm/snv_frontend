@@ -2,11 +2,12 @@ import React from 'react'
 import { Col, Form, Row, Modal, Select } from 'antd'
 import InputItem from '../../../components/InputItem'
 
-function TaoMoiNoiDungBaoCao ({
+function ChiTietNoiDungBaoCao ({
   form,
-  addVisible,
-  setAddVisible,
-  addNoiDungBaoCao,
+  editVisible,
+  setEditVisible,
+  noiDungBaoCaoEditing,
+  editNoiDungBaoCao,
   chiTieuList,
   nhomDanhMucList
 }) {
@@ -24,16 +25,17 @@ function TaoMoiNoiDungBaoCao ({
   return (
     <>
       <Modal
-        title='TẠO MỚI NỘI DUNG BÁO CÁO'
-        visible={addVisible}
+        title='CHI TIẾT NỘI DUNG BÁO CÁO'
+        visible={editVisible}
         onOk={() => {
-          setAddVisible(false)
+          setEditVisible(false)
           form.validateFields((err, values) => {
             if (err) {
               return
             }
             form.resetFields()
-            addNoiDungBaoCao({
+            editNoiDungBaoCao({
+              id: values.id,
               noiDungCode: values.noiDungCode,
               tieuChiId: values.tieuChiId,
               name: values.name,
@@ -42,10 +44,16 @@ function TaoMoiNoiDungBaoCao ({
           })
         }}
         onCancel={() => {
-          setAddVisible(false)
+          setEditVisible(false)
         }}
       >
         <Form>
+          <InputItem
+            form={form}
+            field='id'
+            type='hidden'
+            initialValue={noiDungBaoCaoEditing ? noiDungBaoCaoEditing.id : ''}
+          />
           <Row>
             <Col span={11}>
               <InputItem
@@ -55,6 +63,9 @@ function TaoMoiNoiDungBaoCao ({
                 rules={[
                   { required: true, message: 'Vui lòng không để trống thẻ này' }
                 ]}
+                initialValue={
+                  noiDungBaoCaoEditing ? noiDungBaoCaoEditing.noiDungCode : ''
+                }
               />
             </Col>
             <Col span={11} offset={1}>
@@ -74,6 +85,9 @@ function TaoMoiNoiDungBaoCao ({
                 rules={[
                   { required: true, message: 'Vui lòng không để trống thẻ này' }
                 ]}
+                initialValue={
+                  noiDungBaoCaoEditing ? noiDungBaoCaoEditing.tieuChiId : ''
+                }
               />
             </Col>
           </Row>
@@ -86,6 +100,9 @@ function TaoMoiNoiDungBaoCao ({
                 rules={[
                   { required: true, message: 'Vui lòng không để trống thẻ này' }
                 ]}
+                initialValue={
+                  noiDungBaoCaoEditing ? noiDungBaoCaoEditing.name : ''
+                }
               />
               <InputItem
                 form={form}
@@ -103,6 +120,9 @@ function TaoMoiNoiDungBaoCao ({
                 rules={[
                   { required: true, message: 'Vui lòng không để trống thẻ này' }
                 ]}
+                initialValue={
+                  noiDungBaoCaoEditing ? noiDungBaoCaoEditing.status : ''
+                }
               />
             </Col>
             <Col span={11} offset={1}>
@@ -131,4 +151,4 @@ function TaoMoiNoiDungBaoCao ({
   )
 }
 
-export default Form.create({ name: 'form_modal' })(TaoMoiNoiDungBaoCao)
+export default Form.create({ name: 'form_modal' })(ChiTietNoiDungBaoCao)

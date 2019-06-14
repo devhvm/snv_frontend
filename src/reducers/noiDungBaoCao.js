@@ -30,8 +30,8 @@ export const getNoiDungBaoCaoEditing = id => dispatch => {
 
 export const editNoiDungBaoCao = form => dispatch => {
   rest
-    .put(`common/api/noi-dungs/`)
-    .then(res => {
+    .put(`common/api/noi-dungs/`, form)
+    .then(() => {
       dispatch(getNoiDungBaoCaos())
     })
     .catch(err => {
@@ -41,8 +41,8 @@ export const editNoiDungBaoCao = form => dispatch => {
 
 export const addNoiDungBaoCao = form => dispatch => {
   rest
-    .post('common/api/noi-dungs')
-    .then(res => {
+    .post('common/api/noi-dungs', form)
+    .then(() => {
       dispatch(getNoiDungBaoCaos())
     })
     .catch(err => {
@@ -53,7 +53,7 @@ export const addNoiDungBaoCao = form => dispatch => {
 export const deleteNoiDungBaoCao = id => dispatch => {
   rest
     .delete(`common/api/noi-dungs/${id}`)
-    .then(res => {
+    .then(() => {
       dispatch(getNoiDungBaoCaos())
     })
     .catch(err => {
