@@ -30,7 +30,7 @@ export const getCoQuanChuTriEditing = id => dispatch => {
 
 export const editCoQuanChuTri = form => dispatch => {
   rest
-    .put('common/api/co-quan-chu-tris')
+    .put('common/api/co-quan-chu-tris', form)
     .then(() => {
       dispatch(getCoQuanChuTris())
     })

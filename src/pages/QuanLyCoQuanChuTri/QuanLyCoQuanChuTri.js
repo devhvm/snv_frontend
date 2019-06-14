@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Button, Col, Divider, PageHeader, Row, Table } from 'antd'
+import TaoMoiCoQuanChuTri from './TaoMoi'
 
 export default function QuanLyCoQuanChuTri ({
   coQuanChuTriList,
@@ -8,13 +9,16 @@ export default function QuanLyCoQuanChuTri ({
   getCoQuanChuTriEditing,
   editCoQuanChuTri,
   addCoQuanChuTri,
-  deleteCoQuanChuTri
+  deleteCoQuanChuTri,
+  maDinhDanhList,
+  getMaDinhDanhs
 }) {
   const { Column } = Table
   const [setEditVisible] = useState(false)
-  // const [addVisible, setAddVisible] = useState(false)
+  const [addVisible, setAddVisible] = useState(false)
   useEffect(() => {
     getCoQuanChuTris()
+    getMaDinhDanhs()
   }, [])
   const dataTable =
     coQuanChuTriList &&
@@ -35,9 +39,9 @@ export default function QuanLyCoQuanChuTri ({
             style={{ marginBottom: '20px' }}
             type='primary'
             icon='plus'
-            // onClick={() => {
-            //   setAddVisible(true)
-            // }}
+            onClick={() => {
+              setAddVisible(true)
+            }}
           >
             Tạo mới
           </Button>
@@ -64,20 +68,29 @@ export default function QuanLyCoQuanChuTri ({
               <a
                 onClick={() => {
                   setEditVisible(true)
+                  getCoQuanChuTriEditing(record.key)
                 }}
               >
                 Chi tiết
               </a>
               <Divider type='vertical' />
-              <a href='javascript:;'>Xoá</a>
+              <a
+                onClick={() => {
+                  deleteCoQuanChuTri(record.key)
+                }}
+              >
+                Xoá
+              </a>
             </span>
           )}
         />
       </Table>
-      {/* <TaoMoiThietDatQuiTrinh */}
-      {/* addVisible={addVisible} */}
-      {/* setAddVisible={setAddVisible} */}
-      {/* /> */}
+      <TaoMoiCoQuanChuTri
+        addVisible={addVisible}
+        setAddVisible={setAddVisible}
+        maDinhDanhList={maDinhDanhList}
+        addCoQuanChuTri={addCoQuanChuTri}
+      />
     </>
   )
 }
