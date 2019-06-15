@@ -21,10 +21,12 @@ function ChiTietChiTieu ({
     }
   ]
 
+  console.log(phanToEditing)
+
   return (
     <>
       <Modal
-        title='CHI TIẾT CHỈ TIÊU'
+        title='CHI TIẾT PHÂN TỞ'
         visible={editVisible}
         onOk={() => {
           setEditVisible(false)
@@ -34,11 +36,10 @@ function ChiTietChiTieu ({
             }
             form.resetFields()
             editPhanTo({
-              nhomChiTieuId: values.nhomChiTieuId,
-              name: values.name,
-              status: values.status,
               id: values.id,
-              chiTieuCode: values.chiTieuCode
+              nhomDanhMucCode: values.nhomDanhMucCode,
+              name: values.name,
+              status: values.status
             })
           })
         }}
@@ -55,25 +56,16 @@ function ChiTietChiTieu ({
           />
           <InputItem
             form={form}
-            label='Mã nhóm chỉ tiêu'
-            field='nhomChiTieuId'
+            label='Mã phân tổ'
+            field='nhomDanhMucCode'
             rules={[
               { required: true, message: 'Vui lòng không để trống thẻ này' }
             ]}
-            initialValue={phanToEditing ? phanToEditing.nhomChiTieuId : ''}
+            initialValue={phanToEditing ? phanToEditing.nhomDanhMucCode : ''}
           />
           <InputItem
             form={form}
-            label='Mã chỉ tiêu'
-            field='chiTieuCode'
-            rules={[
-              { required: true, message: 'Vui lòng không để trống thẻ này' }
-            ]}
-            initialValue={phanToEditing ? phanToEditing.chiTieuCode : ''}
-          />
-          <InputItem
-            form={form}
-            label='Tên chỉ tiêu'
+            label='Tên phân tổ'
             field='name'
             rules={[
               { required: true, message: 'Vui lòng không để trống thẻ này' }

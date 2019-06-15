@@ -23,9 +23,8 @@ export default function PhanTo ({
     phanToList.map((item, index) => ({
       key: item.id,
       stt: index + 1,
-      maNhom: item.nhomPhanLoaiCode,
-      maTieuChi: item.tieuChiId,
-      tenNhom: item.name
+      maPhanTo: item.nhomDanhMucCode,
+      name: item.name
     }))
   return (
     <>
@@ -46,9 +45,8 @@ export default function PhanTo ({
       </Row>
       <Table dataSource={dataTable}>
         <Column title='STT' dataIndex='stt' key='stt' />
-        <Column title='MÃ NHÓM' dataIndex='maNhom' key='maNhom' />
-        <Column title='MÃ TIÊU CHÍ' dataIndex='maTieuChi' key='maTieuChi' />
-        <Column title='TÊN NHÓM' dataIndex='tenNhom' key='tenNhom' />
+        <Column title='TÊN' dataIndex='name' key='name' />
+        <Column title='MÃ PHÂN TỔ' dataIndex='maPhanTo' key='maPhanTo' />
         <Column
           title=''
           key='action'

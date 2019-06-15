@@ -24,6 +24,7 @@ function ChiTietCoQuanHanhChinh ({
             }
             form.resetFields()
             editCoQuanHanhChinh({
+              id: values.id,
               coQuanHanhChinhCode: values.coQuanHanhChinhCode,
               description: values.description,
               maDinhDanhCode: values.maDinhDanhCode,
@@ -38,6 +39,14 @@ function ChiTietCoQuanHanhChinh ({
         }}
       >
         <Form>
+          <InputItem
+            form={form}
+            type='hidden'
+            initialValue={
+              coQuanHanhChinhEditing ? coQuanHanhChinhEditing.id : ''
+            }
+            field='id'
+          />
           <Row>
             <Col span={11}>
               <InputItem
@@ -115,7 +124,7 @@ function ChiTietCoQuanHanhChinh ({
           <InputItem
             form={form}
             label='Mô tả'
-            field='moTa'
+            field='description'
             type='description'
             initialValue={
               coQuanHanhChinhEditing ? coQuanHanhChinhEditing.description : ''

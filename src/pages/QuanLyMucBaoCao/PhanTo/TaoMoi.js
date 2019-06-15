@@ -1,8 +1,19 @@
 import React from 'react'
-import { Form, Modal } from 'antd'
+import { Form, Modal, Select } from 'antd'
 import InputItem from '../../../components/InputItem'
 
 function TaoMoiPhanTo ({ form, addVisible, setAddVisible, addPhanTo }) {
+  const statusList = [
+    {
+      value: 'PUBLISH'
+    },
+    {
+      value: 'UNPUBLISH'
+    },
+    {
+      value: 'DELETE'
+    }
+  ]
   return (
     <>
       <Modal
@@ -16,8 +27,7 @@ function TaoMoiPhanTo ({ form, addVisible, setAddVisible, addPhanTo }) {
             }
             form.resetFields()
             addPhanTo({
-              nhomChiTieuId: values.nhomChiTieuId,
-              chiTieuCode: values.chiTieuCode,
+              nhomDanhMucCode: values.nhomDanhMucCode,
               name: values.name,
               status: values.status
             })
@@ -31,7 +41,7 @@ function TaoMoiPhanTo ({ form, addVisible, setAddVisible, addPhanTo }) {
           <InputItem
             form={form}
             label='Mã phân tổ'
-            field='nhomChiTieuId'
+            field='nhomDanhMucCode'
             rules={[
               { required: true, message: 'Vui lòng không để trống thẻ này' }
             ]}
@@ -39,15 +49,24 @@ function TaoMoiPhanTo ({ form, addVisible, setAddVisible, addPhanTo }) {
           <InputItem
             form={form}
             label='Tên phân tổ'
-            field='nhomChiTieuId'
+            field='name'
             rules={[
               { required: true, message: 'Vui lòng không để trống thẻ này' }
             ]}
           />
           <InputItem
             form={form}
-            label='Nhóm chỉ tiêu'
-            field='nhomChiTieuId'
+            label='Status'
+            field='status'
+            type='select'
+            options={
+              statusList &&
+              statusList.map((item, index) => (
+                <Select.Option key={index} value={item.value}>
+                  {item.value}
+                </Select.Option>
+              ))
+            }
             rules={[
               { required: true, message: 'Vui lòng không để trống thẻ này' }
             ]}

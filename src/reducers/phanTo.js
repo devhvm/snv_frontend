@@ -8,7 +8,7 @@ export const PHAN_TO_EDITING = 'PHAN_TO_EDITING'
 // Action Creator
 export const getPhanTos = () => dispatch => {
   rest
-    .get('common/api/nhom-phan-loais')
+    .get('common/api/nhom-danh-mucs')
     .then(res => {
       dispatch(getPhanToRequest(res.data))
     })
@@ -19,7 +19,7 @@ export const getPhanTos = () => dispatch => {
 
 export const getPhanToEditing = id => dispatch => {
   rest
-    .get(`quytrinhdonvi/api/co-quan-hanh-chinhs/${id}`)
+    .get(`common/api/nhom-danh-mucs/${id}`)
     .then(res => {
       dispatch(getPhanToEditingRequest(res.data))
     })
@@ -30,7 +30,7 @@ export const getPhanToEditing = id => dispatch => {
 
 export const editPhanTo = form => dispatch => {
   rest
-    .put(`quytrinhdonvi/api/co-quan-hanh-chinhs/`)
+    .put(`common/api/nhom-danh-mucs/`, form)
     .then(() => {
       dispatch(getPhanTos())
     })
@@ -41,7 +41,7 @@ export const editPhanTo = form => dispatch => {
 
 export const addPhanTo = form => dispatch => {
   rest
-    .post('common/api/nhom-phan-loais', form)
+    .post('common/api/nhom-danh-mucs', form)
     .then(() => {
       dispatch(getPhanTos())
     })
@@ -52,7 +52,7 @@ export const addPhanTo = form => dispatch => {
 
 export const deletePhanTo = id => dispatch => {
   rest
-    .delete(`common/api/nhom-phan-loais/${id}`)
+    .delete(`common/api/nhom-danh-mucs/${id}`)
     .then(() => {
       dispatch(getPhanTos())
     })

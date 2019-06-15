@@ -30,9 +30,9 @@ export const getCoQuanHanhChinhEditing = id => dispatch => {
 
 export const editCoQuanHanhChinh = form => dispatch => {
   rest
-    .put(`quytrinhdonvi/api/co-quan-hanh-chinhs/`)
+    .put(`quytrinhdonvi/api/co-quan-hanh-chinhs/`, form)
     .then(res => {
-      console.log(res)
+      dispatch(getCoQuanHanhChinh())
     })
     .catch(err => {
       console.log(err)
