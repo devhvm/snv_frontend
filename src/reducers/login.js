@@ -2,7 +2,6 @@ import { handleActions, createAction } from 'redux-actions'
 import { rest } from '../utils/rest'
 
 // Action
-export const LOGIN = 'LOGIN'
 export const COLLAPSED = 'COLLAPSED'
 
 // Action Creator
@@ -42,10 +41,6 @@ const initialState = {
 // reducer
 export default handleActions(
   {
-    [LOGIN]: (state, { payload }) => ({
-      ...state,
-      login: payload
-    }),
     [COLLAPSED]: (state, { payload }) => ({
       ...state,
       collapsed: payload

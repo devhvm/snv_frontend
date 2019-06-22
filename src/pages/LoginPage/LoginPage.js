@@ -89,9 +89,6 @@ function LoginPage ({ form, login }) {
               field='rememberMe'
               checkboxLabel='Remember me'
               type='checkbox'
-              rules={[
-                { required: true, message: 'Vui lòng không để trống thẻ này' }
-              ]}
             />
             <ForgotPassWord>Forgot Your Password?</ForgotPassWord>
           </RememberWrapper>
