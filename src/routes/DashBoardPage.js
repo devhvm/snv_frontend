@@ -54,10 +54,11 @@ function DashBoardPage () {
   const toggleSideBar = () => {
     setCollapsed(!collapsed)
   }
+  let loginStatus = localStorage.getItem('loginStatus')
 
   return (
     <div className='App'>
-      {login ? (
+      {loginStatus ? (
         <RootLayout>
           <Sidebar collapsed={collapsed} />
           <Layout>
