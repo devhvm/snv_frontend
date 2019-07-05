@@ -21,3 +21,9 @@ yarn start
 ```bash
 yarn build:${env}
 ```
+
+## On Browser
+
+```bash
+http://localhost:3002
+```

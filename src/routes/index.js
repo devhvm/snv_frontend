@@ -1,12 +1,12 @@
 import React from 'react'
 import { Switch } from 'react-router-dom'
-import AdminDashBoardPage from './AdminDashBoardPage'
+import DashBoardPage from './DashBoardPage'
 
 const routes = (
   <div className='App'>
     <Switch>
       {/* <Route path='/login' component={LoginPage} /> */}
-      <AdminDashBoardPage />
+      <DashBoardPage />
     </Switch>
   </div>
 )

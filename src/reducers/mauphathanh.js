@@ -25,7 +25,6 @@ export const GET_DATA_EDIT_MAU_PHAT_HANH = 'GET_DATA_EDIT_MAU_PHAT_HANH'
 // }
 
 export const getDataEditMauPhatHanh = data => dispatch => {
-  // console.log('dataReduce', data)
   return dispatch(getDataEditMauPhatHanhRequest(data))
 }
 

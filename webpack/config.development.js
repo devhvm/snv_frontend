@@ -13,17 +13,17 @@ const devConf = {
     new webpack.HotModuleReplacementPlugin()
   ],
   devServer: {
-    hot: true,
+    hot: false,
     inline: true,
     historyApiFallback: true,
-    host: 'localhost',
-    port: 3000,
-    open: true,
+    host: '0.0.0.0',
+    port: 3002,
+    open: false,
     openPage: '',
     contentBase: ['build'],
     headers: {
-      "Access-Control-Allow-Origin": "*",
-    },
+      'Access-Control-Allow-Origin': '*'
+    }
     // proxy: {
     //   'url': 'http://210.2.91.13:9999'
     // }
