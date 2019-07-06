@@ -19,6 +19,7 @@ import ThietDatNguoiDung from '../pages/ThietDatNguoiDung'
 import QuanLyHoSo from '../pages/QuanLyHoSo'
 import QuanLyHangMuc from '../pages/QuanLyHangMuc'
 import CongThucTongHop from '../pages/CongThucTongHop'
+import DonViChuQuan from '../pages/DonViChuQuan'
 
 const RootLayout = styled(Layout)`
   && {
@@ -98,7 +99,7 @@ function DashBoardPage () {
                   />
                   <Route
                     exact
-                    path='/quanlyhangmuc'
+                    path='/hangmucbaocao'
                     component={QuanLyHangMuc}
                   />
                   <Route
@@ -111,6 +112,7 @@ function DashBoardPage () {
                     path='/quanlycoquanchutri'
                     component={QuanLyCoQuanChuTri}
                   />
+                  <Route exact path='/donvichuquan' component={DonViChuQuan} />
                   <Redirect exact from='/' to='/home' component={HomePage} />
                 </Switch>
               </ContentWrapper>

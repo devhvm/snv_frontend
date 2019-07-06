@@ -14,6 +14,7 @@ import maDinhDanh from './maDinhDanh'
 import phanTo from './phanTo'
 import kyCongBo from './kyCongBo'
 import nhomDanhMuc from './nhomDanhMuc'
+import donViChuQuan from './donViChuQuan'
 
 export default history =>
   combineReducers({
@@ -31,5 +32,6 @@ export default history =>
     maDinhDanh,
     phanTo,
     kyCongBo,
-    nhomDanhMuc
+    nhomDanhMuc,
+    donViChuQuan
   })

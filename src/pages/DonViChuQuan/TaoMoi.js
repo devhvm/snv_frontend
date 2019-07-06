@@ -1,8 +1,8 @@
 import React from 'react'
-import { Form, Modal, Select } from 'antd'
-import InputItem from '../../../components/InputItem'
+import { Form, Modal } from 'antd'
+import InputItem from '../../components/InputItem'
 
-function TaoMoiChiTieu ({ form, addVisible, setAddVisible, addChiTieu }) {
+function TaoDonViChuQuan ({ form, addVisible, setAddVisible, addNhomChiTieu }) {
   // const statusList = [
   //   {
   //     value: 'PUBLISH'
@@ -18,7 +18,7 @@ function TaoMoiChiTieu ({ form, addVisible, setAddVisible, addChiTieu }) {
   return (
     <>
       <Modal
-        title='TẠO MỚI CHỈ TIÊU'
+        title='TẠO MỚI ĐƠN VỊ CHỦ QUẢN'
         visible={addVisible}
         onOk={() => {
           setAddVisible(false)
@@ -27,9 +27,8 @@ function TaoMoiChiTieu ({ form, addVisible, setAddVisible, addChiTieu }) {
               return
             }
             form.resetFields()
-            addChiTieu({
-              nhomChiTieuId: values.nhomChiTieuId,
-              chiTieuCode: values.chiTieuCode,
+            addNhomChiTieu({
+              nhomChiTieuCode: values.nhomChiTieuCode,
               name: values.name,
               status: values.status
             })
@@ -40,25 +39,17 @@ function TaoMoiChiTieu ({ form, addVisible, setAddVisible, addChiTieu }) {
         }}
       >
         <Form>
-          {/* <InputItem */}
-          {/* form={form} */}
-          {/* label='Mã nhóm chỉ tiêu' */}
-          {/* field='nhomChiTieuId' */}
-          {/* rules={[ */}
-          {/* { required: true, message: 'Vui lòng không để trống thẻ này' } */}
-          {/* ]} */}
-          {/* /> */}
           <InputItem
             form={form}
-            label='Mã chỉ tiêu'
-            field='chiTieuCode'
+            label='Mã Chủ Trì'
+            field='maChuTri'
             rules={[
               { required: true, message: 'Vui lòng không để trống thẻ này' }
             ]}
           />
           <InputItem
             form={form}
-            label='Tên chỉ tiêu'
+            label='Tên Cơ Quan Chủ Trì'
             field='name'
             rules={[
               { required: true, message: 'Vui lòng không để trống thẻ này' }
@@ -66,7 +57,7 @@ function TaoMoiChiTieu ({ form, addVisible, setAddVisible, addChiTieu }) {
           />
           {/* <InputItem */}
           {/* form={form} */}
-          {/* label='Status' */}
+          {/* label='Mã định danh' */}
           {/* field='status' */}
           {/* type='select' */}
           {/* options={ */}
@@ -76,34 +67,15 @@ function TaoMoiChiTieu ({ form, addVisible, setAddVisible, addChiTieu }) {
           {/* {item.value} */}
           {/* </Select.Option> */}
           {/* )) */}
-          {/**/}
           {/* } */}
           {/* rules={[ */}
           {/* { required: true, message: 'Vui lòng không để trống thẻ này' } */}
           {/* ]} */}
           {/* /> */}
-          <Form.Item label='Đơn vị chủ quản'>
-            <Select defaultValue='1' style={{ width: '100%' }}>
-              <Select.Option value='1'>
-                Bộ Kế hoạch và Đầu tư (Tổng cục Thống kê)
-              </Select.Option>
-              <Select.Option value='2'>
-                Bộ Lao động - Thương binh và Xã hội
-              </Select.Option>
-              <Select.Option value='3'>Tòa án nhân dân tối cao</Select.Option>
-            </Select>
-          </Form.Item>
-          <InputItem
-            form={form}
-            label='Kỳ công bố'
-            field='kyCongBo'
-            rules={[
-              { required: true, message: 'Vui lòng không để trống thẻ này' }
-            ]}
-          />
         </Form>
       </Modal>
     </>
   )
 }
-export default Form.create({ name: 'form_modal' })(TaoMoiChiTieu)
+
+export default Form.create({ name: 'form_modal' })(TaoDonViChuQuan)

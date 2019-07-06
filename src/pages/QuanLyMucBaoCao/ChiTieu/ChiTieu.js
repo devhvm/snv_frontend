@@ -25,7 +25,7 @@ export default function ChiTieu ({
       stt: index + 1,
       maNhom: item.nhomChiTieuId,
       maChiTieu: item.chiTieuCode,
-      tenNhom: item.name
+      tenChiTieu: item.name
     }))
 
   return (
@@ -47,9 +47,14 @@ export default function ChiTieu ({
       </Row>
       <Table dataSource={dataTable}>
         <Column title='STT' dataIndex='stt' key='stt' />
-        <Column title='MÃ NHÓM' dataIndex='maNhom' key='maNhom' />
         <Column title='MÃ CHỈ TIÊU' dataIndex='maChiTieu' key='maChiTieu' />
-        <Column title='TÊN NHÓM' dataIndex='tenNhom' key='tenNhom' />
+        <Column title='TÊN CHỈ TIÊU' dataIndex='tenChiTieu' key='tenChiTieu' />
+        <Column
+          title='TÊN ĐƠN VỊ CHỦ QUẢN'
+          dataIndex='tenDonViChuQuan'
+          key='tenDonViChuQuan'
+        />
+        <Column title='KỲ CÔNG BỐ' dataIndex='kyCongBo' key='kyCongBo' />
         <Column
           title=''
           key='action'

@@ -58,6 +58,7 @@ export default function QuanLyDonVi ({
           dataIndex='tenCoQuanHanhChinh'
           key='tenCoQuanHanhChinh'
         />
+        <Column title='TÊN TIÊU CHí' dataIndex='tenTieuChi' key='tenTieuChi' />
         <Column
           title=''
           key='action'
